@@ -9,30 +9,23 @@ namespace Datos
 {
     public class AccesoDatos
     {
+        // Atributos
         private SqlConnection conexion;
         private SqlCommand comando;
         private SqlDataReader lector;
-
+        // Propiedades
         public SqlDataReader Lector { get { return lector; } }
-
+        // Constructor
         public AccesoDatos()
         {
             conexion = new SqlConnection("server=.\\sqlexpress;database=GESTION_FABRICA_ZAPATOS_DB;integrated security=true;");
             comando = new SqlCommand();
         }
-
+        // Metodos
         public void setearConsulta(string consulta)
         {
-            try
-            {
-                comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = consulta;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = consulta;
         }
         public void ejecutarLectura()
         {
