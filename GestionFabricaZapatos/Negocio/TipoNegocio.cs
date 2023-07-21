@@ -10,6 +10,29 @@ namespace Negocio
 {
     public class TipoNegocio
     {
-       
+        public List<Tipo> listar()
+        {
+            return new List<Tipo>();
+        }
+        public void agregar(Articulo nuevo)
+        {
+
+        }
+        public void modificar(Articulo modificado)
+        {
+
+        }
+        public void eliminar(int id)
+        {
+
+        }
+        public void filtrar(string campo, string criterio, string filtro)
+        {
+
+        }
+        public void ordenar(string campo, string criterio)
+        {
+
+        }
     }
 }
