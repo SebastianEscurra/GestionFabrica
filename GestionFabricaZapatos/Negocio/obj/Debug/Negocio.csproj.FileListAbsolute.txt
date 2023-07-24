@@ -1,0 +1,11 @@
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Negocio\bin\Debug\Negocio.dll
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Negocio\bin\Debug\Negocio.pdb
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Negocio\bin\Debug\Datos.dll
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Negocio\bin\Debug\Dominio.dll
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Negocio\bin\Debug\Datos.pdb
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Negocio\bin\Debug\Dominio.pdb
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Negocio\obj\Debug\Negocio.dll
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Negocio\obj\Debug\Negocio.pdb
