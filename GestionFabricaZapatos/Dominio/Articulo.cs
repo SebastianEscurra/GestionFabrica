@@ -18,11 +18,11 @@ namespace Dominio
         public decimal PrecioComercial { get; set; }
         [DisplayName("Precio mayorista")]
         public decimal Preciomayorista { get; set; }
-        [DisplayName("Modelo")]
-        public int Idtipo { get; set; }
+        
+        public Tipo Modelo { get; set; }
         [DisplayName("Insumos necesarios")]
-        public int IdInsumos { get; set; }
-        [DisplayName("Sucursal")]
-        public int IdSucursal { get; set; }
+        public Insumo Insumo { get; set; }
+        
+        public Sucursal Sucursal { get; set; }
     }
 }
