@@ -53,5 +53,13 @@ namespace Presentacion
             negocio.modificar(modificado);
             dgvArticulos.DataSource = negocio.listar();
         }
+
+        private void btnEliminarLogico_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado =(Articulo) dgvArticulos.CurrentRow.DataBoundItem;
+            negocio.eliminarLogico(seleccionado.Id);
+            dgvArticulos.DataSource = negocio.listar();
+
+        }
     }
 }
