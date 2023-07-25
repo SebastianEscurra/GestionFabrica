@@ -14,5 +14,6 @@ namespace Dominio
         public string ContactoEmail { get; set; }
         public string Ubicacion { get; set; }
         public int IdPedido { get; set; }
+        public bool Activo { get; set; }
     }
 }

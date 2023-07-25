@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class Form1 : Form
+    public partial class FrmArticulos : Form
     {
         private ArticuloNegocio negocio = new ArticuloNegocio();
         private List<Articulo> articulos=new List<Articulo>();
-        public Form1()
+        public FrmArticulos()
         {
             InitializeComponent();
         }
