@@ -17,7 +17,7 @@ namespace Negocio
             try
             {
                 List<Articulo> ListaArticulos = new List<Articulo>();
-                dato.setearConsulta("select a.Id,a.Nombre,a.Cantidad,a.PecioFabricacion,a.PrecioComercial,a.PrecioMayorista,a.IdTipo IdTipo,t.Descripcion Modelo,a.IdInsumos,i.Descripcion Insumos,a.IdSucursal,s.Descripcion Sucursal from Articulo a,Tipo t,Insumo i,Sucursal s where t.Id=a.IdTipo and i.Id=a.IdInsumos and s.Id=a.IdSucursal");
+                dato.setearConsulta("select a.Id,a.Nombre,a.Cantidad,a.PecioFabricacion,a.PrecioComercial,a.PrecioMayorista,a.IdTipo IdTipo,a.Activo,t.Descripcion Modelo,a.IdInsumos,i.Descripcion Insumos,a.IdSucursal,s.Descripcion Sucursal from Articulo a,Tipo t,Insumo i,Sucursal s where t.Id=a.IdTipo and i.Id=a.IdInsumos and s.Id=a.IdSucursal and Activo=1");
                 dato.ejecutarLectura();
 
                 while (dato.Lector.Read())
@@ -39,6 +39,7 @@ namespace Negocio
                     aux.Sucursal = new Sucursal();
                     aux.Sucursal.Id = (int)dato.Lector["IdSucursal"];
                     aux.Sucursal.Descripcion = (string)dato.Lector["Sucursal"];
+                    aux.Activo = (bool)dato.Lector["Activo"];
 
                     ListaArticulos.Add(aux);
                 }
@@ -60,7 +61,7 @@ namespace Negocio
 
             try
             {
-                dato.setearConsulta("insert into Articulo values(@nombre,@cantidad,@precioFabricacion,@precioComercial,@precioMayorista,@IdTipo,@IdInsumos,@IdSucursal)");
+                dato.setearConsulta("insert into Articulo values(@nombre,@cantidad,@precioFabricacion,@precioComercial,@precioMayorista,@IdTipo,@IdInsumos,@IdSucursal,@Activo)");
                 dato.setearParametro("@nombre",nuevo.Nombre);
                 dato.setearParametro("@cantidad", nuevo.Cantidad);
                 dato.setearParametro("@precioFabricacion", nuevo.PrecioFabricacion);
@@ -69,6 +70,8 @@ namespace Negocio
                 dato.setearParametro("@IdTipo",nuevo.Modelo.Id);
                 dato.setearParametro("@IdInsumos", nuevo.Insumo.id);
                 dato.setearParametro("@IdSucursal", nuevo.Sucursal.Id);
+                dato.setearParametro("@Activo", 1);
+
                 dato.ejecutarAccion();
 
             }
@@ -111,9 +114,22 @@ namespace Negocio
                 dato.cerrarConexion();
             }
         }
-        public void eliminar(int id)
+        public void eliminarLogico(int id)
         {
+            try
+            {
+                dato.setearConsulta("update Articulo set Activo =0 where id="+id+"");
+                dato.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+            finally
+            {
+                dato.cerrarConexion();
+            }
         }
         public void filtrar(string campo,string criterio,string filtro)
         {

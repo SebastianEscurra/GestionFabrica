@@ -14,5 +14,6 @@ C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabri
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\bin\Debug\Dominio.pdb
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\bin\Debug\Negocio.pdb
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\bin\Debug\Datos.pdb
-C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.Form1.resources
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.csproj.CopyComplete
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.FrmArticulos.resources
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.frmClientes.resources

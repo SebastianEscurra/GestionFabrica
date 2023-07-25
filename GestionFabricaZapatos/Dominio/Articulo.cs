@@ -22,7 +22,7 @@ namespace Dominio
         public Tipo Modelo { get; set; }
         [DisplayName("Insumos necesarios")]
         public Insumo Insumo { get; set; }
-        
         public Sucursal Sucursal { get; set; }
+        public bool Activo { get; set; }
     }
 }
