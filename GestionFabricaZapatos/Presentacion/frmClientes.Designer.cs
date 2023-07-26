@@ -40,6 +40,7 @@
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Location = new System.Drawing.Point(86, 73);
             this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClientes.Size = new System.Drawing.Size(562, 150);
             this.dgvClientes.TabIndex = 0;
             // 
@@ -51,6 +52,7 @@
             this.BtnAgregar.TabIndex = 1;
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // btnModificar
             // 
@@ -60,6 +62,7 @@
             this.btnModificar.TabIndex = 1;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminarLogico
             // 
@@ -69,8 +72,9 @@
             this.btnEliminarLogico.TabIndex = 1;
             this.btnEliminarLogico.Text = "Eliminar";
             this.btnEliminarLogico.UseVisualStyleBackColor = true;
+            this.btnEliminarLogico.Click += new System.EventHandler(this.btnEliminarLogico_Click);
             // 
-            // Clientes
+            // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -79,7 +83,7 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.BtnAgregar);
             this.Controls.Add(this.dgvClientes);
-            this.Name = "Clientes";
+            this.Name = "frmClientes";
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.Clientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
