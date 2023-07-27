@@ -48,17 +48,65 @@ namespace Negocio
 
 
         }
-        public void agregar(Articulo nuevo)
+        public void agregar(Empleado nuevo)
         {
+            try
+            {
+                dato.setearConsulta("insert into Empleado values (@nombre,@dni,@idRol,@telefono,@email,@activo)");
+                dato.setearParametro("@nombre", nuevo.Nombre);
+                dato.setearParametro("@dni", nuevo.Dni);
+                dato.setearParametro("@idRol", nuevo.Rol.Id);
+                dato.setearParametro("@telefono", nuevo.ContactoTelefonico);
+                dato.setearParametro("@email", nuevo.ContactoEmail);
+                dato.setearParametro("@activo", 1);
 
+                dato.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                dato.cerrarConexion();
+            }
         }
-        public void modificar(Articulo modificado)
+        public void modificar(Empleado modificado)
         {
+            try
+            {
+                dato.setearConsulta("update Empleado set nombre='"+modificado.Nombre+"',Dni="+modificado.Dni+",IdRol="+modificado.Rol.Id+",ContactoTel="+modificado.ContactoTelefonico+",ContactoMail='"+modificado.ContactoEmail+"' where id="+modificado.Id+"");
+                dato.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+            finally
+            {
+                dato.cerrarConexion();
+            }
         }
         public void eliminar(int id)
         {
+            try
+            {
+                dato.setearConsulta("update Empleado set Activo=0 where id=" + id + "");
+                dato.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+            finally
+            {
+                dato.cerrarConexion();
+            }
+            
         }
         public void filtrar(string campo, string criterio, string filtro)
         {
