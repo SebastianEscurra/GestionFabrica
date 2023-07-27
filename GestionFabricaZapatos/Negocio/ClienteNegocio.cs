@@ -39,18 +39,70 @@ namespace Negocio
 
                 throw ex;
             }
+            finally
+            {
+                dato.cerrarConexion();
+            }
         }
-        public void agregar(Articulo nuevo)
+        public void agregar(Cliente nuevo)
         {
+            try
+            {
+                dato.setearConsulta("insert into Cliente values (@nombre,@telefono,@email,@ubicacion,@activo)");
+            
+                dato.setearParametro("@nombre",nuevo.Nombre);
+                dato.setearParametro("@telefono", nuevo.ContactoTelefono);
+                dato.setearParametro("@email", nuevo.ContactoEmail);
+                dato.setearParametro("@ubicacion", nuevo.Ubicacion);
+                dato.setearParametro("@activo", 1);
 
+                dato.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                dato.cerrarConexion();
+            }
         }
-        public void modificar(Articulo modificado)
+        public void modificar(Cliente modificado)
         {
+            try
+            {
+                dato.setearConsulta("update Cliente set Nombre='"+modificado.Nombre+"',ContactoTel="+modificado.ContactoTelefono+",ContactoMail='"+modificado.ContactoEmail+"',Ubicacion='"+modificado.Ubicacion+"' where Id="+modificado.Id+"");
 
+                dato.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }finally
+            {
+                dato.cerrarConexion();
+            }
         }
-        public void eliminar(int id)
+        public void eliminarLogico(int id)
         {
+            try
+            {
+                dato.setearConsulta("Update Cliente set Activo=0 where id= "+id+"");
+                dato.ejecutarAccion();
 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                dato.cerrarConexion();
+            }
         }
         public void filtrar(string campo, string criterio, string filtro)
         {
