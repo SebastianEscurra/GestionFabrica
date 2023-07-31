@@ -46,16 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmArticulos.cs">
+    <Compile Include="FrmArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmArticulos.Designer.cs">
-      <DependentUpon>frmArticulos.cs</DependentUpon>
+    <Compile Include="FrmArticulos.Designer.cs">
+      <DependentUpon>FrmArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSucursales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSucursales.Designer.cs">
+      <DependentUpon>frmSucursales.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmArticulos.resx">
-      <DependentUpon>frmArticulos.cs</DependentUpon>
+    <EmbeddedResource Include="FrmArticulos.resx">
+      <DependentUpon>FrmArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSucursales.resx">
+      <DependentUpon>frmSucursales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -83,6 +101,10 @@
     <ProjectReference Include="..\Dominio\Dominio.csproj">
       <Project>{3ee535a6-9b5f-4987-b727-a3587c8dead4}</Project>
       <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper\Helper.csproj">
+      <Project>{96fbc90f-a024-4b62-8433-ad14660daf0d}</Project>
+      <Name>Helper</Name>
     </ProjectReference>
     <ProjectReference Include="..\Negocio\Negocio.csproj">
       <Project>{e82b33ee-9049-4d30-a4e7-200ac7a7f7af}</Project>
