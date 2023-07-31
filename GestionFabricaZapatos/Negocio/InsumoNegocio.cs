@@ -9,7 +9,7 @@ using Datos;
 
 namespace Negocio
 {
-    internal class InsumoNegocio
+    public class InsumoNegocio
     {
         private AccesoDatos dato=new AccesoDatos();
         public List<Insumo> listar()

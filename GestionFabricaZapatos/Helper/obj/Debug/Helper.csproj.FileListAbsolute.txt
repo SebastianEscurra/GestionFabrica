@@ -1,0 +1,6 @@
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\bin\Debug\Helper.dll
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\bin\Debug\Helper.pdb
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\obj\Debug\Helper.csproj.AssemblyReference.cache
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\obj\Debug\Helper.csproj.CoreCompileInputs.cache
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\obj\Debug\Helper.dll
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\obj\Debug\Helper.pdb
