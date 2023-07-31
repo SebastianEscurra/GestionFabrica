@@ -4,3 +4,10 @@ C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabri
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\obj\Debug\Helper.csproj.CoreCompileInputs.cache
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\obj\Debug\Helper.dll
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\obj\Debug\Helper.pdb
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\bin\Debug\Dominio.dll
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\bin\Debug\Negocio.dll
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\bin\Debug\Datos.dll
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\bin\Debug\Dominio.pdb
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\bin\Debug\Negocio.pdb
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\bin\Debug\Datos.pdb
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Helper\obj\Debug\Helper.csproj.CopyComplete

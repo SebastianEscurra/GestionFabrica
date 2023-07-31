@@ -32,9 +32,6 @@
             this.PanelCentralSucursalInsumos = new System.Windows.Forms.Panel();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -51,9 +48,6 @@
             // 
             this.PanelCentralSucursalInsumos.Controls.Add(this.btnSeleccionar);
             this.PanelCentralSucursalInsumos.Controls.Add(this.panel4);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.panel3);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.panel2);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.panel1);
             this.PanelCentralSucursalInsumos.Controls.Add(this.button2);
             this.PanelCentralSucursalInsumos.Controls.Add(this.button1);
             this.PanelCentralSucursalInsumos.Controls.Add(this.button4);
@@ -64,7 +58,7 @@
             this.PanelCentralSucursalInsumos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelCentralSucursalInsumos.Location = new System.Drawing.Point(0, 0);
             this.PanelCentralSucursalInsumos.Name = "PanelCentralSucursalInsumos";
-            this.PanelCentralSucursalInsumos.Size = new System.Drawing.Size(620, 565);
+            this.PanelCentralSucursalInsumos.Size = new System.Drawing.Size(1061, 565);
             this.PanelCentralSucursalInsumos.TabIndex = 6;
             // 
             // btnSeleccionar
@@ -87,34 +81,10 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.panel4.Location = new System.Drawing.Point(455, 120);
+            this.panel4.Location = new System.Drawing.Point(573, 47);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(35, 4);
             this.panel4.TabIndex = 13;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.panel3.Location = new System.Drawing.Point(217, 405);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(16, 4);
-            this.panel3.TabIndex = 14;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.panel2.Location = new System.Drawing.Point(195, 405);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(16, 4);
-            this.panel2.TabIndex = 15;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.panel1.Location = new System.Drawing.Point(173, 405);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(16, 4);
-            this.panel1.TabIndex = 16;
             // 
             // button2
             // 
@@ -149,7 +119,7 @@
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(455, 85);
+            this.button4.Location = new System.Drawing.Point(573, 12);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(35, 35);
             this.button4.TabIndex = 11;
@@ -221,9 +191,6 @@
         private System.Windows.Forms.Panel PanelCentralSucursalInsumos;
         private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;

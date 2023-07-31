@@ -33,7 +33,10 @@ namespace Presentacion
 
         private void btnSeleccionar_Click_1(object sender, EventArgs e)
         {
-            HelpForm.abrirFormHijo(panelCentral, new FrmArticulos());
+            Sucursal SucursalSelec = (Sucursal)cmbSucursalFabrica.SelectedItem;
+
+            frmCrud frmInsumo= new frmCrud(SucursalSelec);
+            HelpForm.abrirFormHijo(panelCentral,frmInsumo);
         }
     }
 }

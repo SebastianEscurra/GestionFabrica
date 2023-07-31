@@ -50,7 +50,7 @@ namespace Presentacion
 
         private void btnArticulos_Click(object sender, EventArgs e)
         {
-            HelpForm.abrirFormHijo(panelCentral, new FrmArticulos());
+            
         }
     }
 }

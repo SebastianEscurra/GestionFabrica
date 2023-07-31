@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+
 
 namespace Helper
 {
@@ -21,6 +24,15 @@ namespace Helper
             panelPrincipal.Controls.Add(fr);
             panelPrincipal.Tag = frmHijo;
             fr.Show();
+        }
+    }
+    static public class HelpGrid
+    {
+        
+        static public void mostrarGrid(DataGridView grid,List<Insumo> listaInsumo)
+        {
+            grid.DataSource = listaInsumo;
+            grid.Columns["Id"].Visible = false;
         }
     }
 }
