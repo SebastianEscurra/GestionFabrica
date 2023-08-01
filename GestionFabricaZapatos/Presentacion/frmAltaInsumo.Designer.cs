@@ -35,8 +35,8 @@
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.lblCantidad = new System.Windows.Forms.Label();
             this.lblSucursal = new System.Windows.Forms.Label();
-            this.BTnFiltrar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BTnAceptar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtDescripcion
@@ -105,38 +105,39 @@
             this.lblSucursal.TabIndex = 1;
             this.lblSucursal.Text = "Sucursal";
             // 
-            // BTnFiltrar
+            // BTnAceptar
             // 
-            this.BTnFiltrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.BTnFiltrar.FlatAppearance.BorderSize = 0;
-            this.BTnFiltrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(86)))));
-            this.BTnFiltrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
-            this.BTnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTnFiltrar.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTnFiltrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
-            this.BTnFiltrar.Location = new System.Drawing.Point(102, 267);
-            this.BTnFiltrar.Name = "BTnFiltrar";
-            this.BTnFiltrar.Size = new System.Drawing.Size(79, 23);
-            this.BTnFiltrar.TabIndex = 15;
-            this.BTnFiltrar.Text = "Aceptar";
-            this.BTnFiltrar.UseVisualStyleBackColor = false;
-            this.BTnFiltrar.Click += new System.EventHandler(this.BTnFiltrar_Click);
+            this.BTnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.BTnAceptar.FlatAppearance.BorderSize = 0;
+            this.BTnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(86)))));
+            this.BTnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.BTnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTnAceptar.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
+            this.BTnAceptar.Location = new System.Drawing.Point(102, 267);
+            this.BTnAceptar.Name = "BTnAceptar";
+            this.BTnAceptar.Size = new System.Drawing.Size(79, 23);
+            this.BTnAceptar.TabIndex = 15;
+            this.BTnAceptar.Text = "Aceptar";
+            this.BTnAceptar.UseVisualStyleBackColor = false;
+            this.BTnAceptar.Click += new System.EventHandler(this.BTnAceptar_Click);
             // 
-            // button1
+            // btnCancelar
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(86)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
-            this.button1.Location = new System.Drawing.Point(214, 267);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(86)))));
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
+            this.btnCancelar.Location = new System.Drawing.Point(214, 267);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(79, 23);
+            this.btnCancelar.TabIndex = 15;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmAltaInsumo
             // 
@@ -144,8 +145,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
             this.ClientSize = new System.Drawing.Size(393, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.BTnFiltrar);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.BTnAceptar);
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.lblSucursal);
@@ -170,7 +171,7 @@
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label lblCantidad;
         private System.Windows.Forms.Label lblSucursal;
-        private System.Windows.Forms.Button BTnFiltrar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BTnAceptar;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

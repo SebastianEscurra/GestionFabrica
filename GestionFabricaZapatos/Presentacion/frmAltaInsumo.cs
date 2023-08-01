@@ -16,27 +16,59 @@ namespace Presentacion
     {
         private Sucursal sucursal;
         private InsumoNegocio negocio = new InsumoNegocio();
+        private Insumo actual = null;
         public frmAltaInsumo(Sucursal sucursal)
         {
             InitializeComponent();
             this.sucursal = sucursal;
         }
+        public frmAltaInsumo(Sucursal sucursal,Insumo seleccionado)
+        {
+            InitializeComponent();
+            this.sucursal = sucursal;
+            actual = seleccionado;
+        }
 
         private void frmAltaInsumo_Load(object sender, EventArgs e)
         {
             lblSucursal.Text = sucursal.Descripcion;
+            if (actual != null)
+            {
+                txtCantidad.Text = actual.Cantidad.ToString();
+                txtDescripcion.Text = actual.Descripcion;
+                txtPrecio.Text = actual.Precio.ToString();
+            }
+
         }
 
-        private void BTnFiltrar_Click(object sender, EventArgs e)
+
+
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Insumo nuevo = new Insumo();
-            nuevo.Descripcion = txtDescripcion.Text;
-            nuevo.Cantidad = int.Parse(txtCantidad.Text);
-            nuevo.Precio = decimal.Parse(txtPrecio.Text);
-            nuevo.sucursal = new Sucursal();
-            nuevo.sucursal.Id = sucursal.Id;
-            negocio.agregar(nuevo);
-            MessageBox.Show("Agregado Exitosamente");
+            this.Close();
+        }
+
+        private void BTnAceptar_Click(object sender, EventArgs e)
+        {
+            if (actual == null)
+                actual = new Insumo();
+            
+            actual.Cantidad = int.Parse(txtCantidad.Text);
+            actual.Descripcion = txtDescripcion.Text;
+            actual.Precio = decimal.Parse(txtPrecio.Text);
+            actual.sucursal = new Sucursal();
+            actual.sucursal.Id = sucursal.Id;
+
+            if (actual.Id>0)
+            {
+                negocio.modificar(actual);
+                MessageBox.Show("Modificado Exitosamente");
+            }
+            else
+            {
+                negocio.agregar(actual);
+                MessageBox.Show("Agregado Exitosamente");
+            }
         }
     }
 }

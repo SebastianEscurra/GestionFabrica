@@ -62,6 +62,7 @@
             this.txtFiltroRapido.Name = "txtFiltroRapido";
             this.txtFiltroRapido.Size = new System.Drawing.Size(217, 22);
             this.txtFiltroRapido.TabIndex = 18;
+            this.txtFiltroRapido.TextChanged += new System.EventHandler(this.txtFiltroRapido_TextChanged);
             // 
             // btnEliminarLogico
             // 
@@ -78,6 +79,7 @@
             this.btnEliminarLogico.TabIndex = 17;
             this.btnEliminarLogico.Text = "Eliminar";
             this.btnEliminarLogico.UseVisualStyleBackColor = false;
+            this.btnEliminarLogico.Click += new System.EventHandler(this.btnEliminarLogico_Click);
             // 
             // btnModificar
             // 
@@ -94,6 +96,7 @@
             this.btnModificar.TabIndex = 16;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // BTnFiltrar
             // 
