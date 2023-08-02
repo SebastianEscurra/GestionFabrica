@@ -27,6 +27,7 @@ namespace Negocio
                     aux.Id = (int)dato.Lector["identificador"];
                     aux.Descripcion = (string)dato.Lector["nombreInsumo"];
                     aux.Precio = (decimal)dato.Lector["Precio"];
+                    aux.Precio=decimal.Parse(aux.Precio.ToString("00"));
                     aux.Cantidad = (int)dato.Lector["Cantidad"];
                     aux.sucursal = new Sucursal();
                     aux.sucursal.Id = (int)dato.Lector["IdSucursal"];

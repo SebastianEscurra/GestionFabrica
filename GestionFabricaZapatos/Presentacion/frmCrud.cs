@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Presentacion
 {
@@ -30,13 +31,20 @@ namespace Presentacion
             listaInsumo= insumoNegocio.listar(sucursal);
 
             HelpGrid.mostrarGrid(dgvInventario, listaInsumo);
+
+            cmbCampo.Items.Add("Nombre");
+            cmbCampo.Items.Add("Precio");
+            cmbCampo.Items.Add("Cantidad");
+            
+            
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAltaInsumo agregar = new frmAltaInsumo(sucursal);
             agregar.ShowDialog();
-            HelpGrid.mostrarGrid(dgvInventario, insumoNegocio.listar(sucursal));
+            listaInsumo = insumoNegocio.listar(sucursal);
+            HelpGrid.mostrarGrid(dgvInventario, listaInsumo);
 
         }
 
@@ -78,7 +86,60 @@ namespace Presentacion
                 listaFiltrada = listaInsumo;
             }
 
-            dgvInventario.DataSource = listaFiltrada;
+            dgvInventario.DataSource = null;
+            HelpGrid.mostrarGrid(dgvInventario, listaFiltrada);
+        }
+
+        private void btnOrdenar_Click(object sender, EventArgs e)
+        {
+            cmbCampo.Visible = true;
+        }
+
+        private void cmbCampo_MouseEnter(object sender, EventArgs e)
+        {
+            cmbCampo.DroppedDown = true;
+        }
+
+        private void cmbCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbCriterio.Visible = true;
+            if (cmbCampo.SelectedIndex==0)
+            {
+                cmbCriterio.Items.Clear();
+                cmbCriterio.DroppedDown=true;
+                cmbCriterio.Items.Add("A-Z");
+                cmbCriterio.Items.Add("Z-A");
+            }
+            else
+            {
+                cmbCriterio.Items.Clear();
+                cmbCriterio.DroppedDown=true;
+                cmbCriterio.Items.Add("Menor a mayor");
+                cmbCriterio.Items.Add("Mayor a menor"); 
+            }
+        }
+
+        private void cmbCriterio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbCriterio.Visible = false;
+            cmbCampo.Visible = false;
+            List<Insumo> insumosordenados;
+
+            if (cmbCampo.SelectedIndex == 0 && cmbCriterio.SelectedIndex==0)
+                insumosordenados = listaInsumo.OrderBy(x => x.Descripcion).ToList();
+            else if (cmbCampo.SelectedIndex == 0)
+                insumosordenados = listaInsumo.OrderByDescending(x => x.Descripcion).ToList();
+            else if(cmbCampo.SelectedIndex==1 && cmbCriterio.SelectedIndex==0)
+                insumosordenados = listaInsumo.OrderBy(x => x.Precio).ToList();
+            else if(cmbCampo.SelectedIndex==1)
+                insumosordenados = listaInsumo.OrderByDescending(x => x.Precio).ToList();
+            else if(cmbCriterio.SelectedIndex==0)
+                insumosordenados = listaInsumo.OrderBy(x => x.Cantidad).ToList();
+            else
+                insumosordenados = listaInsumo.OrderByDescending(x => x.Cantidad).ToList();
+
+            HelpGrid.mostrarGrid(dgvInventario, insumosordenados);
+
         }
     }
 }
