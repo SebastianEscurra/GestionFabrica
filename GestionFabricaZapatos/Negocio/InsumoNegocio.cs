@@ -73,7 +73,13 @@ namespace Negocio
         {
             try
             {
-                dato.setearConsulta("update Insumo set Descripcion='"+modificado.Descripcion+"',Precio="+modificado.Precio+ ",Cantidad="+modificado.Cantidad+",IdSucursal="+modificado.sucursal.Id+" where id="+modificado.Id +"");
+                dato.setearConsulta("update Insumo set Descripcion=@descripcion ,Precio= @precio ,Cantidad= @cantidad ,IdSucursal= @idSucursal where id=@id");
+                dato.setearParametro("@descripcion", modificado.Descripcion);
+                dato.setearParametro("@precio", modificado.Precio);
+                dato.setearParametro("@cantidad", modificado.Cantidad);
+                dato.setearParametro("@idSucursal", modificado.sucursal.Id);
+                dato.setearParametro("@id", modificado.Id);
+
                 dato.ejecutarAccion();
             }
             catch (Exception ex)

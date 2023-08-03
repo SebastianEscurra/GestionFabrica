@@ -38,5 +38,13 @@ namespace Presentacion
             frmCrud frmInsumo= new frmCrud(SucursalSelec);
             HelpForm.abrirFormHijo(panelCentral,frmInsumo);
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAltaSucursal altaFabrica = new frmAltaSucursal();
+            altaFabrica.ShowDialog();
+            listaSucursales = negocio.listar();
+            cmbSucursalFabrica.DataSource = listaSucursales;
+        }
     }
 }

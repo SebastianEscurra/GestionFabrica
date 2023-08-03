@@ -35,4 +35,18 @@ namespace Helper
             grid.Columns["Id"].Visible = false;
         }
     }
+    static public class HelpPicture
+    {
+        static public void cargarImagen(PictureBox pbx,string urlImagen)
+        {
+            try
+            {
+                pbx.Load(urlImagen);
+            }
+            catch (Exception)
+            {
+                pbx.Load("https://cdn-icons-png.flaticon.com/512/126/126472.png");
+            }
+        }
+    }
 }

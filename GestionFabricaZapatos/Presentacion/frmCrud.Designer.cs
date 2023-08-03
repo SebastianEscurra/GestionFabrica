@@ -48,7 +48,7 @@
             // 
             this.pbxLupa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
             this.pbxLupa.Image = ((System.Drawing.Image)(resources.GetObject("pbxLupa.Image")));
-            this.pbxLupa.Location = new System.Drawing.Point(12, 125);
+            this.pbxLupa.Location = new System.Drawing.Point(12, 123);
             this.pbxLupa.Name = "pbxLupa";
             this.pbxLupa.Size = new System.Drawing.Size(19, 22);
             this.pbxLupa.TabIndex = 19;

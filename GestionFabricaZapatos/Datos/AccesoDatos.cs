@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows.Input;
 
 namespace Datos
 {
@@ -48,6 +49,7 @@ namespace Datos
             {
                 conexion.Open();
                 comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
             }
             catch (Exception ex)
             {
@@ -64,6 +66,7 @@ namespace Datos
         public void setearParametro(string nombre,Object valor)
         {
             comando.Parameters.AddWithValue(nombre, valor);
+            
         }
     }
 }

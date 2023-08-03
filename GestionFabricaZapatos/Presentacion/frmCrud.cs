@@ -125,7 +125,7 @@ namespace Presentacion
             cmbCampo.Visible = false;
             List<Insumo> insumosordenados;
 
-            if (cmbCampo.SelectedIndex == 0 && cmbCriterio.SelectedIndex==0)
+            if (cmbCampo.SelectedIndex == 0 && cmbCriterio.SelectedIndex==0) 
                 insumosordenados = listaInsumo.OrderBy(x => x.Descripcion).ToList();
             else if (cmbCampo.SelectedIndex == 0)
                 insumosordenados = listaInsumo.OrderByDescending(x => x.Descripcion).ToList();
@@ -139,7 +139,6 @@ namespace Presentacion
                 insumosordenados = listaInsumo.OrderByDescending(x => x.Cantidad).ToList();
 
             HelpGrid.mostrarGrid(dgvInventario, insumosordenados);
-
         }
     }
 }

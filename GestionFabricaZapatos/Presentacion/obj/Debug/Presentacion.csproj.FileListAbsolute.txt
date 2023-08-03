@@ -22,3 +22,4 @@ C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabri
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\bin\Debug\Helper.pdb
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.frmCrud.resources
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.frmAltaInsumo.resources
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.frmAltaSucursal.resources
