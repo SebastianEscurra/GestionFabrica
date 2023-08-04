@@ -29,43 +29,113 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSucursales));
-            this.PanelCentralSucursalInsumos = new System.Windows.Forms.Panel();
-            this.btnSeleccionar = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.cmbSucursalFabrica = new System.Windows.Forms.ComboBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.PanelCentralSucursalInsumos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.cmbSucursalFabrica = new System.Windows.Forms.ComboBox();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnVerTodo = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.PanelCentralSucursalInsumos = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.PanelCentralSucursalInsumos.SuspendLayout();
             this.SuspendLayout();
             // 
-            // PanelCentralSucursalInsumos
+            // pictureBox1
             // 
-            this.PanelCentralSucursalInsumos.Controls.Add(this.btnSeleccionar);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.panel4);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.panel3);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.panel2);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.panel1);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.button2);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.button1);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.button4);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.button3);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.cmbSucursalFabrica);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.pictureBox2);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.pictureBox1);
-            this.PanelCentralSucursalInsumos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelCentralSucursalInsumos.Location = new System.Drawing.Point(0, 0);
-            this.PanelCentralSucursalInsumos.Name = "PanelCentralSucursalInsumos";
-            this.PanelCentralSucursalInsumos.Size = new System.Drawing.Size(620, 565);
-            this.PanelCentralSucursalInsumos.TabIndex = 6;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(158, 80);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 77);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(158, 280);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 77);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            // 
+            // cmbSucursalFabrica
+            // 
+            this.cmbSucursalFabrica.FormattingEnabled = true;
+            this.cmbSucursalFabrica.Location = new System.Drawing.Point(147, 363);
+            this.cmbSucursalFabrica.Name = "cmbSucursalFabrica";
+            this.cmbSucursalFabrica.Size = new System.Drawing.Size(121, 21);
+            this.cmbSucursalFabrica.TabIndex = 0;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
+            this.btnAgregar.Location = new System.Drawing.Point(173, 390);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(16, 16);
+            this.btnAgregar.TabIndex = 2;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnVerTodo
+            // 
+            this.btnVerTodo.FlatAppearance.BorderSize = 0;
+            this.btnVerTodo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnVerTodo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnVerTodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerTodo.Image = ((System.Drawing.Image)(resources.GetObject("btnVerTodo.Image")));
+            this.btnVerTodo.Location = new System.Drawing.Point(573, 12);
+            this.btnVerTodo.Name = "btnVerTodo";
+            this.btnVerTodo.Size = new System.Drawing.Size(35, 35);
+            this.btnVerTodo.TabIndex = 11;
+            this.btnVerTodo.UseVisualStyleBackColor = true;
+            this.btnVerTodo.Click += new System.EventHandler(this.btnVerTodo_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.FlatAppearance.BorderSize = 0;
+            this.btnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
+            this.btnModificar.Location = new System.Drawing.Point(195, 390);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(16, 16);
+            this.btnModificar.TabIndex = 3;
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.Location = new System.Drawing.Point(217, 390);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(16, 16);
+            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.panel4.Location = new System.Drawing.Point(573, 47);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(35, 4);
+            this.panel4.TabIndex = 13;
             // 
             // btnSeleccionar
             // 
@@ -79,123 +149,27 @@
             this.btnSeleccionar.Location = new System.Drawing.Point(131, 462);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(156, 23);
-            this.btnSeleccionar.TabIndex = 17;
+            this.btnSeleccionar.TabIndex = 1;
             this.btnSeleccionar.Text = "Seleccionar sucursal";
             this.btnSeleccionar.UseVisualStyleBackColor = false;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click_1);
             // 
-            // panel4
+            // PanelCentralSucursalInsumos
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.panel4.Location = new System.Drawing.Point(455, 120);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(35, 4);
-            this.panel4.TabIndex = 13;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.panel3.Location = new System.Drawing.Point(217, 405);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(16, 4);
-            this.panel3.TabIndex = 14;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.panel2.Location = new System.Drawing.Point(195, 405);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(16, 4);
-            this.panel2.TabIndex = 15;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.panel1.Location = new System.Drawing.Point(173, 405);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(16, 4);
-            this.panel1.TabIndex = 16;
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(217, 390);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(16, 16);
-            this.button2.TabIndex = 9;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(195, 390);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(16, 16);
-            this.button1.TabIndex = 10;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(455, 85);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(35, 35);
-            this.button4.TabIndex = 11;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(173, 390);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(16, 16);
-            this.button3.TabIndex = 12;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // cmbSucursalFabrica
-            // 
-            this.cmbSucursalFabrica.FormattingEnabled = true;
-            this.cmbSucursalFabrica.Location = new System.Drawing.Point(147, 363);
-            this.cmbSucursalFabrica.Name = "cmbSucursalFabrica";
-            this.cmbSucursalFabrica.Size = new System.Drawing.Size(121, 21);
-            this.cmbSucursalFabrica.TabIndex = 8;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(158, 280);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 77);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(158, 80);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 77);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnSeleccionar);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.panel4);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnEliminar);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnModificar);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnVerTodo);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnAgregar);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.cmbSucursalFabrica);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.pictureBox2);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.pictureBox1);
+            this.PanelCentralSucursalInsumos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelCentralSucursalInsumos.Location = new System.Drawing.Point(0, 0);
+            this.PanelCentralSucursalInsumos.Name = "PanelCentralSucursalInsumos";
+            this.PanelCentralSucursalInsumos.Size = new System.Drawing.Size(620, 565);
+            this.PanelCentralSucursalInsumos.TabIndex = 6;
             // 
             // frmSucursales
             // 
@@ -207,29 +181,27 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(400, 0);
             this.Name = "frmSucursales";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSucursales";
             this.Load += new System.EventHandler(this.frmSucursales_Load);
-            this.PanelCentralSucursalInsumos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.PanelCentralSucursalInsumos.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel PanelCentralSucursalInsumos;
-        private System.Windows.Forms.Button btnSeleccionar;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox cmbSucursalFabrica;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ComboBox cmbSucursalFabrica;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnVerTodo;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnSeleccionar;
+        private System.Windows.Forms.Panel PanelCentralSucursalInsumos;
     }
 }

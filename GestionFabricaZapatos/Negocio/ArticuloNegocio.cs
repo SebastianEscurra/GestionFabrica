@@ -34,7 +34,7 @@ namespace Negocio
                     aux.Modelo.Id = (int)dato.Lector["Idtipo"];
                     aux.Modelo.Descripcion = (string)dato.Lector["Modelo"];
                     aux.Insumo = new Insumo();
-                    aux.Insumo.id = (int)dato.Lector["IdInsumos"];
+                    aux.Insumo.Id = (int)dato.Lector["IdInsumos"];
                     aux.Insumo.Descripcion =(string) dato.Lector["Insumos"];
                     aux.Sucursal = new Sucursal();
                     aux.Sucursal.Id = (int)dato.Lector["IdSucursal"];
@@ -68,7 +68,7 @@ namespace Negocio
                 dato.setearParametro("@precioComercial", nuevo.PrecioComercial);
                 dato.setearParametro("@precioMayorista", nuevo.PrecioComercial);
                 dato.setearParametro("@IdTipo",nuevo.Modelo.Id);
-                dato.setearParametro("@IdInsumos", nuevo.Insumo.id);
+                dato.setearParametro("@IdInsumos", nuevo.Insumo.Id);
                 dato.setearParametro("@IdSucursal", nuevo.Sucursal.Id);
                 dato.setearParametro("@Activo", 1);
 
@@ -97,7 +97,7 @@ namespace Negocio
                 dato.setearParametro("@comercial" + alternarNombre, modificado.PrecioComercial);
                 dato.setearParametro("@mayorista" + alternarNombre, modificado.Preciomayorista);
                 dato.setearParametro("@idtipo" + alternarNombre, modificado.Modelo.Id);
-                dato.setearParametro("@idInsumos" + alternarNombre, modificado.Insumo.id);
+                dato.setearParametro("@idInsumos" + alternarNombre, modificado.Insumo.Id);
                 dato.setearParametro("@idSucursal" + alternarNombre, modificado.Sucursal.Id);
                 dato.setearParametro("@id" + alternarNombre, modificado.Id);
 

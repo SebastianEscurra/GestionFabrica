@@ -44,13 +44,12 @@ namespace Presentacion
 
         private void btnInsumos_Click(object sender, EventArgs e)
         {
-            
             HelpForm.abrirFormHijo(panelCentral, new frmSucursales(panelCentral));
         }
 
         private void btnArticulos_Click(object sender, EventArgs e)
         {
-            HelpForm.abrirFormHijo(panelCentral, new FrmArticulos());
+            
         }
     }
 }

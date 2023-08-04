@@ -17,20 +17,56 @@ namespace Negocio
             List<Insumo> listaInsumos = new List<Insumo>();
             try
             {
-                dato.setearConsulta("select i.Id,i.Descripcion,Precio,Cantidad,IdSucursal,s.Descripcion from Insumo i, Sucursal s where s.Id=i.IdSucursal");
+                dato.setearConsulta("select i.Id identificador,i.Descripcion nombreInsumo,Precio,Cantidad,IdSucursal,s.Descripcion nombreSucursal from Insumo i, Sucursal s where s.Id=i.IdSucursal");
                 dato.ejecutarLectura();
 
                 while (dato.Lector.Read())
                 {
                     Insumo aux = new Insumo();
 
-                    aux.id = (int)dato.Lector["i.Id"];
-                    aux.Descripcion = (string)dato.Lector["i,Descripcion"];
+                    aux.Id = (int)dato.Lector["identificador"];
+                    aux.Descripcion = (string)dato.Lector["nombreInsumo"];
                     aux.Precio = (decimal)dato.Lector["Precio"];
+                    aux.Precio = decimal.Parse(aux.Precio.ToString("00"));
                     aux.Cantidad = (int)dato.Lector["Cantidad"];
                     aux.sucursal = new Sucursal();
                     aux.sucursal.Id = (int)dato.Lector["IdSucursal"];
-                    aux.sucursal.Descripcion = (string)dato.Lector["s.Descripcion"];
+                    aux.sucursal.Descripcion = (string)dato.Lector["nombreSucursal"];
+
+                    listaInsumos.Add(aux);
+                }
+                return listaInsumos;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                dato.cerrarConexion();
+            }
+        }
+        public List<Insumo> listar(Sucursal sucursal)
+        {
+            List<Insumo> listaInsumos = new List<Insumo>();
+            try
+            {
+                dato.setearConsulta("select i.Id identificador,i.Descripcion nombreInsumo,Precio,Cantidad,IdSucursal,s.Descripcion nombreSucursal from Insumo i, Sucursal s where s.Id=i.IdSucursal and i.IdSucursal="+sucursal.Id+"");
+                dato.ejecutarLectura();
+
+                while (dato.Lector.Read())
+                {
+                    Insumo aux = new Insumo();
+
+                    aux.Id = (int)dato.Lector["identificador"];
+                    aux.Descripcion = (string)dato.Lector["nombreInsumo"];
+                    aux.Precio = (decimal)dato.Lector["Precio"];
+                    aux.Precio=decimal.Parse(aux.Precio.ToString("00"));
+                    aux.Cantidad = (int)dato.Lector["Cantidad"];
+                    aux.sucursal = new Sucursal();
+                    aux.sucursal.Id = (int)dato.Lector["IdSucursal"];
+                    aux.sucursal.Descripcion = (string)dato.Lector["nombreSucursal"];
 
                     listaInsumos.Add(aux);
                 }
@@ -72,7 +108,13 @@ namespace Negocio
         {
             try
             {
-                dato.setearConsulta("update Insumo set Descripcion='"+modificado.Descripcion+"',Precio="+modificado.Precio+ ",Cantidad="+modificado.Cantidad+",IdSucursal="+modificado.sucursal.Id+" where id="+modificado.id+"");
+                dato.setearConsulta("update Insumo set Descripcion=@descripcion ,Precio= @precio ,Cantidad= @cantidad ,IdSucursal= @idSucursal where id=@id");
+                dato.setearParametro("@descripcion", modificado.Descripcion);
+                dato.setearParametro("@precio", modificado.Precio);
+                dato.setearParametro("@cantidad", modificado.Cantidad);
+                dato.setearParametro("@idSucursal", modificado.sucursal.Id);
+                dato.setearParametro("@id", modificado.Id);
+
                 dato.ejecutarAccion();
             }
             catch (Exception ex)
