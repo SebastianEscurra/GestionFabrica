@@ -185,7 +185,7 @@
             this.btnPedidos.Location = new System.Drawing.Point(7, 259);
             this.btnPedidos.Name = "btnPedidos";
             this.btnPedidos.Size = new System.Drawing.Size(172, 30);
-            this.btnPedidos.TabIndex = 1;
+            this.btnPedidos.TabIndex = 4;
             this.btnPedidos.Text = "Pedidos";
             this.btnPedidos.UseVisualStyleBackColor = true;
             // 
@@ -210,7 +210,7 @@
             this.btnClientes.Location = new System.Drawing.Point(7, 223);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(172, 30);
-            this.btnClientes.TabIndex = 1;
+            this.btnClientes.TabIndex = 3;
             this.btnClientes.Text = "Clientes";
             this.btnClientes.UseVisualStyleBackColor = true;
             // 
@@ -235,7 +235,7 @@
             this.btnPersonal.Location = new System.Drawing.Point(7, 187);
             this.btnPersonal.Name = "btnPersonal";
             this.btnPersonal.Size = new System.Drawing.Size(172, 30);
-            this.btnPersonal.TabIndex = 1;
+            this.btnPersonal.TabIndex = 2;
             this.btnPersonal.Text = "Personal";
             this.btnPersonal.UseVisualStyleBackColor = true;
             // 
@@ -286,7 +286,7 @@
             this.btnInsumos.Location = new System.Drawing.Point(7, 115);
             this.btnInsumos.Name = "btnInsumos";
             this.btnInsumos.Size = new System.Drawing.Size(172, 30);
-            this.btnInsumos.TabIndex = 1;
+            this.btnInsumos.TabIndex = 0;
             this.btnInsumos.Text = "Insumos";
             this.btnInsumos.UseVisualStyleBackColor = true;
             this.btnInsumos.Click += new System.EventHandler(this.btnInsumos_Click);

@@ -63,7 +63,7 @@
             this.txtFiltroRapido.Location = new System.Drawing.Point(30, 123);
             this.txtFiltroRapido.Name = "txtFiltroRapido";
             this.txtFiltroRapido.Size = new System.Drawing.Size(217, 22);
-            this.txtFiltroRapido.TabIndex = 18;
+            this.txtFiltroRapido.TabIndex = 1;
             this.txtFiltroRapido.TextChanged += new System.EventHandler(this.txtFiltroRapido_TextChanged);
             // 
             // btnEliminarLogico
@@ -78,7 +78,7 @@
             this.btnEliminarLogico.Location = new System.Drawing.Point(262, 490);
             this.btnEliminarLogico.Name = "btnEliminarLogico";
             this.btnEliminarLogico.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminarLogico.TabIndex = 17;
+            this.btnEliminarLogico.TabIndex = 5;
             this.btnEliminarLogico.Text = "Eliminar";
             this.btnEliminarLogico.UseVisualStyleBackColor = false;
             this.btnEliminarLogico.Click += new System.EventHandler(this.btnEliminarLogico_Click);
@@ -95,7 +95,7 @@
             this.btnModificar.Location = new System.Drawing.Point(136, 491);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
-            this.btnModificar.TabIndex = 16;
+            this.btnModificar.TabIndex = 4;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -114,7 +114,7 @@
             this.btnOrdenar.Location = new System.Drawing.Point(370, 123);
             this.btnOrdenar.Name = "btnOrdenar";
             this.btnOrdenar.Size = new System.Drawing.Size(99, 23);
-            this.btnOrdenar.TabIndex = 14;
+            this.btnOrdenar.TabIndex = 2;
             this.btnOrdenar.Text = "Ordenar por";
             this.btnOrdenar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnOrdenar.UseVisualStyleBackColor = false;
@@ -132,7 +132,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(12, 491);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 15;
+            this.btnAgregar.TabIndex = 3;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -145,7 +145,7 @@
             this.dgvInventario.Name = "dgvInventario";
             this.dgvInventario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInventario.Size = new System.Drawing.Size(580, 319);
-            this.dgvInventario.TabIndex = 13;
+            this.dgvInventario.TabIndex = 0;
             // 
             // pbxTitulo
             // 
@@ -197,6 +197,7 @@
             this.Controls.Add(this.dgvInventario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCrud";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCrud";
             this.Load += new System.EventHandler(this.frmCrud_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxLupa)).EndInit();

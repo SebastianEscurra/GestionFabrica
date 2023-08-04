@@ -17,9 +17,13 @@ namespace Presentacion
 {
     public partial class frmCrud : Form
     {
-        private Sucursal sucursal;
+        private Sucursal sucursal=null;
         private List<Insumo> listaInsumo;
         private InsumoNegocio insumoNegocio=new InsumoNegocio();
+        public frmCrud()
+        {
+            InitializeComponent();
+        }
         public frmCrud(Sucursal sucursalSelec)
         {
             InitializeComponent();
@@ -28,22 +32,20 @@ namespace Presentacion
 
         private void frmCrud_Load(object sender, EventArgs e)
         {
-            listaInsumo= insumoNegocio.listar(sucursal);
+            actualizarListaInsumo();
 
             HelpGrid.mostrarGrid(dgvInventario, listaInsumo);
 
             cmbCampo.Items.Add("Nombre");
             cmbCampo.Items.Add("Precio");
             cmbCampo.Items.Add("Cantidad");
-            
-            
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e) // sobrecargar metodo agregar y modificar
         {
-            frmAltaInsumo agregar = new frmAltaInsumo(sucursal);
-            agregar.ShowDialog();
-            listaInsumo = insumoNegocio.listar(sucursal);
+            frmAltaInsumo altaInsumo = new frmAltaInsumo(sucursal);
+            altaInsumo.ShowDialog();
+            actualizarListaInsumo();
             HelpGrid.mostrarGrid(dgvInventario, listaInsumo);
 
         }
@@ -51,9 +53,9 @@ namespace Presentacion
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Insumo seleccionado = (Insumo)dgvInventario.CurrentRow.DataBoundItem;
-            frmAltaInsumo modificar = new frmAltaInsumo(sucursal,seleccionado);
-            modificar.ShowDialog();
-            listaInsumo = insumoNegocio.listar(sucursal);
+            frmAltaInsumo altaInsumo = new frmAltaInsumo(sucursal,seleccionado);
+            altaInsumo.ShowDialog();
+            actualizarListaInsumo();
             HelpGrid.mostrarGrid(dgvInventario, listaInsumo);
         }
 
@@ -68,7 +70,7 @@ namespace Presentacion
                 insumoNegocio.eliminar(seleccionado.Id);
                 MessageBox.Show("Eliminado Exitosamente");
             }
-            listaInsumo = insumoNegocio.listar(sucursal);
+            actualizarListaInsumo();
             HelpGrid.mostrarGrid(dgvInventario, listaInsumo);
 
         }
@@ -139,6 +141,16 @@ namespace Presentacion
                 insumosordenados = listaInsumo.OrderByDescending(x => x.Cantidad).ToList();
 
             HelpGrid.mostrarGrid(dgvInventario, insumosordenados);
+        }
+        //
+        //metodos
+        //
+        private void actualizarListaInsumo()
+        {
+            if (sucursal != null)
+                listaInsumo = insumoNegocio.listar(sucursal);
+            else
+                listaInsumo = insumoNegocio.listar();
         }
     }
 }

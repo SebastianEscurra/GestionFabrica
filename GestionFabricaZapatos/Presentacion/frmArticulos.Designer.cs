@@ -76,7 +76,7 @@
             this.textBox1.Location = new System.Drawing.Point(26, 67);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(217, 22);
-            this.textBox1.TabIndex = 11;
+            this.textBox1.TabIndex = 1;
             // 
             // btnEliminarLogico
             // 
@@ -90,7 +90,7 @@
             this.btnEliminarLogico.Location = new System.Drawing.Point(276, 266);
             this.btnEliminarLogico.Name = "btnEliminarLogico";
             this.btnEliminarLogico.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminarLogico.TabIndex = 10;
+            this.btnEliminarLogico.TabIndex = 5;
             this.btnEliminarLogico.Text = "Eliminar";
             this.btnEliminarLogico.UseVisualStyleBackColor = false;
             // 
@@ -106,7 +106,7 @@
             this.btnModificar.Location = new System.Drawing.Point(154, 267);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
-            this.btnModificar.TabIndex = 9;
+            this.btnModificar.TabIndex = 4;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             // 
@@ -124,7 +124,7 @@
             this.button1.Location = new System.Drawing.Point(399, 66);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(114, 23);
-            this.button1.TabIndex = 7;
+            this.button1.TabIndex = 2;
             this.button1.Text = "       Filtrar";
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -140,7 +140,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(26, 267);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 8;
+            this.btnAgregar.TabIndex = 3;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             // 
@@ -151,7 +151,7 @@
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(501, 150);
-            this.dgvArticulos.TabIndex = 6;
+            this.dgvArticulos.TabIndex = 0;
             // 
             // FrmArticulos
             // 
@@ -161,6 +161,7 @@
             this.ClientSize = new System.Drawing.Size(800, 350);
             this.Controls.Add(this.panelCentralCrud);
             this.Name = "FrmArticulos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Insumos";
             this.panelCentralCrud.ResumeLayout(false);
             this.panelCentralCrud.PerformLayout();

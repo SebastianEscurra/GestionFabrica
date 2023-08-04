@@ -12,6 +12,41 @@ namespace Negocio
     public class InsumoNegocio
     {
         private AccesoDatos dato=new AccesoDatos();
+        public List<Insumo> listar()
+        {
+            List<Insumo> listaInsumos = new List<Insumo>();
+            try
+            {
+                dato.setearConsulta("select i.Id identificador,i.Descripcion nombreInsumo,Precio,Cantidad,IdSucursal,s.Descripcion nombreSucursal from Insumo i, Sucursal s where s.Id=i.IdSucursal");
+                dato.ejecutarLectura();
+
+                while (dato.Lector.Read())
+                {
+                    Insumo aux = new Insumo();
+
+                    aux.Id = (int)dato.Lector["identificador"];
+                    aux.Descripcion = (string)dato.Lector["nombreInsumo"];
+                    aux.Precio = (decimal)dato.Lector["Precio"];
+                    aux.Precio = decimal.Parse(aux.Precio.ToString("00"));
+                    aux.Cantidad = (int)dato.Lector["Cantidad"];
+                    aux.sucursal = new Sucursal();
+                    aux.sucursal.Id = (int)dato.Lector["IdSucursal"];
+                    aux.sucursal.Descripcion = (string)dato.Lector["nombreSucursal"];
+
+                    listaInsumos.Add(aux);
+                }
+                return listaInsumos;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                dato.cerrarConexion();
+            }
+        }
         public List<Insumo> listar(Sucursal sucursal)
         {
             List<Insumo> listaInsumos = new List<Insumo>();

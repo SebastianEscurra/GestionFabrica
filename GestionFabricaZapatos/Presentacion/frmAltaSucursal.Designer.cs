@@ -50,7 +50,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(216, 286);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 23);
-            this.btnCancelar.TabIndex = 22;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -67,7 +67,7 @@
             this.BTnAceptar.Location = new System.Drawing.Point(104, 286);
             this.BTnAceptar.Name = "BTnAceptar";
             this.BTnAceptar.Size = new System.Drawing.Size(79, 23);
-            this.BTnAceptar.TabIndex = 23;
+            this.BTnAceptar.TabIndex = 2;
             this.BTnAceptar.Text = "Aceptar";
             this.BTnAceptar.UseVisualStyleBackColor = false;
             this.BTnAceptar.Click += new System.EventHandler(this.BTnAceptar_Click);
@@ -88,14 +88,14 @@
             this.txtDescripcion.Location = new System.Drawing.Point(157, 141);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(100, 20);
-            this.txtDescripcion.TabIndex = 18;
+            this.txtDescripcion.TabIndex = 0;
             // 
             // txtUbicacion
             // 
             this.txtUbicacion.Location = new System.Drawing.Point(157, 167);
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(100, 20);
-            this.txtUbicacion.TabIndex = 18;
+            this.txtUbicacion.TabIndex = 1;
             // 
             // lblUbicacion
             // 
@@ -131,6 +131,7 @@
             this.Controls.Add(this.txtUbicacion);
             this.Controls.Add(this.txtDescripcion);
             this.Name = "frmAltaSucursal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAltaSucursal";
             this.Load += new System.EventHandler(this.frmAltaSucursal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxTipoDeSucursal)).EndInit();

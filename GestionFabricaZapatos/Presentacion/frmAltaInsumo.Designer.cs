@@ -37,13 +37,15 @@
             this.lblSucursal = new System.Windows.Forms.Label();
             this.BTnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.lblSucursalDato = new System.Windows.Forms.Label();
+            this.cmbSucursal = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(155, 122);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(100, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(121, 20);
             this.txtDescripcion.TabIndex = 0;
             // 
             // lblNombre
@@ -61,8 +63,8 @@
             // 
             this.txtPrecio.Location = new System.Drawing.Point(155, 158);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(100, 20);
-            this.txtPrecio.TabIndex = 0;
+            this.txtPrecio.Size = new System.Drawing.Size(121, 20);
+            this.txtPrecio.TabIndex = 1;
             // 
             // lblPrecio
             // 
@@ -79,8 +81,8 @@
             // 
             this.txtCantidad.Location = new System.Drawing.Point(155, 200);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(100, 20);
-            this.txtCantidad.TabIndex = 0;
+            this.txtCantidad.Size = new System.Drawing.Size(121, 20);
+            this.txtCantidad.TabIndex = 2;
             // 
             // lblCantidad
             // 
@@ -117,7 +119,7 @@
             this.BTnAceptar.Location = new System.Drawing.Point(102, 267);
             this.BTnAceptar.Name = "BTnAceptar";
             this.BTnAceptar.Size = new System.Drawing.Size(79, 23);
-            this.BTnAceptar.TabIndex = 15;
+            this.BTnAceptar.TabIndex = 3;
             this.BTnAceptar.Text = "Aceptar";
             this.BTnAceptar.UseVisualStyleBackColor = false;
             this.BTnAceptar.Click += new System.EventHandler(this.BTnAceptar_Click);
@@ -134,10 +136,31 @@
             this.btnCancelar.Location = new System.Drawing.Point(214, 267);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 23);
-            this.btnCancelar.TabIndex = 15;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // lblSucursalDato
+            // 
+            this.lblSucursalDato.AutoSize = true;
+            this.lblSucursalDato.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblSucursalDato.ForeColor = System.Drawing.Color.White;
+            this.lblSucursalDato.Location = new System.Drawing.Point(95, 240);
+            this.lblSucursalDato.Name = "lblSucursalDato";
+            this.lblSucursalDato.Size = new System.Drawing.Size(53, 14);
+            this.lblSucursalDato.TabIndex = 1;
+            this.lblSucursalDato.Text = "Sucursal:";
+            this.lblSucursalDato.Visible = false;
+            // 
+            // cmbSucursal
+            // 
+            this.cmbSucursal.FormattingEnabled = true;
+            this.cmbSucursal.Location = new System.Drawing.Point(155, 232);
+            this.cmbSucursal.Name = "cmbSucursal";
+            this.cmbSucursal.Size = new System.Drawing.Size(121, 21);
+            this.cmbSucursal.TabIndex = 5;
+            this.cmbSucursal.Visible = false;
             // 
             // frmAltaInsumo
             // 
@@ -145,8 +168,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
             this.ClientSize = new System.Drawing.Size(393, 450);
+            this.Controls.Add(this.cmbSucursal);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.BTnAceptar);
+            this.Controls.Add(this.lblSucursalDato);
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.lblSucursal);
@@ -155,6 +180,7 @@
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtDescripcion);
             this.Name = "frmAltaInsumo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAltaInsumo";
             this.Load += new System.EventHandler(this.frmAltaInsumo_Load);
             this.ResumeLayout(false);
@@ -173,5 +199,7 @@
         private System.Windows.Forms.Label lblSucursal;
         private System.Windows.Forms.Button BTnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label lblSucursalDato;
+        private System.Windows.Forms.ComboBox cmbSucursal;
     }
 }
