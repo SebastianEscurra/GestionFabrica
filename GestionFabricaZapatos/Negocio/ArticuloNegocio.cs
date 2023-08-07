@@ -17,7 +17,7 @@ namespace Negocio
             try
             {
                 List<Articulo> ListaArticulos = new List<Articulo>();
-                dato.setearConsulta("select a.Id,a.Nombre,a.Cantidad,a.PecioFabricacion,a.PrecioComercial,a.PrecioMayorista,a.IdTipo IdTipo,a.Activo,t.Descripcion Modelo,a.IdInsumos,i.Descripcion Insumos,a.IdSucursal,s.Descripcion Sucursal from Articulo a,Tipo t,Insumo i,Sucursal s where t.Id=a.IdTipo and i.Id=a.IdInsumos and s.Id=a.IdSucursal and Activo=1");
+                dato.setearConsulta("select a.Id,a.Nombre,a.Cantidad,a.PecioFabricacion,a.PrecioComercial,a.PrecioMayorista,a.IdTipo IdTipo,a.Activo,t.Descripcion Modelo,a.IdInsumos,i.Descripcion Insumos,a.IdSucursal,s.Descripcion Sucursal from Articulo a,TipoCalzado t,Insumo i,Sucursal s where t.Id=a.IdTipo and i.Id=a.IdInsumos and s.Id=a.IdSucursal and Activo=1");
                 dato.ejecutarLectura();
 
                 while (dato.Lector.Read())
@@ -30,7 +30,7 @@ namespace Negocio
                     aux.PrecioFabricacion = (decimal)dato.Lector["PecioFabricacion"];
                     aux.PrecioComercial = (decimal)dato.Lector["PrecioComercial"];
                     aux.Preciomayorista = (decimal)dato.Lector["PrecioMayorista"];
-                    aux.Modelo = new Tipo();
+                    aux.Modelo = new TipoCalzado();
                     aux.Modelo.Id = (int)dato.Lector["Idtipo"];
                     aux.Modelo.Descripcion = (string)dato.Lector["Modelo"];
                     aux.Insumo = new Insumo();

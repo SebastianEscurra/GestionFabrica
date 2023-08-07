@@ -119,7 +119,7 @@
             this.BTnAceptar.Location = new System.Drawing.Point(102, 267);
             this.BTnAceptar.Name = "BTnAceptar";
             this.BTnAceptar.Size = new System.Drawing.Size(79, 23);
-            this.BTnAceptar.TabIndex = 3;
+            this.BTnAceptar.TabIndex = 4;
             this.BTnAceptar.Text = "Aceptar";
             this.BTnAceptar.UseVisualStyleBackColor = false;
             this.BTnAceptar.Click += new System.EventHandler(this.BTnAceptar_Click);
@@ -136,7 +136,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(214, 267);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 23);
-            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -155,11 +155,12 @@
             // 
             // cmbSucursal
             // 
+            this.cmbSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSucursal.FormattingEnabled = true;
             this.cmbSucursal.Location = new System.Drawing.Point(155, 232);
             this.cmbSucursal.Name = "cmbSucursal";
             this.cmbSucursal.Size = new System.Drawing.Size(121, 21);
-            this.cmbSucursal.TabIndex = 5;
+            this.cmbSucursal.TabIndex = 3;
             this.cmbSucursal.Visible = false;
             // 
             // frmAltaInsumo

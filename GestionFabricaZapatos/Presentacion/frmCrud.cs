@@ -41,13 +41,12 @@ namespace Presentacion
             cmbCampo.Items.Add("Cantidad");
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e) // sobrecargar metodo agregar y modificar
+        private void btnAgregar_Click(object sender, EventArgs e) 
         {
             frmAltaInsumo altaInsumo = new frmAltaInsumo(sucursal);
             altaInsumo.ShowDialog();
             actualizarListaInsumo();
             HelpGrid.mostrarGrid(dgvInventario, listaInsumo);
-
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -72,7 +71,6 @@ namespace Presentacion
             }
             actualizarListaInsumo();
             HelpGrid.mostrarGrid(dgvInventario, listaInsumo);
-
         }
 
         private void txtFiltroRapido_TextChanged(object sender, EventArgs e)

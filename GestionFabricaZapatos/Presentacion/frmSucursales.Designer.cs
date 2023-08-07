@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSucursales));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbxInsumo = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cmbSucursalFabrica = new System.Windows.Forms.ComboBox();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -39,21 +39,24 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.PanelCentralSucursalInsumos = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pbxArticulo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxInsumo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.PanelCentralSucursalInsumos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // pbxInsumo
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(158, 80);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 77);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.pbxInsumo.Image = ((System.Drawing.Image)(resources.GetObject("pbxInsumo.Image")));
+            this.pbxInsumo.InitialImage = null;
+            this.pbxInsumo.Location = new System.Drawing.Point(158, 80);
+            this.pbxInsumo.Name = "pbxInsumo";
+            this.pbxInsumo.Size = new System.Drawing.Size(100, 77);
+            this.pbxInsumo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxInsumo.TabIndex = 7;
+            this.pbxInsumo.TabStop = false;
+            this.pbxInsumo.Visible = false;
             // 
             // pictureBox2
             // 
@@ -156,6 +159,7 @@
             // 
             // PanelCentralSucursalInsumos
             // 
+            this.PanelCentralSucursalInsumos.Controls.Add(this.pbxArticulo);
             this.PanelCentralSucursalInsumos.Controls.Add(this.btnSeleccionar);
             this.PanelCentralSucursalInsumos.Controls.Add(this.panel4);
             this.PanelCentralSucursalInsumos.Controls.Add(this.btnEliminar);
@@ -164,12 +168,24 @@
             this.PanelCentralSucursalInsumos.Controls.Add(this.btnAgregar);
             this.PanelCentralSucursalInsumos.Controls.Add(this.cmbSucursalFabrica);
             this.PanelCentralSucursalInsumos.Controls.Add(this.pictureBox2);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.pictureBox1);
-            this.PanelCentralSucursalInsumos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelCentralSucursalInsumos.Controls.Add(this.pbxInsumo);
+            this.PanelCentralSucursalInsumos.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelCentralSucursalInsumos.Location = new System.Drawing.Point(0, 0);
             this.PanelCentralSucursalInsumos.Name = "PanelCentralSucursalInsumos";
             this.PanelCentralSucursalInsumos.Size = new System.Drawing.Size(620, 565);
             this.PanelCentralSucursalInsumos.TabIndex = 6;
+            // 
+            // pbxArticulo
+            // 
+            this.pbxArticulo.Image = ((System.Drawing.Image)(resources.GetObject("pbxArticulo.Image")));
+            this.pbxArticulo.InitialImage = null;
+            this.pbxArticulo.Location = new System.Drawing.Point(158, 80);
+            this.pbxArticulo.Name = "pbxArticulo";
+            this.pbxArticulo.Size = new System.Drawing.Size(100, 77);
+            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxArticulo.TabIndex = 14;
+            this.pbxArticulo.TabStop = false;
+            this.pbxArticulo.Visible = false;
             // 
             // frmSucursales
             // 
@@ -178,22 +194,23 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
             this.ClientSize = new System.Drawing.Size(620, 565);
             this.Controls.Add(this.PanelCentralSucursalInsumos);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Location = new System.Drawing.Point(400, 0);
             this.Name = "frmSucursales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSucursales";
             this.Load += new System.EventHandler(this.frmSucursales_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxInsumo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.PanelCentralSucursalInsumos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbxInsumo;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ComboBox cmbSucursalFabrica;
         private System.Windows.Forms.Button btnAgregar;
@@ -203,5 +220,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.Panel PanelCentralSucursalInsumos;
+        private System.Windows.Forms.PictureBox pbxArticulo;
     }
 }

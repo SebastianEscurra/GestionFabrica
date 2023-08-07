@@ -49,7 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolNegocio.cs" />
     <Compile Include="SucursalNegocio.cs" />
-    <Compile Include="TipoNegocio.cs" />
+    <Compile Include="TipoCalzadoNegocio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Datos\Datos.csproj">

@@ -19,7 +19,7 @@ namespace Dominio
         [DisplayName("Precio mayorista")]
         public decimal Preciomayorista { get; set; }
         
-        public Tipo Modelo { get; set; }
+        public TipoCalzado Modelo { get; set; }
         [DisplayName("Insumos necesarios")]
         public Insumo Insumo { get; set; }
         public Sucursal Sucursal { get; set; }

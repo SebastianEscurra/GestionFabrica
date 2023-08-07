@@ -12,18 +12,22 @@ namespace Helper
 {
     static public class HelpForm   
     {
-        static public void abrirFormHijo(Panel panelPrincipal,object frmHijo)
+        static public Form abrirFormHijo(Panel panelPrincipal,Form frmHijo)
         {
-            if (panelPrincipal.Controls.Count > 0)
-            {
-                panelPrincipal.Controls.Clear();
-            }
-            Form fr = (Form)frmHijo;
-            fr.TopLevel = false;
-            fr.Dock = DockStyle.Fill;
-            panelPrincipal.Controls.Add(fr);
+
+               //if (panelPrincipal.Controls.Count > 0)
+               //    panelPrincipal.Controls.Clear();
+
+
+            frmHijo.TopLevel = false;
+            frmHijo.FormBorderStyle = FormBorderStyle.None;
+            frmHijo.Dock = DockStyle.Fill;
+            panelPrincipal.Controls.Add(frmHijo);
             panelPrincipal.Tag = frmHijo;
-            fr.Show();
+            frmHijo.Show();
+            frmHijo.BringToFront();
+            return frmHijo;
+
         }
     }
     static public class HelpGrid

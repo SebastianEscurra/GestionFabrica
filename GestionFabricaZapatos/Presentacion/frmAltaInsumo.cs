@@ -19,6 +19,7 @@ namespace Presentacion
         private Insumo actual = null;
         private InsumoNegocio insumoNegocio = new InsumoNegocio();
         private SucursalNegocio sucursalNegocio = new SucursalNegocio();
+        private int tipoSucursal = 2;
 
         // Constructores
         public frmAltaInsumo()
@@ -51,14 +52,14 @@ namespace Presentacion
                 txtCantidad.Text = actual.Cantidad.ToString();
                 txtDescripcion.Text = actual.Descripcion;
                 txtPrecio.Text = actual.Precio.ToString();
-                cmbSucursal.DataSource = sucursalNegocio.listar();
+                cmbSucursal.DataSource = sucursalNegocio.listar(tipoSucursal);
                 cmbSucursal.ValueMember = "Id";
                 cmbSucursal.DisplayMember = "Descripcion";
                 cmbSucursal.SelectedValue = actual.sucursal.Id;
             }
             else
             {
-                cmbSucursal.DataSource = sucursalNegocio.listar();
+                cmbSucursal.DataSource = sucursalNegocio.listar(tipoSucursal);
                 cmbSucursal.ValueMember = "Id";
                 cmbSucursal.DisplayMember = "Descripcion";
                 cmbSucursal.SelectedValue = -1;
