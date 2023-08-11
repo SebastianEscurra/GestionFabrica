@@ -18,9 +18,7 @@ namespace Negocio
             List<Sucursal> listaSucursal = new List<Sucursal>();
             try
             {
-                dato.setearConsulta("select s.Id,s.Descripcion,Ubicacion,IdTipo from Sucursal s,TipoSucursal t where IdTipo=t.Id and IdTipo=@tipoSucursal");
-                dato.setearParametro("@tipoSucursal", tipoSucursal);
-
+                dato.setearConsulta("select s.Id,s.Descripcion,Ubicacion,IdTipo from Sucursal s,TipoSucursal t where IdTipo=t.Id and IdTipo="+tipoSucursal+"");
                 dato.ejecutarLectura();
 
                 while (dato.Lector.Read())

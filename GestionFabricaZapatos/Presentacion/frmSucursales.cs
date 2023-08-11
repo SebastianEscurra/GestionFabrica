@@ -15,6 +15,7 @@ namespace Presentacion
 {
     public partial class frmSucursales : Form
     {
+        // Atributos
         private string tipoPanel;
         private Panel panelCentral;
         private Sucursal actual;
@@ -26,63 +27,62 @@ namespace Presentacion
         private List<Sucursal> listaTienda = new List<Sucursal>();
         private List<Sucursal> listaFabricas = new List<Sucursal>();
         private List<Sucursal> listaOtros = new List<Sucursal>();
-        private Form abierto = null;
+        private Form fabricaAbierto = null;
+        private Form tiendaAbierto = null;
+        private Form otrosAbierto = null;
+
+        // Constructores
         public frmSucursales(Panel panelCentral,string tipoPanel)
         {
             InitializeComponent();
             this.panelCentral = panelCentral;
             this.tipoPanel = tipoPanel;
         }
-
+        
+        //Eventos
         private void frmSucursales_Load(object sender, EventArgs e)
         {
             if (tipoPanel=="insumos")
             {
-                pbxInsumo.Visible = true;
-                pbxArticulo.Visible = false;
-                listaFabricas = negocio.listar(fabrica);
-                cmbSucursalFabrica.DataSource = listaFabricas;
+                mostrarElementosInsumos();
+                cargarComboBox(fabrica);
             }
             else
             {
-                pbxArticulo.Visible = true;
-                pbxInsumo.Visible = false; 
-                listaFabricas = negocio.listar(fabrica);
-                cmbSucursalFabrica.DataSource = listaFabricas;
+                mostrarElementosArticulos();
+                cargarComboBox(tienda);
+                cargarComboBox(fabrica);
+                cargarComboBox(otros);
             }
         }
 
-
-        private void btnSeleccionar_Click_1(object sender, EventArgs e)
+        private void btnVerTodo_Click(object sender, EventArgs e)
         {
-            if (abierto != null)
-                abierto.Close();
-            Sucursal SucursalSelec = (Sucursal)cmbSucursalFabrica.SelectedItem;
-            frmCrud frmInsumo= new frmCrud(SucursalSelec);
-            abierto= HelpForm.abrirFormHijo(panelCentral,frmInsumo);
-
+            if(fabricaAbierto!=null)
+                fabricaAbierto.Close();
+            frmCrud verTodo = new frmCrud(tipoPanel);
+            fabricaAbierto=HelpForm.abrirFormHijo(panelCentral, verTodo);
+            
         }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
+        
+        // Fabrica
+        private void btnAgregarFabrica_Click(object sender, EventArgs e)
         {
-            frmAltaSucursal altaFabrica = new frmAltaSucursal();
+            frmAltaSucursal altaFabrica = new frmAltaSucursal(fabrica);
             altaFabrica.ShowDialog();
-            listaFabricas = negocio.listar(fabrica);
-            cmbSucursalFabrica.DataSource = listaFabricas;
+            cargarComboBox(fabrica);
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
+        private void btnModificarFabrica_Click(object sender, EventArgs e)
         {
             actual = (Sucursal)cmbSucursalFabrica.SelectedItem;
-            frmAltaSucursal altaFabrica = new frmAltaSucursal(actual);
             
+            frmAltaSucursal altaFabrica = new frmAltaSucursal(actual);
             altaFabrica.ShowDialog();
-
-            listaFabricas = negocio.listar(fabrica);
-            cmbSucursalFabrica.DataSource = listaFabricas;
+            cargarComboBox(fabrica);
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminarFabrica_Click(object sender, EventArgs e)
         {
             actual = (Sucursal)cmbSucursalFabrica.SelectedItem;
 
@@ -91,18 +91,143 @@ namespace Presentacion
             {
                 negocio.eliminar(actual.Id);
                 MessageBox.Show($"Sucursal {actual.Descripcion} elminada");
-                listaFabricas = negocio.listar(fabrica);
-                cmbSucursalFabrica.DataSource = listaFabricas;
+                cargarComboBox(fabrica);
             }
         }
 
-        private void btnVerTodo_Click(object sender, EventArgs e)
+        private void btnSeleccionarFabrica_Click_1(object sender, EventArgs e)
         {
-            if(abierto!=null)
-                abierto.Close();
-            frmCrud verTodo = new frmCrud();
-            abierto=HelpForm.abrirFormHijo(panelCentral, verTodo);
+            if (fabricaAbierto != null)
+                fabricaAbierto.Close();
+            Sucursal SucursalSelec = (Sucursal)cmbSucursalFabrica.SelectedItem;
+            frmCrud frmInsumo= new frmCrud(SucursalSelec, tipoPanel);
+            fabricaAbierto= HelpForm.abrirFormHijo(panelCentral,frmInsumo);
+
+        }
+
+        // Tienda
+        private void btnAgregarTienda_Click(object sender, EventArgs e)
+        {
+            frmAltaSucursal altaTienda = new frmAltaSucursal(tienda);
+            altaTienda.ShowDialog();
+            cargarComboBox(tienda);
+        }
+
+        private void btnModificarTienda_Click(object sender, EventArgs e)
+        {
+            actual = (Sucursal)cmbSucursalTienda.SelectedItem;
+
+            frmAltaSucursal altaTienda = new frmAltaSucursal(actual);
+            altaTienda.ShowDialog();
+            cargarComboBox(tienda);
+        }
+
+        private void btnEliminarTienda_Click(object sender, EventArgs e)
+        {
+            actual = (Sucursal)cmbSucursalTienda.SelectedItem;
+
+            DialogResult resultado = MessageBox.Show($"¿Desea eliminar sucursal {actual.Descripcion}?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (resultado == DialogResult.Yes)
+            {
+                negocio.eliminar(actual.Id);
+                MessageBox.Show($"Sucursal {actual.Descripcion} elminada");
+                cargarComboBox(tienda);
+            }
             
         }
+
+        private void btnSeleccionarTienda_Click(object sender, EventArgs e)
+        {
+            if (tiendaAbierto != null)
+                tiendaAbierto.Close();
+
+            actual = (Sucursal)cmbSucursalTienda.SelectedItem;
+            frmCrud crudTienda = new frmCrud(actual, tipoPanel);
+            tiendaAbierto=HelpForm.abrirFormHijo(panelCentral, crudTienda);
+        }
+
+        // Otros
+        private void btnAgregarOtros_Click(object sender, EventArgs e)
+        {
+            frmAltaSucursal altaOtros = new frmAltaSucursal(otros);
+            altaOtros.ShowDialog();
+            cargarComboBox(otros);
+        }
+
+        private void btnModificarOtros_Click(object sender, EventArgs e)
+        {
+            actual = (Sucursal)cmbSucursalOtros.SelectedItem;
+
+            frmAltaSucursal altaOtros = new frmAltaSucursal(actual);
+            altaOtros.ShowDialog();
+            cargarComboBox(otros);
+        }
+
+        private void btnEliminarOtros_Click(object sender, EventArgs e)
+        {
+            actual = (Sucursal)cmbSucursalOtros.SelectedItem;
+
+            DialogResult resultado = MessageBox.Show($"¿Desea eliminar sucursal {actual.Descripcion}?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (resultado == DialogResult.Yes)
+            {
+                negocio.eliminar(actual.Id);
+                MessageBox.Show($"Sucursal {actual.Descripcion} elminada");
+                cargarComboBox(otros);
+            }
+        }
+
+        private void btnSeleccionarOtros_Click(object sender, EventArgs e)
+        {
+            if (otrosAbierto != null)
+                otrosAbierto.Close();
+
+            actual = (Sucursal)cmbSucursalOtros.SelectedItem;
+            frmCrud crudOtros = new frmCrud(actual, tipoPanel);
+            tiendaAbierto = HelpForm.abrirFormHijo(panelCentral, crudOtros);
+        }
+
+        // Metodos
+        private void mostrarElementosInsumos()
+        {
+            pbxInsumo.Visible = true;
+            pbxArticulo.Visible = false;
+            pbxFabrica.Visible = true;
+            pbxTienda.Visible = false;
+            pbxOtros.Visible = false;
+            cmbSucursalOtros.Visible = false;
+            cmbSucursalTienda.Visible = false;
+            btnAgregarTienda.Visible = false;
+            btnAgregarOtros.Visible = false;
+            btnModificarTienda.Visible = false;
+            btnModificarOtros.Visible = false;
+            btnEliminarTienda.Visible = false;
+            btnEliminarOtros.Visible = false;
+            btnSeleccionarTienda.Visible = false;
+            btnSeleccionarOtros.Visible = false;
+        }
+        private void mostrarElementosArticulos()
+        {
+            pbxArticulo.Visible = true;
+            pbxInsumo.Visible = false;
+        }
+        private void cargarComboBox(int TipoSucursal)
+        {
+            if(TipoSucursal == tienda)
+            {
+                listaTienda = negocio.listar(tienda);
+                cmbSucursalTienda.DataSource = listaTienda;
+            }
+            else if (TipoSucursal==fabrica)
+            {
+                listaFabricas = negocio.listar(fabrica);
+                cmbSucursalFabrica.DataSource = listaFabricas;
+            }
+            else
+            {
+                listaOtros = negocio.listar(otros);
+                cmbSucursalOtros.DataSource = listaOtros;
+            }
+        }
+
     }
 }

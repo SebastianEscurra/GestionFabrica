@@ -33,10 +33,17 @@ namespace Helper
     static public class HelpGrid
     {
         
-        static public void mostrarGrid(DataGridView grid,List<Insumo> listaInsumo)
+        static public void mostrarGrid(DataGridView grid,List<Insumo> listaInsumos)
         {
-            grid.DataSource = listaInsumo;
+            grid.DataSource = listaInsumos;
             grid.Columns["Id"].Visible = false;
+        }
+        static public void mostrarGrid(DataGridView grid,List<Articulo> listaArticulos)
+        {
+            grid.DataSource = listaArticulos;
+            grid.Columns["Id"].Visible = false;
+            grid.Columns["Activo"].Visible = false;
+
         }
     }
     static public class HelpPicture

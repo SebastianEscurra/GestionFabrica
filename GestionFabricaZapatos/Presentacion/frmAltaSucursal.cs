@@ -17,9 +17,11 @@ namespace Presentacion
     {
         private SucursalNegocio sucursalNegocio = new SucursalNegocio();
         private Sucursal actual = null;
-        public frmAltaSucursal()
+        private int tipoSucursal;
+        public frmAltaSucursal(int tipoSucursal)
         {
             InitializeComponent();
+            this.tipoSucursal = tipoSucursal;
         }
         public frmAltaSucursal(Sucursal actual)
         {
@@ -50,6 +52,7 @@ namespace Presentacion
             
             actual.Descripcion = txtDescripcion.Text;
             actual.Ubicacion = txtUbicacion.Text;
+            actual.IdTipo = tipoSucursal;
 
             try
             {

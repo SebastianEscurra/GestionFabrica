@@ -34,10 +34,10 @@
             this.lblPrecio = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.lblCantidad = new System.Windows.Forms.Label();
-            this.lblSucursal = new System.Windows.Forms.Label();
+            this.lblSucursalTitulo = new System.Windows.Forms.Label();
             this.BTnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.lblSucursalDato = new System.Windows.Forms.Label();
+            this.lblSucursal = new System.Windows.Forms.Label();
             this.cmbSucursal = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
@@ -95,17 +95,17 @@
             this.lblCantidad.TabIndex = 1;
             this.lblCantidad.Text = "Cantidad:";
             // 
-            // lblSucursal
+            // lblSucursalTitulo
             // 
-            this.lblSucursal.AutoSize = true;
-            this.lblSucursal.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblSucursal.Font = new System.Drawing.Font("Gadugi", 15F, System.Drawing.FontStyle.Bold);
-            this.lblSucursal.ForeColor = System.Drawing.Color.White;
-            this.lblSucursal.Location = new System.Drawing.Point(0, 0);
-            this.lblSucursal.Name = "lblSucursal";
-            this.lblSucursal.Size = new System.Drawing.Size(89, 24);
-            this.lblSucursal.TabIndex = 1;
-            this.lblSucursal.Text = "Sucursal";
+            this.lblSucursalTitulo.AutoSize = true;
+            this.lblSucursalTitulo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblSucursalTitulo.Font = new System.Drawing.Font("Gadugi", 15F, System.Drawing.FontStyle.Bold);
+            this.lblSucursalTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblSucursalTitulo.Location = new System.Drawing.Point(0, 0);
+            this.lblSucursalTitulo.Name = "lblSucursalTitulo";
+            this.lblSucursalTitulo.Size = new System.Drawing.Size(89, 24);
+            this.lblSucursalTitulo.TabIndex = 1;
+            this.lblSucursalTitulo.Text = "Sucursal";
             // 
             // BTnAceptar
             // 
@@ -141,17 +141,17 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // lblSucursalDato
+            // lblSucursal
             // 
-            this.lblSucursalDato.AutoSize = true;
-            this.lblSucursalDato.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblSucursalDato.ForeColor = System.Drawing.Color.White;
-            this.lblSucursalDato.Location = new System.Drawing.Point(95, 240);
-            this.lblSucursalDato.Name = "lblSucursalDato";
-            this.lblSucursalDato.Size = new System.Drawing.Size(53, 14);
-            this.lblSucursalDato.TabIndex = 1;
-            this.lblSucursalDato.Text = "Sucursal:";
-            this.lblSucursalDato.Visible = false;
+            this.lblSucursal.AutoSize = true;
+            this.lblSucursal.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblSucursal.ForeColor = System.Drawing.Color.White;
+            this.lblSucursal.Location = new System.Drawing.Point(97, 236);
+            this.lblSucursal.Name = "lblSucursal";
+            this.lblSucursal.Size = new System.Drawing.Size(53, 14);
+            this.lblSucursal.TabIndex = 1;
+            this.lblSucursal.Text = "Sucursal:";
+            this.lblSucursal.Visible = false;
             // 
             // cmbSucursal
             // 
@@ -172,10 +172,10 @@
             this.Controls.Add(this.cmbSucursal);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.BTnAceptar);
-            this.Controls.Add(this.lblSucursalDato);
+            this.Controls.Add(this.lblSucursal);
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.lblPrecio);
-            this.Controls.Add(this.lblSucursal);
+            this.Controls.Add(this.lblSucursalTitulo);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.txtPrecio);
@@ -197,10 +197,10 @@
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label lblCantidad;
-        private System.Windows.Forms.Label lblSucursal;
+        private System.Windows.Forms.Label lblSucursalTitulo;
         private System.Windows.Forms.Button BTnAceptar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Label lblSucursalDato;
+        private System.Windows.Forms.Label lblSucursal;
         private System.Windows.Forms.ComboBox cmbSucursal;
     }
 }

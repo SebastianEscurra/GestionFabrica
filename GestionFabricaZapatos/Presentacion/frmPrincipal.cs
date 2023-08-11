@@ -13,7 +13,9 @@ namespace Presentacion
 {
     public partial class frmPrincipal : Form
     {
-        private Form abierto = null;
+        private Form insumoAbierto = null;
+        private Form articuloAbierto = null;
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -31,11 +33,6 @@ namespace Presentacion
             btnNormalizar.Visible = true;
         }
 
-        private void BtnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnNormalizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
@@ -43,22 +40,31 @@ namespace Presentacion
             btnMaximizar.Visible = true;
         }
 
+        private void BtnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnInsumos_Click(object sender, EventArgs e)
         {
-            if (abierto != null)
-                HelpForm.abrirFormHijo(panelCentral, abierto);
-
-            frmSucursales frmSucursales = new frmSucursales(panelCentral, "insumos");
-            abierto = HelpForm.abrirFormHijo(panelCentral, frmSucursales);
+            if (insumoAbierto != null)
+                HelpForm.abrirFormHijo(panelCentral, insumoAbierto);
+            else
+            {
+                frmSucursales frmSucInsumos = new frmSucursales(panelCentral, "insumos");
+                insumoAbierto = HelpForm.abrirFormHijo(panelCentral, frmSucInsumos);
+            }
         }
 
         private void btnArticulos_Click(object sender, EventArgs e)
         {
-            if (abierto != null)
-                abierto.Close();
-           
-            frmSucursales frmSucursales = new frmSucursales(panelCentral, "articulos");
-            abierto = HelpForm.abrirFormHijo(panelCentral, frmSucursales);
+            if (articuloAbierto != null)
+                HelpForm.abrirFormHijo(panelCentral, articuloAbierto);
+            else
+            {
+                frmSucursales frmSucArticulo = new frmSucursales(panelCentral, "articulos");
+                articuloAbierto = HelpForm.abrirFormHijo(panelCentral, frmSucArticulo);
+            }
         }
     }
 }
