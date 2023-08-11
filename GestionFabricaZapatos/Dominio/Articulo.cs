@@ -11,6 +11,7 @@ namespace Dominio
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
+        public TipoCalzado Modelo { get; set; }
         public int Cantidad { get; set; }
         [DisplayName("Precio de fabricación")]
         public decimal PrecioFabricacion { get; set; }
@@ -18,10 +19,6 @@ namespace Dominio
         public decimal PrecioComercial { get; set; }
         [DisplayName("Precio mayorista")]
         public decimal Preciomayorista { get; set; }
-        
-        public Tipo Modelo { get; set; }
-        [DisplayName("Insumos necesarios")]
-        public Insumo Insumo { get; set; }
         public Sucursal Sucursal { get; set; }
         public bool Activo { get; set; }
     }

@@ -12,27 +12,38 @@ namespace Helper
 {
     static public class HelpForm   
     {
-        static public void abrirFormHijo(Panel panelPrincipal,object frmHijo)
+        static public Form abrirFormHijo(Panel panelPrincipal,Form frmHijo)
         {
-            if (panelPrincipal.Controls.Count > 0)
-            {
-                panelPrincipal.Controls.Clear();
-            }
-            Form fr = (Form)frmHijo;
-            fr.TopLevel = false;
-            fr.Dock = DockStyle.Fill;
-            panelPrincipal.Controls.Add(fr);
+
+               //if (panelPrincipal.Controls.Count > 0)
+               //    panelPrincipal.Controls.Clear();
+
+
+            frmHijo.TopLevel = false;
+            frmHijo.FormBorderStyle = FormBorderStyle.None;
+            frmHijo.Dock = DockStyle.Fill;
+            panelPrincipal.Controls.Add(frmHijo);
             panelPrincipal.Tag = frmHijo;
-            fr.Show();
+            frmHijo.Show();
+            frmHijo.BringToFront();
+            return frmHijo;
+
         }
     }
     static public class HelpGrid
     {
         
-        static public void mostrarGrid(DataGridView grid,List<Insumo> listaInsumo)
+        static public void mostrarGrid(DataGridView grid,List<Insumo> listaInsumos)
         {
-            grid.DataSource = listaInsumo;
+            grid.DataSource = listaInsumos;
             grid.Columns["Id"].Visible = false;
+        }
+        static public void mostrarGrid(DataGridView grid,List<Articulo> listaArticulos)
+        {
+            grid.DataSource = listaArticulos;
+            grid.Columns["Id"].Visible = false;
+            grid.Columns["Activo"].Visible = false;
+
         }
     }
     static public class HelpPicture

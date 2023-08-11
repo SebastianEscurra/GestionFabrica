@@ -8,20 +8,20 @@ using Dominio;
 
 namespace Negocio
 {
-    public class TipoNegocio
+    public class TipoCalzadoNegocio
     {
         private AccesoDatos dato = new AccesoDatos();
-        public List<Tipo> listar()
+        public List<TipoCalzado> listar()
         {
-            List<Tipo> listaTipo = new List<Tipo>();
+            List<TipoCalzado> listaTipo = new List<TipoCalzado>();
             try
             {
-                dato.setearConsulta("select Id,Descripcion from Tipo");
+                dato.setearConsulta("select Id,Descripcion from TipoCalzado");
                 dato.ejecutarLectura();
 
                 while (dato.Lector.Read())
                 {
-                    Tipo aux = new Tipo();
+                    TipoCalzado aux = new TipoCalzado();
 
                     aux.Id = (int)dato.Lector["Id"];
                     aux.Descripcion = (string)dato.Lector["Descripcion"];
@@ -42,11 +42,11 @@ namespace Negocio
             }
             
         }
-        public void agregar(Tipo nuevo)
+        public void agregar(TipoCalzado nuevo)
         {
             try
             {
-                dato.setearConsulta("insert into Tipo values (@descripcion)");
+                dato.setearConsulta("insert into TipoCalzado values (@descripcion)");
                 dato.setearParametro("@descripcion", nuevo.Descripcion);
 
                 dato.ejecutarAccion();
@@ -62,11 +62,11 @@ namespace Negocio
                 dato.cerrarConexion();
             }
         }
-        public void modificar(Tipo modificado)
+        public void modificar(TipoCalzado modificado)
         {
             try
             {
-                dato.setearConsulta("update Tipo set Descripcion='"+modificado.Descripcion+"' where Id="+modificado.Id+"");
+                dato.setearConsulta("update TipoCalzado set Descripcion='"+modificado.Descripcion+"' where Id="+modificado.Id+"");
 
                 dato.ejecutarAccion();
 
@@ -85,7 +85,7 @@ namespace Negocio
         {
             try
             {
-                dato.setearConsulta("delete Tipo where id="+id+"");
+                dato.setearConsulta("delete TipoCalzado where id="+id+"");
                 dato.ejecutarAccion();
 
             }

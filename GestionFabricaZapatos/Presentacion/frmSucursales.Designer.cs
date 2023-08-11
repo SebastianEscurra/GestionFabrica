@@ -29,63 +29,81 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSucursales));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pbxInsumo = new System.Windows.Forms.PictureBox();
+            this.pbxFabrica = new System.Windows.Forms.PictureBox();
             this.cmbSucursalFabrica = new System.Windows.Forms.ComboBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnAgregarFabrica = new System.Windows.Forms.Button();
             this.btnVerTodo = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificarFabrica = new System.Windows.Forms.Button();
+            this.btnEliminarFabrica = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.btnSeleccionarFabrica = new System.Windows.Forms.Button();
             this.PanelCentralSucursalInsumos = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.btnSeleccionarTienda = new System.Windows.Forms.Button();
+            this.btnEliminarTienda = new System.Windows.Forms.Button();
+            this.btnModificarTienda = new System.Windows.Forms.Button();
+            this.btnAgregarTienda = new System.Windows.Forms.Button();
+            this.cmbSucursalTienda = new System.Windows.Forms.ComboBox();
+            this.pbxTienda = new System.Windows.Forms.PictureBox();
+            this.btnSeleccionarOtros = new System.Windows.Forms.Button();
+            this.btnEliminarOtros = new System.Windows.Forms.Button();
+            this.btnModificarOtros = new System.Windows.Forms.Button();
+            this.btnAgregarOtros = new System.Windows.Forms.Button();
+            this.cmbSucursalOtros = new System.Windows.Forms.ComboBox();
+            this.pbxOtros = new System.Windows.Forms.PictureBox();
+            this.pbxArticulo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxInsumo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFabrica)).BeginInit();
             this.PanelCentralSucursalInsumos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxTienda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxOtros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // pbxInsumo
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(158, 80);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 77);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.pbxInsumo.Image = ((System.Drawing.Image)(resources.GetObject("pbxInsumo.Image")));
+            this.pbxInsumo.InitialImage = null;
+            this.pbxInsumo.Location = new System.Drawing.Point(247, 78);
+            this.pbxInsumo.Name = "pbxInsumo";
+            this.pbxInsumo.Size = new System.Drawing.Size(100, 77);
+            this.pbxInsumo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxInsumo.TabIndex = 7;
+            this.pbxInsumo.TabStop = false;
+            this.pbxInsumo.Visible = false;
             // 
-            // pictureBox2
+            // pbxFabrica
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(158, 280);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 77);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
+            this.pbxFabrica.Image = ((System.Drawing.Image)(resources.GetObject("pbxFabrica.Image")));
+            this.pbxFabrica.Location = new System.Drawing.Point(247, 278);
+            this.pbxFabrica.Name = "pbxFabrica";
+            this.pbxFabrica.Size = new System.Drawing.Size(100, 77);
+            this.pbxFabrica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxFabrica.TabIndex = 6;
+            this.pbxFabrica.TabStop = false;
             // 
             // cmbSucursalFabrica
             // 
+            this.cmbSucursalFabrica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSucursalFabrica.FormattingEnabled = true;
-            this.cmbSucursalFabrica.Location = new System.Drawing.Point(147, 363);
+            this.cmbSucursalFabrica.Location = new System.Drawing.Point(236, 361);
             this.cmbSucursalFabrica.Name = "cmbSucursalFabrica";
             this.cmbSucursalFabrica.Size = new System.Drawing.Size(121, 21);
             this.cmbSucursalFabrica.TabIndex = 0;
             // 
-            // btnAgregar
+            // btnAgregarFabrica
             // 
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
-            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
-            this.btnAgregar.Location = new System.Drawing.Point(173, 390);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(16, 16);
-            this.btnAgregar.TabIndex = 2;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnAgregarFabrica.FlatAppearance.BorderSize = 0;
+            this.btnAgregarFabrica.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnAgregarFabrica.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnAgregarFabrica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarFabrica.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarFabrica.Image")));
+            this.btnAgregarFabrica.Location = new System.Drawing.Point(262, 388);
+            this.btnAgregarFabrica.Name = "btnAgregarFabrica";
+            this.btnAgregarFabrica.Size = new System.Drawing.Size(16, 16);
+            this.btnAgregarFabrica.TabIndex = 2;
+            this.btnAgregarFabrica.UseVisualStyleBackColor = true;
+            this.btnAgregarFabrica.Click += new System.EventHandler(this.btnAgregarFabrica_Click);
             // 
             // btnVerTodo
             // 
@@ -101,33 +119,33 @@
             this.btnVerTodo.UseVisualStyleBackColor = true;
             this.btnVerTodo.Click += new System.EventHandler(this.btnVerTodo_Click);
             // 
-            // btnModificar
+            // btnModificarFabrica
             // 
-            this.btnModificar.FlatAppearance.BorderSize = 0;
-            this.btnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
-            this.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
-            this.btnModificar.Location = new System.Drawing.Point(195, 390);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(16, 16);
-            this.btnModificar.TabIndex = 3;
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.btnModificarFabrica.FlatAppearance.BorderSize = 0;
+            this.btnModificarFabrica.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnModificarFabrica.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnModificarFabrica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificarFabrica.Image = ((System.Drawing.Image)(resources.GetObject("btnModificarFabrica.Image")));
+            this.btnModificarFabrica.Location = new System.Drawing.Point(284, 388);
+            this.btnModificarFabrica.Name = "btnModificarFabrica";
+            this.btnModificarFabrica.Size = new System.Drawing.Size(16, 16);
+            this.btnModificarFabrica.TabIndex = 3;
+            this.btnModificarFabrica.UseVisualStyleBackColor = true;
+            this.btnModificarFabrica.Click += new System.EventHandler(this.btnModificarFabrica_Click);
             // 
-            // btnEliminar
+            // btnEliminarFabrica
             // 
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
-            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
-            this.btnEliminar.Location = new System.Drawing.Point(217, 390);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(16, 16);
-            this.btnEliminar.TabIndex = 4;
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.btnEliminarFabrica.FlatAppearance.BorderSize = 0;
+            this.btnEliminarFabrica.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnEliminarFabrica.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnEliminarFabrica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarFabrica.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarFabrica.Image")));
+            this.btnEliminarFabrica.Location = new System.Drawing.Point(306, 388);
+            this.btnEliminarFabrica.Name = "btnEliminarFabrica";
+            this.btnEliminarFabrica.Size = new System.Drawing.Size(16, 16);
+            this.btnEliminarFabrica.TabIndex = 4;
+            this.btnEliminarFabrica.UseVisualStyleBackColor = true;
+            this.btnEliminarFabrica.Click += new System.EventHandler(this.btnEliminarFabrica_Click);
             // 
             // panel4
             // 
@@ -137,39 +155,220 @@
             this.panel4.Size = new System.Drawing.Size(35, 4);
             this.panel4.TabIndex = 13;
             // 
-            // btnSeleccionar
+            // btnSeleccionarFabrica
             // 
-            this.btnSeleccionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
-            this.btnSeleccionar.FlatAppearance.BorderSize = 0;
-            this.btnSeleccionar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(86)))));
-            this.btnSeleccionar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
-            this.btnSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSeleccionar.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeleccionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
-            this.btnSeleccionar.Location = new System.Drawing.Point(131, 462);
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(156, 23);
-            this.btnSeleccionar.TabIndex = 1;
-            this.btnSeleccionar.Text = "Seleccionar sucursal";
-            this.btnSeleccionar.UseVisualStyleBackColor = false;
-            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click_1);
+            this.btnSeleccionarFabrica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnSeleccionarFabrica.FlatAppearance.BorderSize = 0;
+            this.btnSeleccionarFabrica.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(86)))));
+            this.btnSeleccionarFabrica.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.btnSeleccionarFabrica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSeleccionarFabrica.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSeleccionarFabrica.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
+            this.btnSeleccionarFabrica.Location = new System.Drawing.Point(220, 460);
+            this.btnSeleccionarFabrica.Name = "btnSeleccionarFabrica";
+            this.btnSeleccionarFabrica.Size = new System.Drawing.Size(156, 23);
+            this.btnSeleccionarFabrica.TabIndex = 1;
+            this.btnSeleccionarFabrica.Text = "Seleccionar sucursal";
+            this.btnSeleccionarFabrica.UseVisualStyleBackColor = false;
+            this.btnSeleccionarFabrica.Click += new System.EventHandler(this.btnSeleccionarFabrica_Click_1);
             // 
             // PanelCentralSucursalInsumos
             // 
-            this.PanelCentralSucursalInsumos.Controls.Add(this.btnSeleccionar);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnSeleccionarTienda);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnEliminarTienda);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnModificarTienda);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnAgregarTienda);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.cmbSucursalTienda);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.pbxTienda);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnSeleccionarOtros);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnEliminarOtros);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnModificarOtros);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnAgregarOtros);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.cmbSucursalOtros);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.pbxOtros);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.pbxArticulo);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnSeleccionarFabrica);
             this.PanelCentralSucursalInsumos.Controls.Add(this.panel4);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.btnEliminar);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.btnModificar);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnEliminarFabrica);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnModificarFabrica);
             this.PanelCentralSucursalInsumos.Controls.Add(this.btnVerTodo);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.btnAgregar);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnAgregarFabrica);
             this.PanelCentralSucursalInsumos.Controls.Add(this.cmbSucursalFabrica);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.pictureBox2);
-            this.PanelCentralSucursalInsumos.Controls.Add(this.pictureBox1);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.pbxFabrica);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.pbxInsumo);
             this.PanelCentralSucursalInsumos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelCentralSucursalInsumos.Location = new System.Drawing.Point(0, 0);
             this.PanelCentralSucursalInsumos.Name = "PanelCentralSucursalInsumos";
             this.PanelCentralSucursalInsumos.Size = new System.Drawing.Size(620, 565);
             this.PanelCentralSucursalInsumos.TabIndex = 6;
+            // 
+            // btnSeleccionarTienda
+            // 
+            this.btnSeleccionarTienda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnSeleccionarTienda.FlatAppearance.BorderSize = 0;
+            this.btnSeleccionarTienda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(86)))));
+            this.btnSeleccionarTienda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.btnSeleccionarTienda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSeleccionarTienda.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSeleccionarTienda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
+            this.btnSeleccionarTienda.Location = new System.Drawing.Point(5, 460);
+            this.btnSeleccionarTienda.Name = "btnSeleccionarTienda";
+            this.btnSeleccionarTienda.Size = new System.Drawing.Size(156, 23);
+            this.btnSeleccionarTienda.TabIndex = 22;
+            this.btnSeleccionarTienda.Text = "Seleccionar sucursal";
+            this.btnSeleccionarTienda.UseVisualStyleBackColor = false;
+            this.btnSeleccionarTienda.Click += new System.EventHandler(this.btnSeleccionarTienda_Click);
+            // 
+            // btnEliminarTienda
+            // 
+            this.btnEliminarTienda.FlatAppearance.BorderSize = 0;
+            this.btnEliminarTienda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnEliminarTienda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnEliminarTienda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarTienda.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarTienda.Image")));
+            this.btnEliminarTienda.Location = new System.Drawing.Point(91, 388);
+            this.btnEliminarTienda.Name = "btnEliminarTienda";
+            this.btnEliminarTienda.Size = new System.Drawing.Size(16, 16);
+            this.btnEliminarTienda.TabIndex = 25;
+            this.btnEliminarTienda.UseVisualStyleBackColor = true;
+            this.btnEliminarTienda.Click += new System.EventHandler(this.btnEliminarTienda_Click);
+            // 
+            // btnModificarTienda
+            // 
+            this.btnModificarTienda.FlatAppearance.BorderSize = 0;
+            this.btnModificarTienda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnModificarTienda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnModificarTienda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificarTienda.Image = ((System.Drawing.Image)(resources.GetObject("btnModificarTienda.Image")));
+            this.btnModificarTienda.Location = new System.Drawing.Point(69, 388);
+            this.btnModificarTienda.Name = "btnModificarTienda";
+            this.btnModificarTienda.Size = new System.Drawing.Size(16, 16);
+            this.btnModificarTienda.TabIndex = 24;
+            this.btnModificarTienda.UseVisualStyleBackColor = true;
+            this.btnModificarTienda.Click += new System.EventHandler(this.btnModificarTienda_Click);
+            // 
+            // btnAgregarTienda
+            // 
+            this.btnAgregarTienda.FlatAppearance.BorderSize = 0;
+            this.btnAgregarTienda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnAgregarTienda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnAgregarTienda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarTienda.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarTienda.Image")));
+            this.btnAgregarTienda.Location = new System.Drawing.Point(47, 388);
+            this.btnAgregarTienda.Name = "btnAgregarTienda";
+            this.btnAgregarTienda.Size = new System.Drawing.Size(16, 16);
+            this.btnAgregarTienda.TabIndex = 23;
+            this.btnAgregarTienda.UseVisualStyleBackColor = true;
+            this.btnAgregarTienda.Click += new System.EventHandler(this.btnAgregarTienda_Click);
+            // 
+            // cmbSucursalTienda
+            // 
+            this.cmbSucursalTienda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSucursalTienda.FormattingEnabled = true;
+            this.cmbSucursalTienda.Location = new System.Drawing.Point(21, 361);
+            this.cmbSucursalTienda.Name = "cmbSucursalTienda";
+            this.cmbSucursalTienda.Size = new System.Drawing.Size(121, 21);
+            this.cmbSucursalTienda.TabIndex = 21;
+            // 
+            // pbxTienda
+            // 
+            this.pbxTienda.Image = ((System.Drawing.Image)(resources.GetObject("pbxTienda.Image")));
+            this.pbxTienda.Location = new System.Drawing.Point(32, 278);
+            this.pbxTienda.Name = "pbxTienda";
+            this.pbxTienda.Size = new System.Drawing.Size(100, 77);
+            this.pbxTienda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxTienda.TabIndex = 26;
+            this.pbxTienda.TabStop = false;
+            // 
+            // btnSeleccionarOtros
+            // 
+            this.btnSeleccionarOtros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnSeleccionarOtros.FlatAppearance.BorderSize = 0;
+            this.btnSeleccionarOtros.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(86)))));
+            this.btnSeleccionarOtros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.btnSeleccionarOtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSeleccionarOtros.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSeleccionarOtros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
+            this.btnSeleccionarOtros.Location = new System.Drawing.Point(454, 460);
+            this.btnSeleccionarOtros.Name = "btnSeleccionarOtros";
+            this.btnSeleccionarOtros.Size = new System.Drawing.Size(156, 23);
+            this.btnSeleccionarOtros.TabIndex = 16;
+            this.btnSeleccionarOtros.Text = "Seleccionar sucursal";
+            this.btnSeleccionarOtros.UseVisualStyleBackColor = false;
+            this.btnSeleccionarOtros.Click += new System.EventHandler(this.btnSeleccionarOtros_Click);
+            // 
+            // btnEliminarOtros
+            // 
+            this.btnEliminarOtros.FlatAppearance.BorderSize = 0;
+            this.btnEliminarOtros.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnEliminarOtros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnEliminarOtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarOtros.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarOtros.Image")));
+            this.btnEliminarOtros.Location = new System.Drawing.Point(540, 388);
+            this.btnEliminarOtros.Name = "btnEliminarOtros";
+            this.btnEliminarOtros.Size = new System.Drawing.Size(16, 16);
+            this.btnEliminarOtros.TabIndex = 19;
+            this.btnEliminarOtros.UseVisualStyleBackColor = true;
+            this.btnEliminarOtros.Click += new System.EventHandler(this.btnEliminarOtros_Click);
+            // 
+            // btnModificarOtros
+            // 
+            this.btnModificarOtros.FlatAppearance.BorderSize = 0;
+            this.btnModificarOtros.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnModificarOtros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnModificarOtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificarOtros.Image = ((System.Drawing.Image)(resources.GetObject("btnModificarOtros.Image")));
+            this.btnModificarOtros.Location = new System.Drawing.Point(518, 388);
+            this.btnModificarOtros.Name = "btnModificarOtros";
+            this.btnModificarOtros.Size = new System.Drawing.Size(16, 16);
+            this.btnModificarOtros.TabIndex = 18;
+            this.btnModificarOtros.UseVisualStyleBackColor = true;
+            this.btnModificarOtros.Click += new System.EventHandler(this.btnModificarOtros_Click);
+            // 
+            // btnAgregarOtros
+            // 
+            this.btnAgregarOtros.FlatAppearance.BorderSize = 0;
+            this.btnAgregarOtros.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnAgregarOtros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnAgregarOtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarOtros.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarOtros.Image")));
+            this.btnAgregarOtros.Location = new System.Drawing.Point(496, 388);
+            this.btnAgregarOtros.Name = "btnAgregarOtros";
+            this.btnAgregarOtros.Size = new System.Drawing.Size(16, 16);
+            this.btnAgregarOtros.TabIndex = 17;
+            this.btnAgregarOtros.UseVisualStyleBackColor = true;
+            this.btnAgregarOtros.Click += new System.EventHandler(this.btnAgregarOtros_Click);
+            // 
+            // cmbSucursalOtros
+            // 
+            this.cmbSucursalOtros.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSucursalOtros.FormattingEnabled = true;
+            this.cmbSucursalOtros.Location = new System.Drawing.Point(470, 361);
+            this.cmbSucursalOtros.Name = "cmbSucursalOtros";
+            this.cmbSucursalOtros.Size = new System.Drawing.Size(121, 21);
+            this.cmbSucursalOtros.TabIndex = 15;
+            // 
+            // pbxOtros
+            // 
+            this.pbxOtros.Image = ((System.Drawing.Image)(resources.GetObject("pbxOtros.Image")));
+            this.pbxOtros.Location = new System.Drawing.Point(481, 278);
+            this.pbxOtros.Name = "pbxOtros";
+            this.pbxOtros.Size = new System.Drawing.Size(100, 77);
+            this.pbxOtros.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxOtros.TabIndex = 20;
+            this.pbxOtros.TabStop = false;
+            // 
+            // pbxArticulo
+            // 
+            this.pbxArticulo.Image = ((System.Drawing.Image)(resources.GetObject("pbxArticulo.Image")));
+            this.pbxArticulo.InitialImage = null;
+            this.pbxArticulo.Location = new System.Drawing.Point(247, 78);
+            this.pbxArticulo.Name = "pbxArticulo";
+            this.pbxArticulo.Size = new System.Drawing.Size(100, 77);
+            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxArticulo.TabIndex = 14;
+            this.pbxArticulo.TabStop = false;
+            this.pbxArticulo.Visible = false;
             // 
             // frmSucursales
             // 
@@ -178,30 +377,46 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
             this.ClientSize = new System.Drawing.Size(620, 565);
             this.Controls.Add(this.PanelCentralSucursalInsumos);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Location = new System.Drawing.Point(400, 0);
             this.Name = "frmSucursales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSucursales";
             this.Load += new System.EventHandler(this.frmSucursales_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxInsumo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFabrica)).EndInit();
             this.PanelCentralSucursalInsumos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxTienda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxOtros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pbxInsumo;
+        private System.Windows.Forms.PictureBox pbxFabrica;
         private System.Windows.Forms.ComboBox cmbSucursalFabrica;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnAgregarFabrica;
         private System.Windows.Forms.Button btnVerTodo;
-        private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnModificarFabrica;
+        private System.Windows.Forms.Button btnEliminarFabrica;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnSeleccionar;
+        private System.Windows.Forms.Button btnSeleccionarFabrica;
         private System.Windows.Forms.Panel PanelCentralSucursalInsumos;
+        private System.Windows.Forms.PictureBox pbxArticulo;
+        private System.Windows.Forms.Button btnSeleccionarTienda;
+        private System.Windows.Forms.Button btnEliminarTienda;
+        private System.Windows.Forms.Button btnModificarTienda;
+        private System.Windows.Forms.Button btnAgregarTienda;
+        private System.Windows.Forms.ComboBox cmbSucursalTienda;
+        private System.Windows.Forms.PictureBox pbxTienda;
+        private System.Windows.Forms.Button btnSeleccionarOtros;
+        private System.Windows.Forms.Button btnEliminarOtros;
+        private System.Windows.Forms.Button btnModificarOtros;
+        private System.Windows.Forms.Button btnAgregarOtros;
+        private System.Windows.Forms.ComboBox cmbSucursalOtros;
+        private System.Windows.Forms.PictureBox pbxOtros;
     }
 }

@@ -18,45 +18,84 @@ namespace Presentacion
     public partial class frmCrud : Form
     {
         private Sucursal sucursal=null;
-        private List<Insumo> listaInsumo;
+        private List<Insumo> listaInsumos;
+        private List<Articulo> listaArticulos;
         private InsumoNegocio insumoNegocio=new InsumoNegocio();
-        public frmCrud()
+        private ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+        private string tipoPanel;
+
+        // Constructores
+        public frmCrud(string tipoPanel)
         {
             InitializeComponent();
+            this.tipoPanel = tipoPanel;
+
         }
-        public frmCrud(Sucursal sucursalSelec)
+        public frmCrud(Sucursal sucursalSelec,string panelSeleccionado)
         {
             InitializeComponent();
             sucursal = sucursalSelec;
+            this.tipoPanel = panelSeleccionado;
         }
 
+        // Eventos
         private void frmCrud_Load(object sender, EventArgs e)
         {
-            actualizarListaInsumo();
+            if (tipoPanel == "insumos")
+            {
+                actualizarListaInsumo();
+                HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
+            }
+            else
+            {
+                actualizarListaArticulos();
+                HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
+            }
 
-            HelpGrid.mostrarGrid(dgvInventario, listaInsumo);
 
             cmbCampo.Items.Add("Nombre");
             cmbCampo.Items.Add("Precio");
             cmbCampo.Items.Add("Cantidad");
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e) // sobrecargar metodo agregar y modificar
-        {
-            frmAltaInsumo altaInsumo = new frmAltaInsumo(sucursal);
-            altaInsumo.ShowDialog();
-            actualizarListaInsumo();
-            HelpGrid.mostrarGrid(dgvInventario, listaInsumo);
 
+        private void btnAgregar_Click(object sender, EventArgs e) 
+        {
+            if (tipoPanel == "insumos")
+            {
+                frmAltaInsumo altaInsumo = new frmAltaInsumo(sucursal);
+                altaInsumo.ShowDialog();
+                actualizarListaInsumo();
+                HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
+                
+            }
+            else
+            {
+                frmAltaArticulo altaArticulo = new frmAltaArticulo(sucursal);
+                altaArticulo.ShowDialog();
+                actualizarListaArticulos();
+                HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
+            }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Insumo seleccionado = (Insumo)dgvInventario.CurrentRow.DataBoundItem;
-            frmAltaInsumo altaInsumo = new frmAltaInsumo(sucursal,seleccionado);
-            altaInsumo.ShowDialog();
-            actualizarListaInsumo();
-            HelpGrid.mostrarGrid(dgvInventario, listaInsumo);
+            if (tipoPanel=="insumos")
+            {
+                Insumo seleccionado = (Insumo)dgvInventario.CurrentRow.DataBoundItem;
+                frmAltaInsumo altaInsumo = new frmAltaInsumo(sucursal,seleccionado);
+                altaInsumo.ShowDialog();
+                actualizarListaInsumo();
+                HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
+            }
+            else
+            {
+                Articulo seleccionado = (Articulo)dgvInventario.CurrentRow.DataBoundItem;
+                frmAltaArticulo altaArticulo = new frmAltaArticulo(sucursal,seleccionado);
+                altaArticulo.ShowDialog();
+                actualizarListaArticulos();
+                HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
+            }
         }
 
         private void btnEliminarLogico_Click(object sender, EventArgs e)
@@ -71,8 +110,7 @@ namespace Presentacion
                 MessageBox.Show("Eliminado Exitosamente");
             }
             actualizarListaInsumo();
-            HelpGrid.mostrarGrid(dgvInventario, listaInsumo);
-
+            HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
         }
 
         private void txtFiltroRapido_TextChanged(object sender, EventArgs e)
@@ -81,11 +119,11 @@ namespace Presentacion
             string filtro = txtFiltroRapido.Text.ToUpper();
             if (filtro.Length > 1)
             {
-                listaFiltrada = listaInsumo.FindAll(x=> x.Cantidad.ToString().ToUpper().Contains(filtro) || x.Descripcion.ToUpper().Contains(filtro) || x.Precio.ToString().ToUpper().Contains(filtro)) ;
+                listaFiltrada = listaInsumos.FindAll(x=> x.Cantidad.ToString().ToUpper().Contains(filtro) || x.Descripcion.ToUpper().Contains(filtro) || x.Precio.ToString().ToUpper().Contains(filtro)) ;
             }
             else
             {
-                listaFiltrada = listaInsumo;
+                listaFiltrada = listaInsumos;
             }
 
             dgvInventario.DataSource = null;
@@ -128,17 +166,17 @@ namespace Presentacion
             List<Insumo> insumosordenados;
 
             if (cmbCampo.SelectedIndex == 0 && cmbCriterio.SelectedIndex==0) 
-                insumosordenados = listaInsumo.OrderBy(x => x.Descripcion).ToList();
+                insumosordenados = listaInsumos.OrderBy(x => x.Descripcion).ToList();
             else if (cmbCampo.SelectedIndex == 0)
-                insumosordenados = listaInsumo.OrderByDescending(x => x.Descripcion).ToList();
+                insumosordenados = listaInsumos.OrderByDescending(x => x.Descripcion).ToList();
             else if(cmbCampo.SelectedIndex==1 && cmbCriterio.SelectedIndex==0)
-                insumosordenados = listaInsumo.OrderBy(x => x.Precio).ToList();
+                insumosordenados = listaInsumos.OrderBy(x => x.Precio).ToList();
             else if(cmbCampo.SelectedIndex==1)
-                insumosordenados = listaInsumo.OrderByDescending(x => x.Precio).ToList();
+                insumosordenados = listaInsumos.OrderByDescending(x => x.Precio).ToList();
             else if(cmbCriterio.SelectedIndex==0)
-                insumosordenados = listaInsumo.OrderBy(x => x.Cantidad).ToList();
+                insumosordenados = listaInsumos.OrderBy(x => x.Cantidad).ToList();
             else
-                insumosordenados = listaInsumo.OrderByDescending(x => x.Cantidad).ToList();
+                insumosordenados = listaInsumos.OrderByDescending(x => x.Cantidad).ToList();
 
             HelpGrid.mostrarGrid(dgvInventario, insumosordenados);
         }
@@ -148,9 +186,17 @@ namespace Presentacion
         private void actualizarListaInsumo()
         {
             if (sucursal != null)
-                listaInsumo = insumoNegocio.listar(sucursal);
+                listaInsumos = insumoNegocio.listar(sucursal);
             else
-                listaInsumo = insumoNegocio.listar();
+                listaInsumos = insumoNegocio.listar();
         }
+        private void actualizarListaArticulos()
+        {
+            if (sucursal != null)
+                listaArticulos = articuloNegocio.listar(sucursal);
+            else
+                listaArticulos  = articuloNegocio.listar();
+        }
+
     }
 }

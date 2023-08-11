@@ -195,7 +195,7 @@
             this.Controls.Add(this.btnOrdenar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dgvInventario);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCrud";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCrud";

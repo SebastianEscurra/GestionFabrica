@@ -19,6 +19,7 @@ namespace Presentacion
         private Insumo actual = null;
         private InsumoNegocio insumoNegocio = new InsumoNegocio();
         private SucursalNegocio sucursalNegocio = new SucursalNegocio();
+        private int tipoSucursal;
 
         // Constructores
         public frmAltaInsumo()
@@ -29,6 +30,7 @@ namespace Presentacion
         {
             InitializeComponent();
             this.sucursal = sucursal;
+            tipoSucursal = sucursal.IdTipo;
         }
         public frmAltaInsumo(Insumo seleccionado)
         {
@@ -40,6 +42,7 @@ namespace Presentacion
             InitializeComponent();
             this.sucursal = sucursal;
             actual = seleccionado;
+            tipoSucursal = sucursal.IdTipo;
         }
 
         // Eventos
@@ -51,14 +54,14 @@ namespace Presentacion
                 txtCantidad.Text = actual.Cantidad.ToString();
                 txtDescripcion.Text = actual.Descripcion;
                 txtPrecio.Text = actual.Precio.ToString();
-                cmbSucursal.DataSource = sucursalNegocio.listar();
+                cmbSucursal.DataSource = sucursalNegocio.listar(tipoSucursal);
                 cmbSucursal.ValueMember = "Id";
                 cmbSucursal.DisplayMember = "Descripcion";
                 cmbSucursal.SelectedValue = actual.sucursal.Id;
             }
             else
             {
-                cmbSucursal.DataSource = sucursalNegocio.listar();
+                cmbSucursal.DataSource = sucursalNegocio.listar(tipoSucursal);
                 cmbSucursal.ValueMember = "Id";
                 cmbSucursal.DisplayMember = "Descripcion";
                 cmbSucursal.SelectedValue = -1;
@@ -66,17 +69,16 @@ namespace Presentacion
 
             if (sucursal==null) // estariamos dentro del frmVertodo
             {
-                lblSucursal.Visible = false;
+                lblSucursalTitulo.Visible = false;
                 cmbSucursal.Visible = true;
-                lblSucursalDato.Visible = true;
+                lblSucursal.Visible = true;
             }else
-                lblSucursal.Text = sucursal.Descripcion;
+                lblSucursalTitulo.Text = sucursal.Descripcion;
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void BTnAceptar_Click(object sender, EventArgs e)
         {
             if (actual == null)

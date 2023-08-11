@@ -13,12 +13,12 @@ namespace Negocio
     public class SucursalNegocio
     {
         private AccesoDatos dato = new AccesoDatos();
-        public List<Sucursal> listar()
+        public List<Sucursal> listar(int tipoSucursal)
         {
             List<Sucursal> listaSucursal = new List<Sucursal>();
             try
             {
-                dato.setearConsulta("select Id,Descripcion,Ubicacion from Sucursal");
+                dato.setearConsulta("select s.Id,s.Descripcion,Ubicacion,IdTipo from Sucursal s,TipoSucursal t where IdTipo=t.Id and IdTipo="+tipoSucursal+"");
                 dato.ejecutarLectura();
 
                 while (dato.Lector.Read())
@@ -28,6 +28,7 @@ namespace Negocio
                     aux.Id = (int)dato.Lector["Id"];
                     aux.Descripcion = (string)dato.Lector["Descripcion"];
                     aux.Ubicacion = (string)dato.Lector["Ubicacion"];
+                    aux.IdTipo = (int)dato.Lector["Idtipo"];
 
                     listaSucursal.Add(aux);
                 }
@@ -49,9 +50,11 @@ namespace Negocio
         {
             try
             {
-                dato.setearConsulta("insert into Sucursal values (@descripcion,@ubicacion)");
+                dato.setearConsulta("insert into Sucursal values (@descripcion,@ubicacion,@IdTipo)");
                 dato.setearParametro("@descripcion", nuevo.Descripcion);
                 dato.setearParametro("@ubicacion", nuevo.Ubicacion);
+                dato.setearParametro("@IdTipo", nuevo.IdTipo);
+
 
                 dato.ejecutarAccion();
 
@@ -89,7 +92,7 @@ namespace Negocio
         {
             try
             {
-                dato.setearConsulta("delete Sucursal where id=@id");
+                dato.setearConsulta("delete Sucursal where id=@id\r\ndelete Insumo where IdSucursal=@id");
                 dato.setearParametro("@id", id);
                 dato.ejecutarAccion();
             }
