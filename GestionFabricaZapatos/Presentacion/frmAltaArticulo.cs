@@ -101,6 +101,7 @@ namespace Presentacion
                         relacionNegocio.agregar(item);
                     }
                     MessageBox.Show("Relacion ArticuloInsumo Agregada");
+                    MessageBox.Show("");
 
 
                 }
