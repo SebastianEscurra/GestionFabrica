@@ -12,23 +12,23 @@ namespace Negocio
     {
         private AccesoDatos dato = new AccesoDatos();
 
-        public List<RelacionArticuloInsumo> listar()
+        public List<RelacionArticuloInsumo> listar(int IdArticulo)
         {
             List<RelacionArticuloInsumo> listaRelacion = new List<RelacionArticuloInsumo>();
             try
             {
-                dato.setearConsulta(" select r.Id,r.IdArticulo,a.Nombre,r.IdInsumo,i.Descripcion,r.Cantidad from RelacionArticuloInsumo r,Articulo a,Insumo i where r.IdArticulo=a.Id and r.IdInsumo=i.Id");
+                dato.setearConsulta(" select r.Id IdRelacion,r.IdArticulo IdArticulo,a.Nombre Nombre,r.IdInsumo IdInsumo,i.Descripcion Descripcion,r.Cantidad Cantidad from RelacionArticuloInsumo r,Articulo a,Insumo i where r.IdArticulo=a.Id and r.IdInsumo=i.Id and r.IdArticulo=" + IdArticulo+"");
                 dato.ejecutarLectura();
 
                 while (dato.Lector.Read())
                 {
                     RelacionArticuloInsumo aux = new RelacionArticuloInsumo();
-                    aux.Id = (int)dato.Lector["r.Id"];
-                    aux.IdArticulo = (int)dato.Lector["r.IdArticulo"];
-                    aux.IdInsumo = (int)dato.Lector["r.IdInsumo"];
-                    aux.Articulo = (string)dato.Lector["a.Nombre"];
-                    aux.Insumo = (string)dato.Lector["i.Descripcion"];
-                    aux.Cantidad = (int)dato.Lector["r.Cantidad"];
+                    aux.Id = (int)dato.Lector["IdRelacion"];
+                    aux.IdArticulo = (int)dato.Lector["IdArticulo"];
+                    aux.IdInsumo = (int)dato.Lector["IdInsumo"];
+                    aux.Articulo = (string)dato.Lector["Nombre"];
+                    aux.Insumo = (string)dato.Lector["Descripcion"];
+                    aux.Cantidad = (int)dato.Lector["Cantidad"];
 
                     listaRelacion.Add(aux);
                 }

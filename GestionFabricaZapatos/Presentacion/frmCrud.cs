@@ -80,11 +80,22 @@ namespace Presentacion
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Insumo seleccionado = (Insumo)dgvInventario.CurrentRow.DataBoundItem;
-            frmAltaInsumo altaInsumo = new frmAltaInsumo(sucursal,seleccionado);
-            altaInsumo.ShowDialog();
-            actualizarListaInsumo();
-            HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
+            if (tipoPanel=="insumos")
+            {
+                Insumo seleccionado = (Insumo)dgvInventario.CurrentRow.DataBoundItem;
+                frmAltaInsumo altaInsumo = new frmAltaInsumo(sucursal,seleccionado);
+                altaInsumo.ShowDialog();
+                actualizarListaInsumo();
+                HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
+            }
+            else
+            {
+                Articulo seleccionado = (Articulo)dgvInventario.CurrentRow.DataBoundItem;
+                frmAltaArticulo altaArticulo = new frmAltaArticulo(sucursal,seleccionado);
+                altaArticulo.ShowDialog();
+                actualizarListaArticulos();
+                HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
+            }
         }
 
         private void btnEliminarLogico_Click(object sender, EventArgs e)

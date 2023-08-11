@@ -296,6 +296,7 @@
             this.cmbInsumosAgregados.Name = "cmbInsumosAgregados";
             this.cmbInsumosAgregados.Size = new System.Drawing.Size(137, 21);
             this.cmbInsumosAgregados.TabIndex = 29;
+            this.cmbInsumosAgregados.SelectedIndexChanged += new System.EventHandler(this.cmbInsumosAgregados_SelectedIndexChanged);
             // 
             // btnEliminarinsumo
             // 
