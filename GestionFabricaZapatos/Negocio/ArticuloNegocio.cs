@@ -129,7 +129,7 @@ namespace Negocio
                 dato.setearParametro("@precioComercial", nuevo.PrecioComercial);
                 dato.setearParametro("@precioMayorista", nuevo.PrecioComercial);
                 dato.setearParametro("@IdTipo",nuevo.Modelo.Id);
-                dato.setearParametro("@IdSucursal", nuevo.Sucursal.Id);
+                dato.setearParametro("@IdSucursal", 1);
                 dato.setearParametro("@Activo", 1);
 
                 dato.ejecutarAccion();
@@ -147,18 +147,17 @@ namespace Negocio
         }
         public void modificar(Articulo modificado)
         {
-            string alternarNombre = DateTime.Now.Millisecond.ToString();
+            
             try
             {
-                dato.setearConsulta("update Articulo set Nombre=@nombre"+alternarNombre+ ",Cantidad=@cantidad"+alternarNombre+ ",PecioFabricacion=@fabricacion"+alternarNombre+ ",PrecioComercial=@comercial"+alternarNombre+ ",PrecioMayorista=@mayorista"+alternarNombre+ ",IdTipo=@idTipo"+alternarNombre+ ",IdSucursal=@idSucursal"+alternarNombre+ " where id=@id"+alternarNombre+"");
-                dato.setearParametro("@nombre"+alternarNombre,modificado.Nombre);
-                dato.setearParametro("@cantidad" + alternarNombre, modificado.Cantidad);
-                dato.setearParametro("@fabricacion" + alternarNombre, modificado.PrecioFabricacion);
-                dato.setearParametro("@comercial" + alternarNombre, modificado.PrecioComercial);
-                dato.setearParametro("@mayorista" + alternarNombre, modificado.Preciomayorista);
-                dato.setearParametro("@idtipo" + alternarNombre, modificado.Modelo.Id);
-                dato.setearParametro("@idSucursal" + alternarNombre, modificado.Sucursal.Id);
-                dato.setearParametro("@id" + alternarNombre, modificado.Id);
+                dato.setearConsulta("update Articulo set Nombre=@nombre,Cantidad=@cantidad,PecioFabricacion=@fabricacion,PrecioComercial=@comercial,PrecioMayorista=@mayorista,IdTipo=@idTipo where id=@id");
+                dato.setearParametro("@nombre",modificado.Nombre);
+                dato.setearParametro("@cantidad" , modificado.Cantidad);
+                dato.setearParametro("@fabricacion", modificado.PrecioFabricacion);
+                dato.setearParametro("@comercial", modificado.PrecioComercial);
+                dato.setearParametro("@mayorista" , modificado.Preciomayorista);
+                dato.setearParametro("@idtipo" , modificado.Modelo.Id);
+                dato.setearParametro("@id", modificado.Id);
 
                 dato.ejecutarAccion();
 

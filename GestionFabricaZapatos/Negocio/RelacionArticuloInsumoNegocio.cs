@@ -67,27 +67,6 @@ namespace Negocio
                 dato.cerrarConexion();
             }
         }
-        public void modificar(RelacionArticuloInsumo modificado)
-        {
-            try
-            {
-                dato.setearConsulta(" update RelacionArticuloInsumo set IdInsumo=@idInsumo,Cantidad=@cantidad where Id=@id");
-                dato.setearParametro("@idInsumo",modificado.IdInsumo);
-                dato.setearParametro("@cantidad", modificado.Cantidad);
-                dato.setearParametro("@id",modificado.Id);
-
-                dato.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                dato.cerrarConexion();
-            }
-        }
         public void eliminar(int id)
         {
             try
@@ -105,14 +84,6 @@ namespace Negocio
             {
                 dato.cerrarConexion();
             }
-        }
-        public void filtrar(string campo, string criterio, string filtro)
-        {
-
-        }
-        public void ordenar(string campo, string criterio)
-        {
-
         }
     }
 }

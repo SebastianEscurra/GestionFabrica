@@ -22,35 +22,30 @@ namespace Presentacion
         private Articulo articuloActual = null;
         private List<RelacionArticuloInsumo> listaRelacionActual = null;
         private List<RelacionArticuloInsumo> auxListaRelacion = new List<RelacionArticuloInsumo>();
-        private Sucursal sucursal = null;
+        
 
         private ArticuloNegocio articuloNegocio = new ArticuloNegocio();
         private InsumoNegocio insumoNegocio = new InsumoNegocio();
-        private SucursalNegocio sucursalNegocio = new SucursalNegocio();
         private TipoCalzadoNegocio tipoCalzadoNeg = new TipoCalzadoNegocio();
         private RelacionArticuloInsumoNegocio relacionNegocio = new RelacionArticuloInsumoNegocio();
 
         private List<TipoCalzado> listaTipoCalzado;
-        private List<Sucursal> listaSucursales;
         private List<Insumo> listaInsumo;
         private List<Insumo> listaInsumoAgregados=new List<Insumo>();
 
         // Constructores
-        public frmAltaArticulo(Sucursal sucursal)
+        public frmAltaArticulo()
         {
             InitializeComponent();
-            this.sucursal = sucursal;
             listaTipoCalzado = tipoCalzadoNeg.listar();
-            listaInsumo = insumoNegocio.listar(sucursal);
-            listaSucursales = sucursalNegocio.listar(sucursal.IdTipo);
+            listaInsumo = insumoNegocio.listar();
+            
         }
-        public frmAltaArticulo(Sucursal sucursal,Articulo actual)
+        public frmAltaArticulo(Articulo actual)
         {
             InitializeComponent();
-            this.sucursal = sucursal;
             listaTipoCalzado = tipoCalzadoNeg.listar();
-            listaSucursales = sucursalNegocio.listar(sucursal.IdTipo);
-            listaInsumo = insumoNegocio.listar(sucursal);
+            listaInsumo = insumoNegocio.listar();
             this.articuloActual = actual;
             listaRelacionActual = relacionNegocio.listar(actual.Id);
         }
@@ -59,10 +54,10 @@ namespace Presentacion
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
             cmbTipoCalzado.DataSource = listaTipoCalzado;
-            cmbSucursal.DataSource = listaSucursales;
+            //cmbSucursal.DataSource = listaSucursales;
             dgvInsumosNecesarios.DataSource = listaInsumo;
 
-            if (sucursal != null) // se selecciono sucursal
+            /*if (sucursal != null) // se selecciono sucursal
             {
                 lblSucursal.Text = sucursal.Descripcion;
                 cmbSucursal.Visible = false;
@@ -71,7 +66,7 @@ namespace Presentacion
             {
                 lblSucursal.Text = "";
                 cmbSucursal.Visible = true;
-            }
+            }*/
 
             if (articuloActual!= null)
             {
@@ -118,7 +113,7 @@ namespace Presentacion
             articuloActual.PrecioFabricacion = decimal.Parse(txtPrecioFabricacion.Text);
             articuloActual.PrecioComercial = decimal.Parse(txtPrecioComercial.Text);
             articuloActual.Preciomayorista = decimal.Parse(txtPrecioMayorista.Text);
-            articuloActual.Sucursal = sucursal;
+            //articuloActual.Sucursal = sucursal;
 
 
             if (articuloActual.Id == 0) //estamos agregando
@@ -149,11 +144,16 @@ namespace Presentacion
                     }
                     MessageBox.Show("Relacion ArticuloInsumo Agregada");
                     
-
+                    
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    limpiarControles();
+                    
                 }
 
             }
@@ -166,23 +166,30 @@ namespace Presentacion
 
                     auxListaRelacion= relacionNegocio.listar(articuloActual.Id);
 
-                    /*foreach (var item in auxListaRelacion)
+                    bool iguales = true;
+                    foreach (var item in auxListaRelacion)
                     {
                         foreach (var itemAct in listaRelacionActual)
                         {
-                            if (item.Id==itemAct.Id)
+                            if (item.Id!=itemAct.Id)
                             {
-
+                                iguales = false;
                             }
                         }
-                    }*/
+                    } // Corroboramos si realizo alguna cambio en relacionArticuloinsumo
 
-
-
-                    foreach (var item in listaRelacionActual)
+                    if (!iguales)
                     {
-                        relacionNegocio.modificar(item);
+                        foreach (var item in auxListaRelacion)
+                        {
+                            relacionNegocio.eliminar(item.Id);
+                        } // Borramos relaciones anteriores
+                        foreach (var item in listaRelacionActual) // Agregamos nuevas relaaciones
+                        {
+                            relacionNegocio.agregar(item); ;
+                        }
                     }
+
                     MessageBox.Show("Relacion modificada");
 
                 }
@@ -209,7 +216,7 @@ namespace Presentacion
             else
                 auxListaRelacion.Add(aux); 
 
-            calcularPrecios();
+            calcularPrecios(insumoSeleccionado);
         }
 
         private void btnEliminarinsumo_Click(object sender, EventArgs e)
@@ -251,30 +258,55 @@ namespace Presentacion
             else
                 auxListaRelacion.Remove(eliminarRelacion);
 
-            calcularPrecios();
+            calcularPrecios(seleccionado);
         }
 
         private void cmbInsumosAgregados_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Insumo seleccionado =(Insumo) cmbInsumosAgregados.SelectedItem;
 
-            
-            foreach (var item in listaRelacionActual)
+            if (articuloActual!=null)
             {
-                if (item.IdInsumo==seleccionado.Id)
+                Insumo seleccionado =(Insumo) cmbInsumosAgregados.SelectedItem;
+                foreach (var item in listaRelacionActual)
                 {
-                    txtCantidadInsumo.Text = item.Cantidad.ToString(); 
+                    if (item.IdInsumo==seleccionado.Id)
+                    {
+                        txtCantidadInsumo.Text = item.Cantidad.ToString(); 
+                    }
                 }
             }
         }
 
         // Metodos
-        private void calcularPrecios()
+        private void calcularPrecios(Insumo seleccionado)
         {
             decimal precioFabricacion = 0;
-            foreach (var item in listaInsumoAgregados)
+
+            if (articuloActual==null)
             {
-                precioFabricacion += item.Precio * decimal.Parse(txtCantidadInsumo.Text);
+                foreach (var relacion in auxListaRelacion)
+                {
+                    foreach (var insumo in listaInsumo)
+                    {
+                        if (relacion.IdInsumo == insumo.Id)
+                        {
+                            precioFabricacion += (insumo.Precio * relacion.Cantidad);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (var relacion in listaRelacionActual)
+                {
+                    foreach (var insumo in listaInsumo)
+                    {
+                        if (relacion.IdInsumo==insumo.Id)
+                        {
+                            precioFabricacion += (insumo.Precio * relacion.Cantidad);
+                        }
+                    }
+                }
             }
 
 
@@ -285,6 +317,20 @@ namespace Presentacion
             txtPrecioFabricacion.Text = precioFabricacion.ToString("00");
             txtPrecioComercial.Text = precioComercial.ToString("00");
             txtPrecioMayorista.Text = precioMayorista.ToString("00");
+        }
+        private void limpiarControles()
+        {
+            articuloActual = null;
+            listaRelacionActual = null;
+            auxListaRelacion = new List<RelacionArticuloInsumo>();
+            listaInsumoAgregados = new List<Insumo>();
+            cmbInsumosAgregados.Items.Clear();
+            txtDescripcion.Text = "";
+            txtCantidad.Text = "";
+            txtCantidadInsumo.Text = "";
+            txtPrecioFabricacion.Text = "";
+            txtPrecioMayorista.Text = "";
+            txtPrecioComercial.Text = "";
         }
 
     }

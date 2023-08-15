@@ -21,5 +21,10 @@ namespace Dominio
         public decimal Preciomayorista { get; set; }
         public Sucursal Sucursal { get; set; }
         public bool Activo { get; set; }
+
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

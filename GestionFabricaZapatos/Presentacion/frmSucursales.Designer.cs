@@ -39,6 +39,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnSeleccionarFabrica = new System.Windows.Forms.Button();
             this.PanelCentralSucursalInsumos = new System.Windows.Forms.Panel();
+            this.btnEliminarGenerico = new System.Windows.Forms.Button();
+            this.btnModificarGenerico = new System.Windows.Forms.Button();
+            this.btnAgregarGenerico = new System.Windows.Forms.Button();
             this.btnSeleccionarTienda = new System.Windows.Forms.Button();
             this.btnEliminarTienda = new System.Windows.Forms.Button();
             this.btnModificarTienda = new System.Windows.Forms.Button();
@@ -52,6 +55,7 @@
             this.cmbSucursalOtros = new System.Windows.Forms.ComboBox();
             this.pbxOtros = new System.Windows.Forms.PictureBox();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
+            this.cmbSeleccionarItem = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInsumo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxFabrica)).BeginInit();
             this.PanelCentralSucursalInsumos.SuspendLayout();
@@ -174,6 +178,10 @@
             // 
             // PanelCentralSucursalInsumos
             // 
+            this.PanelCentralSucursalInsumos.Controls.Add(this.cmbSeleccionarItem);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnEliminarGenerico);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnModificarGenerico);
+            this.PanelCentralSucursalInsumos.Controls.Add(this.btnAgregarGenerico);
             this.PanelCentralSucursalInsumos.Controls.Add(this.btnSeleccionarTienda);
             this.PanelCentralSucursalInsumos.Controls.Add(this.btnEliminarTienda);
             this.PanelCentralSucursalInsumos.Controls.Add(this.btnModificarTienda);
@@ -201,6 +209,47 @@
             this.PanelCentralSucursalInsumos.Name = "PanelCentralSucursalInsumos";
             this.PanelCentralSucursalInsumos.Size = new System.Drawing.Size(620, 565);
             this.PanelCentralSucursalInsumos.TabIndex = 6;
+            // 
+            // btnEliminarGenerico
+            // 
+            this.btnEliminarGenerico.FlatAppearance.BorderSize = 0;
+            this.btnEliminarGenerico.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnEliminarGenerico.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnEliminarGenerico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarGenerico.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarGenerico.Image")));
+            this.btnEliminarGenerico.Location = new System.Drawing.Point(306, 192);
+            this.btnEliminarGenerico.Name = "btnEliminarGenerico";
+            this.btnEliminarGenerico.Size = new System.Drawing.Size(16, 16);
+            this.btnEliminarGenerico.TabIndex = 29;
+            this.btnEliminarGenerico.UseVisualStyleBackColor = true;
+            // 
+            // btnModificarGenerico
+            // 
+            this.btnModificarGenerico.FlatAppearance.BorderSize = 0;
+            this.btnModificarGenerico.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnModificarGenerico.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnModificarGenerico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificarGenerico.Image = ((System.Drawing.Image)(resources.GetObject("btnModificarGenerico.Image")));
+            this.btnModificarGenerico.Location = new System.Drawing.Point(284, 192);
+            this.btnModificarGenerico.Name = "btnModificarGenerico";
+            this.btnModificarGenerico.Size = new System.Drawing.Size(16, 16);
+            this.btnModificarGenerico.TabIndex = 28;
+            this.btnModificarGenerico.UseVisualStyleBackColor = true;
+            this.btnModificarGenerico.Click += new System.EventHandler(this.btnModificarGenerico_Click);
+            // 
+            // btnAgregarGenerico
+            // 
+            this.btnAgregarGenerico.FlatAppearance.BorderSize = 0;
+            this.btnAgregarGenerico.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
+            this.btnAgregarGenerico.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnAgregarGenerico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarGenerico.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarGenerico.Image")));
+            this.btnAgregarGenerico.Location = new System.Drawing.Point(262, 192);
+            this.btnAgregarGenerico.Name = "btnAgregarGenerico";
+            this.btnAgregarGenerico.Size = new System.Drawing.Size(16, 16);
+            this.btnAgregarGenerico.TabIndex = 27;
+            this.btnAgregarGenerico.UseVisualStyleBackColor = true;
+            this.btnAgregarGenerico.Click += new System.EventHandler(this.btnAgregarGenerico_Click);
             // 
             // btnSeleccionarTienda
             // 
@@ -370,6 +419,17 @@
             this.pbxArticulo.TabStop = false;
             this.pbxArticulo.Visible = false;
             // 
+            // cmbSeleccionarItem
+            // 
+            this.cmbSeleccionarItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSeleccionarItem.FormattingEnabled = true;
+            this.cmbSeleccionarItem.Location = new System.Drawing.Point(236, 161);
+            this.cmbSeleccionarItem.Name = "cmbSeleccionarItem";
+            this.cmbSeleccionarItem.Size = new System.Drawing.Size(121, 21);
+            this.cmbSeleccionarItem.TabIndex = 30;
+            this.cmbSeleccionarItem.Visible = false;
+            this.cmbSeleccionarItem.SelectedIndexChanged += new System.EventHandler(this.cmbSeleccionarItem_SelectedIndexChanged);
+            // 
             // frmSucursales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -418,5 +478,9 @@
         private System.Windows.Forms.Button btnAgregarOtros;
         private System.Windows.Forms.ComboBox cmbSucursalOtros;
         private System.Windows.Forms.PictureBox pbxOtros;
+        private System.Windows.Forms.Button btnEliminarGenerico;
+        private System.Windows.Forms.Button btnModificarGenerico;
+        private System.Windows.Forms.Button btnAgregarGenerico;
+        private System.Windows.Forms.ComboBox cmbSeleccionarItem;
     }
 }
