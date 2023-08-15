@@ -15,10 +15,8 @@ namespace Presentacion
     public partial class frmAltaInsumo : Form
     {
         //Atributos
-        private Sucursal sucursal=null;
         private Insumo actual = null;
         private InsumoNegocio insumoNegocio = new InsumoNegocio();
-        private SucursalNegocio sucursalNegocio = new SucursalNegocio();
         private int tipoSucursal;
 
         // Constructores
@@ -26,24 +24,12 @@ namespace Presentacion
         {
             InitializeComponent();
         }
-        public frmAltaInsumo(Sucursal sucursal)
-        {
-            InitializeComponent();
-            this.sucursal = sucursal;
-            tipoSucursal = sucursal.IdTipo;
-        }
         public frmAltaInsumo(Insumo seleccionado)
         {
             InitializeComponent();
             actual = seleccionado;
         }
-        public frmAltaInsumo(Sucursal sucursal,Insumo seleccionado)
-        {
-            InitializeComponent();
-            this.sucursal = sucursal;
-            actual = seleccionado;
-            tipoSucursal = sucursal.IdTipo;
-        }
+
 
         // Eventos
         private void frmAltaInsumo_Load(object sender, EventArgs e)
@@ -54,11 +40,11 @@ namespace Presentacion
                 txtCantidad.Text = actual.Cantidad.ToString();
                 txtDescripcion.Text = actual.Descripcion;
                 txtPrecio.Text = actual.Precio.ToString();
-                cmbSucursal.DataSource = sucursalNegocio.listar(tipoSucursal);
+                /*cmbSucursal.DataSource = sucursalNegocio.listar(tipoSucursal);
                 cmbSucursal.ValueMember = "Id";
                 cmbSucursal.DisplayMember = "Descripcion";
-                cmbSucursal.SelectedValue = actual.sucursal.Id;
-            }
+                cmbSucursal.SelectedValue = actual.sucursal.Id;*/
+            }/*
             else
             {
                 cmbSucursal.DataSource = sucursalNegocio.listar(tipoSucursal);
@@ -73,8 +59,9 @@ namespace Presentacion
                 cmbSucursal.Visible = true;
                 lblSucursal.Visible = true;
             }else
-                lblSucursalTitulo.Text = sucursal.Descripcion;
+                lblSucursalTitulo.Text = sucursal.Descripcion;*/
         }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -89,10 +76,10 @@ namespace Presentacion
             actual.Descripcion = txtDescripcion.Text;
             actual.Precio = decimal.Parse(txtPrecio.Text);
             actual.sucursal = new Sucursal();
-            if (sucursal == null)
+            /*if (sucursal == null)
                 actual.sucursal = (Sucursal)cmbSucursal.SelectedItem;
             else
-                actual.sucursal = sucursal;
+                actual.sucursal = sucursal;*/
 
 
 

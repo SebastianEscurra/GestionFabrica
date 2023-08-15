@@ -63,7 +63,7 @@ namespace Presentacion
         {
             if (tipoPanel == "insumos")
             {
-                frmAltaInsumo altaInsumo = new frmAltaInsumo(sucursal);
+                frmAltaInsumo altaInsumo = new frmAltaInsumo();
                 altaInsumo.ShowDialog();
                 actualizarListaInsumo();
                 HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
@@ -71,7 +71,7 @@ namespace Presentacion
             }
             else
             {
-                frmAltaArticulo altaArticulo = new frmAltaArticulo(sucursal);
+                frmAltaArticulo altaArticulo = new frmAltaArticulo();
                 altaArticulo.ShowDialog();
                 actualizarListaArticulos();
                 HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
@@ -83,7 +83,7 @@ namespace Presentacion
             if (tipoPanel=="insumos")
             {
                 Insumo seleccionado = (Insumo)dgvInventario.CurrentRow.DataBoundItem;
-                frmAltaInsumo altaInsumo = new frmAltaInsumo(sucursal,seleccionado);
+                frmAltaInsumo altaInsumo = new frmAltaInsumo(seleccionado);
                 altaInsumo.ShowDialog();
                 actualizarListaInsumo();
                 HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
@@ -91,7 +91,7 @@ namespace Presentacion
             else
             {
                 Articulo seleccionado = (Articulo)dgvInventario.CurrentRow.DataBoundItem;
-                frmAltaArticulo altaArticulo = new frmAltaArticulo(sucursal,seleccionado);
+                frmAltaArticulo altaArticulo = new frmAltaArticulo(seleccionado);
                 altaArticulo.ShowDialog();
                 actualizarListaArticulos();
                 HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
@@ -100,17 +100,35 @@ namespace Presentacion
 
         private void btnEliminarLogico_Click(object sender, EventArgs e)
         {
-            Insumo seleccionado = (Insumo)dgvInventario.CurrentRow.DataBoundItem;
-            
-            DialogResult resultado = MessageBox.Show("¿Desea eliminar el insumo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            
-            if(resultado==DialogResult.Yes)
+            if (tipoPanel=="insumos")
             {
-                insumoNegocio.eliminar(seleccionado.Id);
-                MessageBox.Show("Eliminado Exitosamente");
+                Insumo seleccionado = (Insumo)dgvInventario.CurrentRow.DataBoundItem;
+            
+                DialogResult resultado = MessageBox.Show("¿Desea eliminar el insumo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            
+                if(resultado==DialogResult.Yes)
+                {
+                    insumoNegocio.eliminar(seleccionado.Id);
+                    MessageBox.Show("Eliminado Exitosamente");
+                }
+                actualizarListaInsumo();
+                HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
             }
-            actualizarListaInsumo();
-            HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
+            else
+            {
+
+                Articulo seleccionado = (Articulo)dgvInventario.CurrentRow.DataBoundItem;
+
+                DialogResult resultado = MessageBox.Show("¿Desea eliminar el Articulo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    articuloNegocio.eliminarLogico(seleccionado.Id);
+                    MessageBox.Show("Eliminado Exitosamente");
+                }
+                actualizarListaArticulos();
+                HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
+            }
         }
 
         private void txtFiltroRapido_TextChanged(object sender, EventArgs e)

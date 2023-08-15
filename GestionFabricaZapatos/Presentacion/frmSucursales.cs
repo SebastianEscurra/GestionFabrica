@@ -24,6 +24,7 @@ namespace Presentacion
         private int otros=3;
 
         private SucursalNegocio negocio = new SucursalNegocio();
+        private ArticuloNegocio articuloNegocio = new ArticuloNegocio();
         private List<Sucursal> listaTienda = new List<Sucursal>();
         private List<Sucursal> listaFabricas = new List<Sucursal>();
         private List<Sucursal> listaOtros = new List<Sucursal>();
@@ -53,6 +54,8 @@ namespace Presentacion
                 cargarComboBox(tienda);
                 cargarComboBox(fabrica);
                 cargarComboBox(otros);
+                cmbSeleccionarItem.DataSource = articuloNegocio.listar();
+
             }
         }
 
@@ -229,5 +232,39 @@ namespace Presentacion
             }
         }
 
+        private void btnAgregarGenerico_Click(object sender, EventArgs e)
+        {
+            if (tipoPanel=="insumos")
+            {
+
+            }
+            else
+            {
+                frmAltaArticulo altaArticulo = new frmAltaArticulo();
+                altaArticulo.ShowDialog();
+            }
+        }
+
+        private void btnModificarGenerico_Click(object sender, EventArgs e)
+        {
+            if (tipoPanel == "insumos")
+            {
+                
+            }
+            else
+            {
+                cmbSeleccionarItem.Visible = true;
+            }
+        }
+
+        private void cmbSeleccionarItem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSeleccionarItem.Visible)
+            {
+                Articulo seleccionado = (Articulo)cmbSeleccionarItem.SelectedItem;
+                frmAltaArticulo altaArticulo = new frmAltaArticulo(seleccionado);
+                altaArticulo.ShowDialog();
+            }
+        }
     }
 }
