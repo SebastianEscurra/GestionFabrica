@@ -39,6 +39,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnSeleccionarFabrica = new System.Windows.Forms.Button();
             this.PanelCentralSucursalInsumos = new System.Windows.Forms.Panel();
+            this.cmbEliminarItem = new System.Windows.Forms.ComboBox();
+            this.cmbSeleccionarItem = new System.Windows.Forms.ComboBox();
             this.btnEliminarGenerico = new System.Windows.Forms.Button();
             this.btnModificarGenerico = new System.Windows.Forms.Button();
             this.btnAgregarGenerico = new System.Windows.Forms.Button();
@@ -55,7 +57,6 @@
             this.cmbSucursalOtros = new System.Windows.Forms.ComboBox();
             this.pbxOtros = new System.Windows.Forms.PictureBox();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
-            this.cmbSeleccionarItem = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInsumo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxFabrica)).BeginInit();
             this.PanelCentralSucursalInsumos.SuspendLayout();
@@ -178,6 +179,7 @@
             // 
             // PanelCentralSucursalInsumos
             // 
+            this.PanelCentralSucursalInsumos.Controls.Add(this.cmbEliminarItem);
             this.PanelCentralSucursalInsumos.Controls.Add(this.cmbSeleccionarItem);
             this.PanelCentralSucursalInsumos.Controls.Add(this.btnEliminarGenerico);
             this.PanelCentralSucursalInsumos.Controls.Add(this.btnModificarGenerico);
@@ -210,6 +212,28 @@
             this.PanelCentralSucursalInsumos.Size = new System.Drawing.Size(620, 565);
             this.PanelCentralSucursalInsumos.TabIndex = 6;
             // 
+            // cmbEliminarItem
+            // 
+            this.cmbEliminarItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEliminarItem.FormattingEnabled = true;
+            this.cmbEliminarItem.Location = new System.Drawing.Point(236, 161);
+            this.cmbEliminarItem.Name = "cmbEliminarItem";
+            this.cmbEliminarItem.Size = new System.Drawing.Size(121, 21);
+            this.cmbEliminarItem.TabIndex = 31;
+            this.cmbEliminarItem.Visible = false;
+            this.cmbEliminarItem.SelectedIndexChanged += new System.EventHandler(this.cmbEliminarItem_SelectedIndexChanged);
+            // 
+            // cmbSeleccionarItem
+            // 
+            this.cmbSeleccionarItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSeleccionarItem.FormattingEnabled = true;
+            this.cmbSeleccionarItem.Location = new System.Drawing.Point(236, 161);
+            this.cmbSeleccionarItem.Name = "cmbSeleccionarItem";
+            this.cmbSeleccionarItem.Size = new System.Drawing.Size(121, 21);
+            this.cmbSeleccionarItem.TabIndex = 30;
+            this.cmbSeleccionarItem.Visible = false;
+            this.cmbSeleccionarItem.SelectedIndexChanged += new System.EventHandler(this.cmbSeleccionarItem_SelectedIndexChanged);
+            // 
             // btnEliminarGenerico
             // 
             this.btnEliminarGenerico.FlatAppearance.BorderSize = 0;
@@ -222,6 +246,7 @@
             this.btnEliminarGenerico.Size = new System.Drawing.Size(16, 16);
             this.btnEliminarGenerico.TabIndex = 29;
             this.btnEliminarGenerico.UseVisualStyleBackColor = true;
+            this.btnEliminarGenerico.Click += new System.EventHandler(this.btnEliminarGenerico_Click);
             // 
             // btnModificarGenerico
             // 
@@ -418,17 +443,10 @@
             this.pbxArticulo.TabIndex = 14;
             this.pbxArticulo.TabStop = false;
             this.pbxArticulo.Visible = false;
-            // 
-            // cmbSeleccionarItem
-            // 
-            this.cmbSeleccionarItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSeleccionarItem.FormattingEnabled = true;
-            this.cmbSeleccionarItem.Location = new System.Drawing.Point(236, 161);
-            this.cmbSeleccionarItem.Name = "cmbSeleccionarItem";
-            this.cmbSeleccionarItem.Size = new System.Drawing.Size(121, 21);
-            this.cmbSeleccionarItem.TabIndex = 30;
-            this.cmbSeleccionarItem.Visible = false;
-            this.cmbSeleccionarItem.SelectedIndexChanged += new System.EventHandler(this.cmbSeleccionarItem_SelectedIndexChanged);
+            this.pbxArticulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbxArticulo_MouseDown);
+            this.pbxArticulo.MouseEnter += new System.EventHandler(this.pbxArticulo_MouseEnter);
+            this.pbxArticulo.MouseLeave += new System.EventHandler(this.pbxArticulo_MouseLeave);
+            this.pbxArticulo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbxArticulo_MouseUp);
             // 
             // frmSucursales
             // 
@@ -482,5 +500,6 @@
         private System.Windows.Forms.Button btnModificarGenerico;
         private System.Windows.Forms.Button btnAgregarGenerico;
         private System.Windows.Forms.ComboBox cmbSeleccionarItem;
+        private System.Windows.Forms.ComboBox cmbEliminarItem;
     }
 }

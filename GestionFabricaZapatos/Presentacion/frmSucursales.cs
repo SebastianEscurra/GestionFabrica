@@ -28,7 +28,7 @@ namespace Presentacion
         private List<Sucursal> listaTienda = new List<Sucursal>();
         private List<Sucursal> listaFabricas = new List<Sucursal>();
         private List<Sucursal> listaOtros = new List<Sucursal>();
-        private Form fabricaAbierto = null;
+        private Form fabricaAbierto = null; 
         private Form tiendaAbierto = null;
         private Form otrosAbierto = null;
 
@@ -54,17 +54,13 @@ namespace Presentacion
                 cargarComboBox(tienda);
                 cargarComboBox(fabrica);
                 cargarComboBox(otros);
-                cmbSeleccionarItem.DataSource = articuloNegocio.listar();
 
             }
         }
 
         private void btnVerTodo_Click(object sender, EventArgs e)
         {
-            if(fabricaAbierto!=null)
-                fabricaAbierto.Close();
-            frmCrud verTodo = new frmCrud(tipoPanel);
-            fabricaAbierto=HelpForm.abrirFormHijo(panelCentral, verTodo);
+            
             
         }
         
@@ -253,6 +249,8 @@ namespace Presentacion
             }
             else
             {
+                cmbEliminarItem.Visible = false;
+                cmbSeleccionarItem.DataSource = articuloNegocio.listarSinSucursal();
                 cmbSeleccionarItem.Visible = true;
             }
         }
@@ -264,7 +262,86 @@ namespace Presentacion
                 Articulo seleccionado = (Articulo)cmbSeleccionarItem.SelectedItem;
                 frmAltaArticulo altaArticulo = new frmAltaArticulo(seleccionado);
                 altaArticulo.ShowDialog();
+                cmbSeleccionarItem.Visible = false;
+                cmbSeleccionarItem.DataSource = articuloNegocio.listar();
             }
+        }
+        private void btnEliminarGenerico_Click(object sender, EventArgs e)
+        {
+            if (tipoPanel == "insumos")
+            {
+
+            }
+            else
+            {
+                cmbSeleccionarItem.Visible = false;
+                cmbEliminarItem.DataSource = articuloNegocio.listarSinSucursal();
+                cmbEliminarItem.Visible = true;
+            }
+        }
+
+
+        private void cmbEliminarItem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEliminarItem.Visible)
+            {
+                if (tipoPanel == "insumos")
+                {
+                    /*Insumo seleccionado = (Insumo)dgvInventario.CurrentRow.DataBoundItem;
+
+                    DialogResult resultado = MessageBox.Show("¿Desea eliminar el insumo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                    if (resultado == DialogResult.Yes)
+                    {
+                        insumoNegocio.eliminar(seleccionado.Id);
+                        MessageBox.Show("Eliminado Exitosamente");
+                    }
+                    actualizarListaInsumo();
+                    HelpGrid.mostrarGrid(dgvInventario, listaInsumos);*/
+                }
+                else
+                {
+
+                    Articulo seleccionado = (Articulo)cmbEliminarItem.SelectedItem;
+
+                    DialogResult resultado = MessageBox.Show("¿Desea eliminar el Articulo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                    if (resultado == DialogResult.Yes)
+                    {
+                        articuloNegocio.eliminarLogico(seleccionado.Id);
+                        MessageBox.Show("Eliminado Exitosamente");
+                        cmbEliminarItem.Visible = false;
+                        cmbEliminarItem.DataSource = articuloNegocio.listar();
+                    }
+                }
+            }
+        }
+
+        private void pbxArticulo_MouseEnter(object sender, EventArgs e)
+        {
+
+            HelpPicture.cargarImagen(pbxArticulo, "C:\\GIPCE-App\\Engranaje.png");
+        }
+
+        private void pbxArticulo_MouseLeave(object sender, EventArgs e)
+        {
+            HelpPicture.cargarImagen(pbxArticulo, "C:\\GIPCE-App\\13Articulos.png");
+
+        }
+
+        private void pbxArticulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            HelpPicture.cargarImagen(pbxArticulo, "C:\\GIPCE-App\\engranaje 2.png");
+
+            if (fabricaAbierto != null) // Si es ª= null hay un panel abierto, entonces lo cierra evitando que se generen muchas instancias del mismo frm.
+                fabricaAbierto.Close();
+            frmCrud crudArticulos = new frmCrud(tipoPanel);
+            fabricaAbierto = HelpForm.abrirFormHijo(panelCentral, crudArticulos);
+        }
+
+        private void pbxArticulo_MouseUp(object sender, MouseEventArgs e)
+        {
+            HelpPicture.cargarImagen(pbxArticulo, "C:\\GIPCE-App\\Engranaje.png");
         }
     }
 }

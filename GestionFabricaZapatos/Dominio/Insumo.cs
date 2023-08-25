@@ -10,12 +10,15 @@ namespace Dominio
 {
     public class Insumo
     {
-
+        private int cantidadInsumosParaArmado = 0;
         public int Id { get; set; }
         [DisplayName("Insumo")]
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
+        [DisplayName ("Cantidad necesaria")]
+        public int CantidadInsumosParaArmado { get { return cantidadInsumosParaArmado; } set { cantidadInsumosParaArmado = value; } }
         public int Cantidad { get; set; }
+
         public Sucursal sucursal { get; set; }
         
 
