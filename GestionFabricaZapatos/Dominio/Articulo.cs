@@ -9,10 +9,12 @@ namespace Dominio
 {
     public class Articulo
     {
+        
         public int Id { get; set; }
         public string Nombre { get; set; }
         public TipoCalzado Modelo { get; set; }
         public int Cantidad { get; set; }
+
         [DisplayName("Precio de fabricación")]
         public decimal PrecioFabricacion { get; set; }
         [DisplayName("Precio comercial")]

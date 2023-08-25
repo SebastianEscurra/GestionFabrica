@@ -14,11 +14,6 @@ namespace Helper
     {
         static public Form abrirFormHijo(Panel panelPrincipal,Form frmHijo)
         {
-
-               //if (panelPrincipal.Controls.Count > 0)
-               //    panelPrincipal.Controls.Clear();
-
-
             frmHijo.TopLevel = false;
             frmHijo.FormBorderStyle = FormBorderStyle.None;
             frmHijo.Dock = DockStyle.Fill;
@@ -27,7 +22,6 @@ namespace Helper
             frmHijo.Show();
             frmHijo.BringToFront();
             return frmHijo;
-
         }
     }
     static public class HelpGrid
@@ -37,13 +31,16 @@ namespace Helper
         {
             grid.DataSource = listaInsumos;
             grid.Columns["Id"].Visible = false;
+            grid.Columns["sucursal"].Visible = false;
+            grid.Columns["cantidad"].Visible = false;
+
         }
         static public void mostrarGrid(DataGridView grid,List<Articulo> listaArticulos)
         {
             grid.DataSource = listaArticulos;
             grid.Columns["Id"].Visible = false;
             grid.Columns["Activo"].Visible = false;
-
+            grid.Columns["Sucursal"].Visible = false;
         }
     }
     static public class HelpPicture

@@ -610,7 +610,7 @@
   <data name="pbxTienda.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAlUAAAIgCAYAAACs6ZzAAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAKRlJREFUeF7t3THrJNWe8PF9Cb4EX4KBsJkaicmKrGyiIBooGzmGmg1odBMHDBU0
+        DAAACwwBP0AiyAAAKRlJREFUeF7t3THrJNWe8PF9Cb4EX4KBsJkaicmKrGyiIBooGzmGmg1odBMHDBU0
         WlgjwWANJxDMLhfhRg9chCd7ovsO5qnfzNTaU/3r7jrdVV2nzvkEH8Qz/+6uru5/1fd/qrr6X548eQIA
         wI3SQQAAyqSDAACUSQcBACiTDgIAUCYdBACgTDoIAECZdBAAgDLpIAAAZdJBAADKpIMAAJRJBwEAKJMO
         AgBQJh0EAKBMOggAQJl0EACAMukgAABl0kEAAMqkgwAAlEkHAQAokw4CAFAmHQQAoEw6CABAmXQQAIAy
@@ -819,7 +819,7 @@
   <data name="pbxOtros.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAlUAAAIgCAYAAACs6ZzAAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAALsxJREFUeF7t3bGuM1md7uG5BC6hL4EA6WRANCIBoUGTMNIIAtBEdIeQtQTRJLRE
+        DAAACwwBP0AiyAAALsxJREFUeF7t3bGuM1md7uG5BC6hL4EA6WRANCIBoUGTMNIIAtBEdIeQtQTRJLRE
         CNJ0NNIQIREMYQdIZAghER0JIZ1sormD79TbsJpy9X/v7XK5yl6rnuAR9Prsctnbdv28qlz+h3fv3gEA
         sFE5CADAOuUgAADrlIMAAKxTDgIAsE45CADAOuUgAADrlIMAAKxTDgIAsE45CADAOuUgAADrlIMAAKxT
         DgIAsE45CADAOuUgAADrlIMAAKxTDgIAsE45CADAOuUgAADrlIMAAKxTDgIAsE45CADAOuUgAADrlIMA

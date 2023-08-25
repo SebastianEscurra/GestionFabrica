@@ -31,11 +31,11 @@ namespace Presentacion
             this.tipoPanel = tipoPanel;
 
         }
-        public frmCrud(Sucursal sucursalSelec,string panelSeleccionado)
+        public frmCrud(Sucursal sucursalSelec,string tipoPanel)
         {
             InitializeComponent();
             sucursal = sucursalSelec;
-            this.tipoPanel = panelSeleccionado;
+            this.tipoPanel = tipoPanel;
         }
 
         // Eventos
@@ -48,7 +48,7 @@ namespace Presentacion
             }
             else
             {
-                actualizarListaArticulos();
+                actualizarListaArticulosSinSucursal();
                 HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
             }
 
@@ -73,7 +73,7 @@ namespace Presentacion
             {
                 frmAltaArticulo altaArticulo = new frmAltaArticulo();
                 altaArticulo.ShowDialog();
-                actualizarListaArticulos();
+                actualizarListaArticulosSinSucursal();
                 HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
             }
         }
@@ -93,7 +93,7 @@ namespace Presentacion
                 Articulo seleccionado = (Articulo)dgvInventario.CurrentRow.DataBoundItem;
                 frmAltaArticulo altaArticulo = new frmAltaArticulo(seleccionado);
                 altaArticulo.ShowDialog();
-                actualizarListaArticulos();
+                actualizarListaArticulosSinSucursal();
                 HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
             }
         }
@@ -126,7 +126,8 @@ namespace Presentacion
                     articuloNegocio.eliminarLogico(seleccionado.Id);
                     MessageBox.Show("Eliminado Exitosamente");
                 }
-                actualizarListaArticulos();
+
+                actualizarListaArticulosSinSucursal();
                 HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
             }
         }
@@ -181,22 +182,45 @@ namespace Presentacion
         {
             cmbCriterio.Visible = false;
             cmbCampo.Visible = false;
-            List<Insumo> insumosordenados;
 
-            if (cmbCampo.SelectedIndex == 0 && cmbCriterio.SelectedIndex==0) 
-                insumosordenados = listaInsumos.OrderBy(x => x.Descripcion).ToList();
-            else if (cmbCampo.SelectedIndex == 0)
-                insumosordenados = listaInsumos.OrderByDescending(x => x.Descripcion).ToList();
-            else if(cmbCampo.SelectedIndex==1 && cmbCriterio.SelectedIndex==0)
-                insumosordenados = listaInsumos.OrderBy(x => x.Precio).ToList();
-            else if(cmbCampo.SelectedIndex==1)
-                insumosordenados = listaInsumos.OrderByDescending(x => x.Precio).ToList();
-            else if(cmbCriterio.SelectedIndex==0)
-                insumosordenados = listaInsumos.OrderBy(x => x.Cantidad).ToList();
+            if (tipoPanel=="insumos")
+            {
+                List<Insumo> insumosOrdenados;
+
+                if (cmbCampo.SelectedIndex == 0 && cmbCriterio.SelectedIndex==0) 
+                    insumosOrdenados = listaInsumos.OrderBy(x => x.Descripcion).ToList();
+                else if (cmbCampo.SelectedIndex == 0)
+                    insumosOrdenados = listaInsumos.OrderByDescending(x => x.Descripcion).ToList();
+                else if(cmbCampo.SelectedIndex==1 && cmbCriterio.SelectedIndex==0)
+                    insumosOrdenados = listaInsumos.OrderBy(x => x.Precio).ToList();
+                else if(cmbCampo.SelectedIndex==1)
+                    insumosOrdenados = listaInsumos.OrderByDescending(x => x.Precio).ToList();
+                else if(cmbCriterio.SelectedIndex==0)
+                    insumosOrdenados = listaInsumos.OrderBy(x => x.Cantidad).ToList();
+                else
+                    insumosOrdenados = listaInsumos.OrderByDescending(x => x.Cantidad).ToList();
+
+                HelpGrid.mostrarGrid(dgvInventario, insumosOrdenados);
+            }
             else
-                insumosordenados = listaInsumos.OrderByDescending(x => x.Cantidad).ToList();
+            {
+                List<Articulo> aticulosOrdenados;
 
-            HelpGrid.mostrarGrid(dgvInventario, insumosordenados);
+                if (cmbCampo.SelectedIndex == 0 && cmbCriterio.SelectedIndex == 0)
+                    aticulosOrdenados = listaArticulos.OrderBy(x => x.Nombre).ToList();
+                else if (cmbCampo.SelectedIndex == 0)
+                    aticulosOrdenados = listaArticulos.OrderByDescending(x => x.Nombre).ToList();
+                else if (cmbCampo.SelectedIndex == 1 && cmbCriterio.SelectedIndex == 0)
+                    aticulosOrdenados = listaArticulos.OrderBy(x => x.PrecioFabricacion).ToList();
+                else if (cmbCampo.SelectedIndex == 1)
+                    aticulosOrdenados = listaArticulos.OrderByDescending(x => x.PrecioFabricacion).ToList();
+                else if (cmbCriterio.SelectedIndex == 0)
+                    aticulosOrdenados = listaArticulos.OrderBy(x => x.Cantidad).ToList();
+                else
+                    aticulosOrdenados = listaArticulos.OrderByDescending(x => x.Cantidad).ToList();
+
+                HelpGrid.mostrarGrid(dgvInventario, aticulosOrdenados);
+            }
         }
         //
         //metodos
@@ -214,6 +238,10 @@ namespace Presentacion
                 listaArticulos = articuloNegocio.listar(sucursal);
             else
                 listaArticulos  = articuloNegocio.listar();
+        }
+        private void actualizarListaArticulosSinSucursal()
+        {
+            listaArticulos = articuloNegocio.listarSinSucursal();
         }
 
     }

@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Helper;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -54,23 +55,25 @@ namespace Presentacion
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
             cmbTipoCalzado.DataSource = listaTipoCalzado;
-            //cmbSucursal.DataSource = listaSucursales;
-            dgvInsumosNecesarios.DataSource = listaInsumo;
 
-            /*if (sucursal != null) // se selecciono sucursal
-            {
-                lblSucursal.Text = sucursal.Descripcion;
-                cmbSucursal.Visible = false;
-            }
+            if (articuloActual==null) // Agregamos o modificamos?
+                HelpGrid.mostrarGrid(dgvInsumosNecesarios,listaInsumo);
             else
             {
-                lblSucursal.Text = "";
-                cmbSucursal.Visible = true;
-            }*/
+                foreach (var insumo in listaInsumo) // actualizar las cantidades de insumos para armado desde db.
+                {
+                    foreach (var relacion in listaRelacionActual)
+                    {
+                        if (relacion.IdInsumo==insumo.Id)
+                            insumo.CantidadInsumosParaArmado = relacion.Cantidad;
+                    }
+                }
+                HelpGrid.mostrarGrid(dgvInsumosNecesarios, listaInsumo);
+
+            }
 
             if (articuloActual!= null)
             {
-                txtCantidad.Text = articuloActual.Cantidad.ToString();
                 txtDescripcion.Text = articuloActual.Nombre;
                 txtPrecioComercial.Text = articuloActual.PrecioComercial.ToString();
                 txtPrecioFabricacion.Text = articuloActual.PrecioFabricacion.ToString();
@@ -85,17 +88,11 @@ namespace Presentacion
                         }
                     }
                 } // cargamos la lista de insumos agregados
-                foreach (var item in listaInsumoAgregados)
-                {
-                    cmbInsumosAgregados.Items.Add(item);
-                } // cargamos cmbInsumosAgregados
+                
 
                 cmbTipoCalzado.DisplayMember= "Descripcion";
                 cmbTipoCalzado.ValueMember = "Id";
                 cmbTipoCalzado.SelectedValue = articuloActual.Modelo.Id;
-                cmbSucursal.DisplayMember = "Descripcion";
-                cmbSucursal.ValueMember = "Id";
-                cmbSucursal.SelectedValue = articuloActual.Sucursal.Id;
             }
         }
 
@@ -109,12 +106,9 @@ namespace Presentacion
 
             articuloActual.Nombre = txtDescripcion.Text;
             articuloActual.Modelo = (TipoCalzado)cmbTipoCalzado.SelectedItem;
-            articuloActual.Cantidad = int.Parse(txtCantidad.Text);
             articuloActual.PrecioFabricacion = decimal.Parse(txtPrecioFabricacion.Text);
             articuloActual.PrecioComercial = decimal.Parse(txtPrecioComercial.Text);
             articuloActual.Preciomayorista = decimal.Parse(txtPrecioMayorista.Text);
-            //articuloActual.Sucursal = sucursal;
-
 
             if (articuloActual.Id == 0) //estamos agregando
             {
@@ -124,21 +118,8 @@ namespace Presentacion
                     MessageBox.Show("articulo agregado"); 
 
                     articuloActual.Id = articuloNegocio.obtenerId(articuloActual.Nombre); //obtenemos id del articulo
-                    articuloActual.Cantidad = int.Parse(txtCantidad.Text);
-                    articuloActual.PrecioFabricacion = decimal.Parse(txtPrecioFabricacion.Text);
-                    articuloActual.PrecioComercial = decimal.Parse(txtPrecioComercial.Text);
-                    articuloActual.Preciomayorista = decimal.Parse(txtPrecioMayorista.Text);
-
-                    articuloNegocio.modificar(articuloActual); // actualizamos los datos del articulo con los campos faltantes
-                    MessageBox.Show("actualizacion Realizada");
-
-                    foreach (var item in auxListaRelacion) // agregamos idarticulo a los items y luego lo agregamos a la listaRelacionActual
-                    {
-                        item.IdArticulo = articuloActual.Id;
-                        item.Articulo = articuloActual.Nombre;
-                        listaRelacionActual.Add(item);
-                    }
-                    foreach (var item in listaRelacionActual) // uno a uno cargamos las relaciones a la DB
+                    
+                    foreach (var item in auxListaRelacion) // uno a uno cargamos las relaciones a la DB
                     {
                         relacionNegocio.agregar(item);
                     }
@@ -153,7 +134,6 @@ namespace Presentacion
                 finally
                 {
                     limpiarControles();
-                    
                 }
 
             }
@@ -176,7 +156,7 @@ namespace Presentacion
                                 iguales = false;
                             }
                         }
-                    } // Corroboramos si realizo alguna cambio en relacionArticuloinsumo
+                    } // Corroboramos si realizo algun cambio en relacionArticuloinsumo
 
                     if (!iguales)
                     {
@@ -184,7 +164,7 @@ namespace Presentacion
                         {
                             relacionNegocio.eliminar(item.Id);
                         } // Borramos relaciones anteriores
-                        foreach (var item in listaRelacionActual) // Agregamos nuevas relaaciones
+                        foreach (var item in listaRelacionActual) // Agregamos nuevas relaciones
                         {
                             relacionNegocio.agregar(item); ;
                         }
@@ -200,119 +180,57 @@ namespace Presentacion
             }
 
         }
-
-        private void btnAgregarInsumo_Click(object sender, EventArgs e)
+        private void btnCalcularPrecios_Click(object sender, EventArgs e)
         {
-            Insumo insumoSeleccionado = (Insumo)dgvInsumosNecesarios.CurrentRow.DataBoundItem; 
-            listaInsumoAgregados.Add(insumoSeleccionado);
-            cmbInsumosAgregados.Items.Add(insumoSeleccionado);
+            List<Insumo> auxInsumos = new List<Insumo>();
+            auxInsumos=(List<Insumo>)dgvInsumosNecesarios.DataSource;
 
-            RelacionArticuloInsumo aux = new RelacionArticuloInsumo(); //tomamos los datos del insumo y la cantidad 
-            aux.IdInsumo = insumoSeleccionado.Id;
-            aux.Insumo = insumoSeleccionado.Descripcion;
-            aux.Cantidad = int.Parse(txtCantidadInsumo.Text);
-            if (articuloActual != null) // cargamos aux a lista correspondiente
-                listaRelacionActual.Add(aux);
-            else
-                auxListaRelacion.Add(aux); 
-
-            calcularPrecios(insumoSeleccionado);
-        }
-
-        private void btnEliminarinsumo_Click(object sender, EventArgs e)
-        {
-            Insumo seleccionado = (Insumo)cmbInsumosAgregados.SelectedItem;
-
-            Insumo eliminarArticulo = new Insumo();
-            foreach (var item in listaInsumoAgregados) //buscamos el insumo a eliminar
+            foreach (DataGridViewRow row in dgvInsumosNecesarios.Rows)
             {
-                if (item.Id == seleccionado.Id)
+                if (row.Cells[3].Value.ToString()!="0") // Agrega relacion solo si hay una cantidad != de cero
                 {
-                    eliminarArticulo = item;
+                    RelacionArticuloInsumo aux = new RelacionArticuloInsumo();
+                    aux.IdInsumo = int.Parse(row.Cells[0].Value.ToString());
+                    aux.Insumo = row.Cells[1].Value.ToString();
+                    aux.Cantidad = int.Parse(row.Cells[3].Value.ToString());
+                    auxListaRelacion.Add(aux);
                 }
             }
 
-            RelacionArticuloInsumo eliminarRelacion = new RelacionArticuloInsumo();
-            if (articuloActual != null) 
+            calcularPrecios(auxInsumos);
+        }
+        private void dgvInsumosNecesarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
             {
-                foreach (var item in listaRelacionActual)
-                {
-                    if (item.IdInsumo == eliminarArticulo.Id)
-                        eliminarRelacion = item;
-                }
+                dgvInsumosNecesarios.ReadOnly = false;
             }
             else
             {
-                foreach (var item in auxListaRelacion)
-                {
-                    if (item.IdInsumo == eliminarArticulo.Id)
-                        eliminarRelacion = item;
-                }
-            } // buscamos la relacion a eliminar
-
-            listaInsumoAgregados.Remove(eliminarArticulo);
-            cmbInsumosAgregados.Items.Remove(eliminarArticulo);
-
-            if (articuloActual != null)
-                listaRelacionActual.Remove(eliminarRelacion);
-            else
-                auxListaRelacion.Remove(eliminarRelacion);
-
-            calcularPrecios(seleccionado);
+                dgvInsumosNecesarios.ReadOnly = true;
+            }
         }
 
-        private void cmbInsumosAgregados_SelectedIndexChanged(object sender, EventArgs e)
+        private void dgvInsumosNecesarios_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-
-            if (articuloActual!=null)
+            if (e.ColumnIndex ==3 && e.FormattedValue.ToString() == "")
             {
-                Insumo seleccionado =(Insumo) cmbInsumosAgregados.SelectedItem;
-                foreach (var item in listaRelacionActual)
-                {
-                    if (item.IdInsumo==seleccionado.Id)
-                    {
-                        txtCantidadInsumo.Text = item.Cantidad.ToString(); 
-                    }
-                }
+                dgvInsumosNecesarios.CancelEdit();
             }
         }
 
         // Metodos
-        private void calcularPrecios(Insumo seleccionado)
+        private void calcularPrecios(List<Insumo> listaInsumos)
         {
             decimal precioFabricacion = 0;
 
-            if (articuloActual==null)
+            foreach (var item in listaInsumo)
             {
-                foreach (var relacion in auxListaRelacion)
-                {
-                    foreach (var insumo in listaInsumo)
-                    {
-                        if (relacion.IdInsumo == insumo.Id)
-                        {
-                            precioFabricacion += (insumo.Precio * relacion.Cantidad);
-                        }
-                    }
-                }
+                precioFabricacion += item.Precio * item.CantidadInsumosParaArmado;
             }
-            else
-            {
-                foreach (var relacion in listaRelacionActual)
-                {
-                    foreach (var insumo in listaInsumo)
-                    {
-                        if (relacion.IdInsumo==insumo.Id)
-                        {
-                            precioFabricacion += (insumo.Precio * relacion.Cantidad);
-                        }
-                    }
-                }
-            }
-
 
             decimal precioMayorista = ((precioFabricacion / 100) * porcentajeMayorista) + precioFabricacion;
             decimal precioComercial = ((precioFabricacion / 100) * porcentajeComercial) + precioFabricacion;
-
 
             txtPrecioFabricacion.Text = precioFabricacion.ToString("00");
             txtPrecioComercial.Text = precioComercial.ToString("00");
@@ -324,14 +242,15 @@ namespace Presentacion
             listaRelacionActual = null;
             auxListaRelacion = new List<RelacionArticuloInsumo>();
             listaInsumoAgregados = new List<Insumo>();
-            cmbInsumosAgregados.Items.Clear();
             txtDescripcion.Text = "";
-            txtCantidad.Text = "";
-            txtCantidadInsumo.Text = "";
             txtPrecioFabricacion.Text = "";
             txtPrecioMayorista.Text = "";
             txtPrecioComercial.Text = "";
         }
+
+
+
+
 
     }
 }
