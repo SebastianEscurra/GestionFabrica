@@ -12,17 +12,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Drawing.Text;
 
 namespace Presentacion
 {
     public partial class frmCrud : Form
     {
+        private string tipoPanel;
+
         private Sucursal sucursal=null;
+
         private List<Insumo> listaInsumos;
         private List<Articulo> listaArticulos;
+        List<RelacionSucursalArticulo> listaRelacion;
+
         private InsumoNegocio insumoNegocio=new InsumoNegocio();
         private ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-        private string tipoPanel;
+        private RelacionSucursalArticuloNegocio relacionSucursalNegocio = new RelacionSucursalArticuloNegocio();
+
 
         // Constructores
         public frmCrud(string tipoPanel)
@@ -46,10 +53,15 @@ namespace Presentacion
                 actualizarListaInsumo();
                 HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
             }
+            else if(tipoPanel=="articulos")
+            {
+                actualizarListaArticulos();
+                HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
+            }
             else
             {
-                actualizarListaArticulosSinSucursal();
-                HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
+                actualizarListaRelacion();
+                HelpGrid.mostrarGrid(dgvInventario, listaRelacion);
             }
 
 
@@ -69,13 +81,23 @@ namespace Presentacion
                 HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
                 
             }
-            else
+            else if (tipoPanel== "articulos")
             {
                 frmAltaArticulo altaArticulo = new frmAltaArticulo();
                 altaArticulo.ShowDialog();
-                actualizarListaArticulosSinSucursal();
+                actualizarListaArticulos();
                 HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
+
             }
+            else if (tipoPanel == "sucursalArticulos")
+            {
+                frmAltaArticulosConSucursal altaArticuloSucursal = new frmAltaArticulosConSucursal(sucursal);
+                altaArticuloSucursal.ShowDialog();
+                actualizarListaRelacion();
+                HelpGrid.mostrarGrid(dgvInventario, listaRelacion);
+
+            }
+
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -88,13 +110,17 @@ namespace Presentacion
                 actualizarListaInsumo();
                 HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
             }
-            else
+            else if (tipoPanel=="articulos")
             {
                 Articulo seleccionado = (Articulo)dgvInventario.CurrentRow.DataBoundItem;
                 frmAltaArticulo altaArticulo = new frmAltaArticulo(seleccionado);
                 altaArticulo.ShowDialog();
-                actualizarListaArticulosSinSucursal();
+                actualizarListaArticulos();
                 HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
+            }
+            else
+            {
+                //configurar 
             }
         }
 
@@ -114,7 +140,7 @@ namespace Presentacion
                 actualizarListaInsumo();
                 HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
             }
-            else
+            else if(tipoPanel=="articulos")
             {
 
                 Articulo seleccionado = (Articulo)dgvInventario.CurrentRow.DataBoundItem;
@@ -127,8 +153,12 @@ namespace Presentacion
                     MessageBox.Show("Eliminado Exitosamente");
                 }
 
-                actualizarListaArticulosSinSucursal();
+                actualizarListaArticulos();
                 HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
+            }
+            else
+            {
+                //configurar
             }
         }
 
@@ -212,12 +242,9 @@ namespace Presentacion
                     aticulosOrdenados = listaArticulos.OrderByDescending(x => x.Nombre).ToList();
                 else if (cmbCampo.SelectedIndex == 1 && cmbCriterio.SelectedIndex == 0)
                     aticulosOrdenados = listaArticulos.OrderBy(x => x.PrecioFabricacion).ToList();
-                else if (cmbCampo.SelectedIndex == 1)
+                else 
                     aticulosOrdenados = listaArticulos.OrderByDescending(x => x.PrecioFabricacion).ToList();
-                else if (cmbCriterio.SelectedIndex == 0)
-                    aticulosOrdenados = listaArticulos.OrderBy(x => x.Cantidad).ToList();
-                else
-                    aticulosOrdenados = listaArticulos.OrderByDescending(x => x.Cantidad).ToList();
+                
 
                 HelpGrid.mostrarGrid(dgvInventario, aticulosOrdenados);
             }
@@ -234,14 +261,11 @@ namespace Presentacion
         }
         private void actualizarListaArticulos()
         {
-            if (sucursal != null)
-                listaArticulos = articuloNegocio.listar(sucursal);
-            else
-                listaArticulos  = articuloNegocio.listar();
+            listaArticulos = articuloNegocio.listar();
         }
-        private void actualizarListaArticulosSinSucursal()
+        private void actualizarListaRelacion()
         {
-            listaArticulos = articuloNegocio.listarSinSucursal();
+            listaRelacion = relacionSucursalNegocio.listar(sucursal);
         }
 
     }

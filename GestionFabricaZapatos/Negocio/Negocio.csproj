@@ -48,6 +48,7 @@
     <Compile Include="PedidoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelacionArticuloInsumoNegocio.cs" />
+    <Compile Include="RelacionSucursalArticuloNegocio.cs" />
     <Compile Include="RolNegocio.cs" />
     <Compile Include="SucursalNegocio.cs" />
     <Compile Include="TipoCalzadoNegocio.cs" />

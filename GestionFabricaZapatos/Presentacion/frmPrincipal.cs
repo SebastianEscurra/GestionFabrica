@@ -13,6 +13,7 @@ namespace Presentacion
 {
     public partial class frmPrincipal : Form
     {
+        private string tipoPanel;
         private Form insumoAbierto = null;
         private Form articuloAbierto = null;
 
@@ -47,22 +48,24 @@ namespace Presentacion
 
         private void btnInsumos_Click(object sender, EventArgs e)
         {
+            tipoPanel = "insumos";
             if (insumoAbierto != null)
                 HelpForm.abrirFormHijo(panelCentral, insumoAbierto);
             else
             {
-                frmSucursales frmSucInsumos = new frmSucursales(panelCentral, "insumos");
+                frmSucursales frmSucInsumos = new frmSucursales(panelCentral, tipoPanel);
                 insumoAbierto = HelpForm.abrirFormHijo(panelCentral, frmSucInsumos);
             }
         }
 
         private void btnArticulos_Click(object sender, EventArgs e)
         {
+            tipoPanel = "sucursalArticulos";
             if (articuloAbierto != null)
                 HelpForm.abrirFormHijo(panelCentral, articuloAbierto);
             else
             {
-                frmSucursales frmSucArticulo = new frmSucursales(panelCentral, "articulos");
+                frmSucursales frmSucArticulo = new frmSucursales(panelCentral, tipoPanel);
                 articuloAbierto = HelpForm.abrirFormHijo(panelCentral, frmSucArticulo);
             }
         }
