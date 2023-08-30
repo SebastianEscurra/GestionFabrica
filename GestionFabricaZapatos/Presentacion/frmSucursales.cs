@@ -96,6 +96,7 @@ namespace Presentacion
 
         private void btnSeleccionarFabrica_Click_1(object sender, EventArgs e)
         {
+            tipoPanel = "sucursalArticulos";
             if (fabricaAbierto != null)
                 fabricaAbierto.Close();
             Sucursal SucursalSelec = (Sucursal)cmbSucursalFabrica.SelectedItem;
@@ -185,48 +186,7 @@ namespace Presentacion
             tiendaAbierto = HelpForm.abrirFormHijo(panelCentral, crudOtros);
         }
 
-        // Metodos
-        private void mostrarElementosInsumos()
-        {
-            pbxInsumo.Visible = true;
-            pbxArticulo.Visible = false;
-            pbxFabrica.Visible = true;
-            pbxTienda.Visible = false;
-            pbxOtros.Visible = false;
-            cmbSucursalOtros.Visible = false;
-            cmbSucursalTienda.Visible = false;
-            btnAgregarTienda.Visible = false;
-            btnAgregarOtros.Visible = false;
-            btnModificarTienda.Visible = false;
-            btnModificarOtros.Visible = false;
-            btnEliminarTienda.Visible = false;
-            btnEliminarOtros.Visible = false;
-            btnSeleccionarTienda.Visible = false;
-            btnSeleccionarOtros.Visible = false;
-        }
-        private void mostrarElementosArticulos()
-        {
-            pbxArticulo.Visible = true;
-            pbxInsumo.Visible = false;
-        }
-        private void cargarComboBox(int TipoSucursal)
-        {
-            if(TipoSucursal == tienda)
-            {
-                listaTienda = negocio.listar(tienda);
-                cmbSucursalTienda.DataSource = listaTienda;
-            }
-            else if (TipoSucursal==fabrica)
-            {
-                listaFabricas = negocio.listar(fabrica);
-                cmbSucursalFabrica.DataSource = listaFabricas;
-            }
-            else
-            {
-                listaOtros = negocio.listar(otros);
-                cmbSucursalOtros.DataSource = listaOtros;
-            }
-        }
+        // Genericos
 
         private void btnAgregarGenerico_Click(object sender, EventArgs e)
         {
@@ -250,7 +210,7 @@ namespace Presentacion
             else
             {
                 cmbEliminarItem.Visible = false;
-                cmbSeleccionarItem.DataSource = articuloNegocio.listarSinSucursal();
+                cmbSeleccionarItem.DataSource = articuloNegocio.listar();
                 cmbSeleccionarItem.Visible = true;
             }
         }
@@ -266,6 +226,7 @@ namespace Presentacion
                 cmbSeleccionarItem.DataSource = articuloNegocio.listar();
             }
         }
+
         private void btnEliminarGenerico_Click(object sender, EventArgs e)
         {
             if (tipoPanel == "insumos")
@@ -275,7 +236,7 @@ namespace Presentacion
             else
             {
                 cmbSeleccionarItem.Visible = false;
-                cmbEliminarItem.DataSource = articuloNegocio.listarSinSucursal();
+                cmbEliminarItem.DataSource = articuloNegocio.listar();
                 cmbEliminarItem.Visible = true;
             }
         }
@@ -332,8 +293,8 @@ namespace Presentacion
         private void pbxArticulo_MouseDown(object sender, MouseEventArgs e)
         {
             HelpPicture.cargarImagen(pbxArticulo, "C:\\GIPCE-App\\engranaje 2.png");
-
-            if (fabricaAbierto != null) // Si es ª= null hay un panel abierto, entonces lo cierra evitando que se generen muchas instancias del mismo frm.
+            tipoPanel = "articulos";
+            if (fabricaAbierto != null) // Si es = null hay un panel abierto, entonces lo cierra evitando que se generen muchas instancias del mismo frm.
                 fabricaAbierto.Close();
             frmCrud crudArticulos = new frmCrud(tipoPanel);
             fabricaAbierto = HelpForm.abrirFormHijo(panelCentral, crudArticulos);
@@ -343,5 +304,51 @@ namespace Presentacion
         {
             HelpPicture.cargarImagen(pbxArticulo, "C:\\GIPCE-App\\Engranaje.png");
         }
+
+
+        // Metodos
+        private void mostrarElementosInsumos()
+        {
+            pbxInsumo.Visible = true;
+            pbxArticulo.Visible = false;
+            pbxFabrica.Visible = true;
+            pbxTienda.Visible = false;
+            pbxOtros.Visible = false;
+            cmbSucursalOtros.Visible = false;
+            cmbSucursalTienda.Visible = false;
+            btnAgregarTienda.Visible = false;
+            btnAgregarOtros.Visible = false;
+            btnModificarTienda.Visible = false;
+            btnModificarOtros.Visible = false;
+            btnEliminarTienda.Visible = false;
+            btnEliminarOtros.Visible = false;
+            btnSeleccionarTienda.Visible = false;
+            btnSeleccionarOtros.Visible = false;
+        }
+        private void mostrarElementosArticulos()
+        {
+            pbxArticulo.Visible = true;
+            pbxInsumo.Visible = false;
+        }
+        private void cargarComboBox(int TipoSucursal)
+        {
+            if(TipoSucursal == tienda)
+            {
+                listaTienda = negocio.listar(tienda);
+                cmbSucursalTienda.DataSource = listaTienda;
+            }
+            else if (TipoSucursal==fabrica)
+            {
+                listaFabricas = negocio.listar(fabrica);
+                cmbSucursalFabrica.DataSource = listaFabricas;
+            }
+            else
+            {
+                listaOtros = negocio.listar(otros);
+                cmbSucursalOtros.DataSource = listaOtros;
+            }
+        }
+
+
     }
 }

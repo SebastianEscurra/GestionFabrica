@@ -39,6 +39,7 @@
             this.pbxTitulo = new System.Windows.Forms.PictureBox();
             this.cmbCampo = new System.Windows.Forms.ComboBox();
             this.cmbCriterio = new System.Windows.Forms.ComboBox();
+            this.btnDetalles = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLupa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxTitulo)).BeginInit();
@@ -75,7 +76,7 @@
             this.btnEliminarLogico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarLogico.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarLogico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
-            this.btnEliminarLogico.Location = new System.Drawing.Point(262, 490);
+            this.btnEliminarLogico.Location = new System.Drawing.Point(250, 490);
             this.btnEliminarLogico.Name = "btnEliminarLogico";
             this.btnEliminarLogico.Size = new System.Drawing.Size(75, 23);
             this.btnEliminarLogico.TabIndex = 5;
@@ -92,7 +93,7 @@
             this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificar.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
-            this.btnModificar.Location = new System.Drawing.Point(136, 491);
+            this.btnModificar.Location = new System.Drawing.Point(131, 491);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 4;
@@ -179,12 +180,29 @@
             this.cmbCriterio.Visible = false;
             this.cmbCriterio.SelectedIndexChanged += new System.EventHandler(this.cmbCriterio_SelectedIndexChanged);
             // 
+            // btnDetalles
+            // 
+            this.btnDetalles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
+            this.btnDetalles.FlatAppearance.BorderSize = 0;
+            this.btnDetalles.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(86)))));
+            this.btnDetalles.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.btnDetalles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetalles.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
+            this.btnDetalles.Location = new System.Drawing.Point(369, 491);
+            this.btnDetalles.Name = "btnDetalles";
+            this.btnDetalles.Size = new System.Drawing.Size(75, 23);
+            this.btnDetalles.TabIndex = 22;
+            this.btnDetalles.Text = "Ver detalles";
+            this.btnDetalles.UseVisualStyleBackColor = false;
+            // 
             // frmCrud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
             this.ClientSize = new System.Drawing.Size(604, 526);
+            this.Controls.Add(this.btnDetalles);
             this.Controls.Add(this.cmbCriterio);
             this.Controls.Add(this.cmbCampo);
             this.Controls.Add(this.pbxTitulo);
@@ -220,5 +238,6 @@
         private System.Windows.Forms.PictureBox pbxTitulo;
         private System.Windows.Forms.ComboBox cmbCampo;
         private System.Windows.Forms.ComboBox cmbCriterio;
+        private System.Windows.Forms.Button btnDetalles;
     }
 }

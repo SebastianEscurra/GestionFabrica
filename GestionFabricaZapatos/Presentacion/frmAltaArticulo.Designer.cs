@@ -31,7 +31,6 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.BTnAceptar = new System.Windows.Forms.Button();
             this.lblPrecioFabricacion = new System.Windows.Forms.Label();
-            this.lblSucursal = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtPrecioFabricacion = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
@@ -90,18 +89,6 @@
             this.lblPrecioFabricacion.Size = new System.Drawing.Size(118, 14);
             this.lblPrecioFabricacion.TabIndex = 9;
             this.lblPrecioFabricacion.Text = "Precio de fabricacion:";
-            // 
-            // lblSucursal
-            // 
-            this.lblSucursal.AutoSize = true;
-            this.lblSucursal.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblSucursal.Font = new System.Drawing.Font("Gadugi", 15F, System.Drawing.FontStyle.Bold);
-            this.lblSucursal.ForeColor = System.Drawing.Color.White;
-            this.lblSucursal.Location = new System.Drawing.Point(0, 0);
-            this.lblSucursal.Name = "lblSucursal";
-            this.lblSucursal.Size = new System.Drawing.Size(89, 24);
-            this.lblSucursal.TabIndex = 10;
-            this.lblSucursal.Text = "Sucursal";
             // 
             // lblNombre
             // 
@@ -201,6 +188,7 @@
             // 
             // cmbTipoCalzado
             // 
+            this.cmbTipoCalzado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoCalzado.FormattingEnabled = true;
             this.cmbTipoCalzado.Location = new System.Drawing.Point(247, 56);
             this.cmbTipoCalzado.Name = "cmbTipoCalzado";
@@ -242,7 +230,6 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.BTnAceptar);
             this.Controls.Add(this.lblPrecioFabricacion);
-            this.Controls.Add(this.lblSucursal);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtPrecioFabricacion);
             this.Controls.Add(this.txtDescripcion);
@@ -259,7 +246,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button BTnAceptar;
         private System.Windows.Forms.Label lblPrecioFabricacion;
-        private System.Windows.Forms.Label lblSucursal;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtPrecioFabricacion;
         private System.Windows.Forms.TextBox txtDescripcion;
