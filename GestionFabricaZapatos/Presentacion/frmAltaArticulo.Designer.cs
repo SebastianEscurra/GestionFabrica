@@ -58,7 +58,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(244, 424);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 23);
-            this.btnCancelar.TabIndex = 16;
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
@@ -74,7 +74,7 @@
             this.BTnAceptar.Location = new System.Drawing.Point(132, 424);
             this.BTnAceptar.Name = "BTnAceptar";
             this.BTnAceptar.Size = new System.Drawing.Size(79, 23);
-            this.BTnAceptar.TabIndex = 15;
+            this.BTnAceptar.TabIndex = 7;
             this.BTnAceptar.Text = "Aceptar";
             this.BTnAceptar.UseVisualStyleBackColor = false;
             this.BTnAceptar.Click += new System.EventHandler(this.BTnAceptar_Click);
@@ -106,14 +106,14 @@
             this.txtPrecioFabricacion.Location = new System.Drawing.Point(361, 179);
             this.txtPrecioFabricacion.Name = "txtPrecioFabricacion";
             this.txtPrecioFabricacion.Size = new System.Drawing.Size(121, 20);
-            this.txtPrecioFabricacion.TabIndex = 12;
+            this.txtPrecioFabricacion.TabIndex = 3;
             // 
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(63, 57);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(121, 20);
-            this.txtDescripcion.TabIndex = 6;
+            this.txtDescripcion.TabIndex = 1;
             // 
             // lblModelo
             // 
@@ -142,7 +142,7 @@
             this.txtPrecioMayorista.Location = new System.Drawing.Point(361, 237);
             this.txtPrecioMayorista.Name = "txtPrecioMayorista";
             this.txtPrecioMayorista.Size = new System.Drawing.Size(121, 20);
-            this.txtPrecioMayorista.TabIndex = 20;
+            this.txtPrecioMayorista.TabIndex = 4;
             // 
             // lblPrecioComercial
             // 
@@ -160,7 +160,7 @@
             this.txtPrecioComercial.Location = new System.Drawing.Point(361, 295);
             this.txtPrecioComercial.Name = "txtPrecioComercial";
             this.txtPrecioComercial.Size = new System.Drawing.Size(121, 20);
-            this.txtPrecioComercial.TabIndex = 22;
+            this.txtPrecioComercial.TabIndex = 5;
             // 
             // lblInsumos
             // 
@@ -182,7 +182,7 @@
             this.dgvInsumosNecesarios.ReadOnly = true;
             this.dgvInsumosNecesarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvInsumosNecesarios.Size = new System.Drawing.Size(333, 290);
-            this.dgvInsumosNecesarios.TabIndex = 24;
+            this.dgvInsumosNecesarios.TabIndex = 0;
             this.dgvInsumosNecesarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInsumosNecesarios_CellClick);
             this.dgvInsumosNecesarios.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvInsumosNecesarios_CellValidating);
             // 
@@ -193,7 +193,7 @@
             this.cmbTipoCalzado.Location = new System.Drawing.Point(247, 56);
             this.cmbTipoCalzado.Name = "cmbTipoCalzado";
             this.cmbTipoCalzado.Size = new System.Drawing.Size(121, 21);
-            this.cmbTipoCalzado.TabIndex = 25;
+            this.cmbTipoCalzado.TabIndex = 2;
             // 
             // btnCalcularPrecios
             // 
@@ -207,7 +207,7 @@
             this.btnCalcularPrecios.Location = new System.Drawing.Point(367, 342);
             this.btnCalcularPrecios.Name = "btnCalcularPrecios";
             this.btnCalcularPrecios.Size = new System.Drawing.Size(108, 23);
-            this.btnCalcularPrecios.TabIndex = 33;
+            this.btnCalcularPrecios.TabIndex = 6;
             this.btnCalcularPrecios.Text = "Calcular Precios";
             this.btnCalcularPrecios.UseVisualStyleBackColor = false;
             this.btnCalcularPrecios.Click += new System.EventHandler(this.btnCalcularPrecios_Click);

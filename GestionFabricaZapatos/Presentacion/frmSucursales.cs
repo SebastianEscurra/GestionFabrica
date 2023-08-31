@@ -17,17 +17,19 @@ namespace Presentacion
     {
         // Atributos
         private string tipoPanel;
-        private Panel panelCentral;
-        private Sucursal actual;
         private int tienda=1;
         private int fabrica=2;
         private int otros=3;
+        private Panel panelCentral;
+        private Sucursal actual;
 
         private SucursalNegocio negocio = new SucursalNegocio();
         private ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+
         private List<Sucursal> listaTienda = new List<Sucursal>();
         private List<Sucursal> listaFabricas = new List<Sucursal>();
         private List<Sucursal> listaOtros = new List<Sucursal>();
+
         private Form fabricaAbierto = null; 
         private Form tiendaAbierto = null;
         private Form otrosAbierto = null;
@@ -47,6 +49,9 @@ namespace Presentacion
             {
                 mostrarElementosInsumos();
                 cargarComboBox(fabrica);
+                btnAgregarGenerico.Visible = false;
+                btnModificarGenerico.Visible = false;
+                btnEliminarGenerico.Visible = false;
             }
             else
             {
@@ -54,16 +59,13 @@ namespace Presentacion
                 cargarComboBox(tienda);
                 cargarComboBox(fabrica);
                 cargarComboBox(otros);
+                btnAgregarGenerico.Visible = true;
+                btnModificarGenerico.Visible = true;
+                btnEliminarGenerico.Visible = true;
 
             }
         }
 
-        private void btnVerTodo_Click(object sender, EventArgs e)
-        {
-            
-            
-        }
-        
         // Fabrica
         private void btnAgregarFabrica_Click(object sender, EventArgs e)
         {
@@ -96,7 +98,10 @@ namespace Presentacion
 
         private void btnSeleccionarFabrica_Click_1(object sender, EventArgs e)
         {
-            tipoPanel = "sucursalArticulos";
+            if (tipoPanel!="insumos")
+            {
+                tipoPanel = "sucursalArticulos";
+            }
             if (fabricaAbierto != null)
                 fabricaAbierto.Close();
             Sucursal SucursalSelec = (Sucursal)cmbSucursalFabrica.SelectedItem;
@@ -138,6 +143,7 @@ namespace Presentacion
 
         private void btnSeleccionarTienda_Click(object sender, EventArgs e)
         {
+            tipoPanel = "sucursalArticulos";
             if (tiendaAbierto != null)
                 tiendaAbierto.Close();
 
@@ -178,6 +184,8 @@ namespace Presentacion
 
         private void btnSeleccionarOtros_Click(object sender, EventArgs e)
         {
+            tipoPanel = "sucursalArticulos";
+
             if (otrosAbierto != null)
                 otrosAbierto.Close();
 
@@ -241,7 +249,6 @@ namespace Presentacion
             }
         }
 
-
         private void cmbEliminarItem_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbEliminarItem.Visible)
@@ -277,6 +284,8 @@ namespace Presentacion
                 }
             }
         }
+
+        //Gestion de articulos
 
         private void pbxArticulo_MouseEnter(object sender, EventArgs e)
         {

@@ -17,7 +17,7 @@ namespace Presentacion
         //Atributos
         private Insumo actual = null;
         private InsumoNegocio insumoNegocio = new InsumoNegocio();
-        private int tipoSucursal;
+        
 
         // Constructores
         public frmAltaInsumo()
@@ -40,26 +40,8 @@ namespace Presentacion
                 txtCantidad.Text = actual.Cantidad.ToString();
                 txtDescripcion.Text = actual.Descripcion;
                 txtPrecio.Text = actual.Precio.ToString();
-                /*cmbSucursal.DataSource = sucursalNegocio.listar(tipoSucursal);
-                cmbSucursal.ValueMember = "Id";
-                cmbSucursal.DisplayMember = "Descripcion";
-                cmbSucursal.SelectedValue = actual.sucursal.Id;*/
-            }/*
-            else
-            {
-                cmbSucursal.DataSource = sucursalNegocio.listar(tipoSucursal);
-                cmbSucursal.ValueMember = "Id";
-                cmbSucursal.DisplayMember = "Descripcion";
-                cmbSucursal.SelectedValue = -1;
+               
             }
-
-            if (sucursal==null) // estariamos dentro del frmVertodo
-            {
-                lblSucursalTitulo.Visible = false;
-                cmbSucursal.Visible = true;
-                lblSucursal.Visible = true;
-            }else
-                lblSucursalTitulo.Text = sucursal.Descripcion;*/
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -76,12 +58,6 @@ namespace Presentacion
             actual.Descripcion = txtDescripcion.Text;
             actual.Precio = decimal.Parse(txtPrecio.Text);
             actual.sucursal = new Sucursal();
-            /*if (sucursal == null)
-                actual.sucursal = (Sucursal)cmbSucursal.SelectedItem;
-            else
-                actual.sucursal = sucursal;*/
-
-
 
             if (actual.Id>0)
             {

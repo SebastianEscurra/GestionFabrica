@@ -24,7 +24,7 @@ namespace Presentacion
 
         private List<Insumo> listaInsumos;
         private List<Articulo> listaArticulos;
-        List<RelacionSucursalArticulo> listaRelacion;
+        private List<RelacionSucursalArticulo> listaRelacion;
 
         private InsumoNegocio insumoNegocio=new InsumoNegocio();
         private ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -69,7 +69,6 @@ namespace Presentacion
             cmbCampo.Items.Add("Precio");
             cmbCampo.Items.Add("Cantidad");
         }
-
 
         private void btnAgregar_Click(object sender, EventArgs e) 
         {

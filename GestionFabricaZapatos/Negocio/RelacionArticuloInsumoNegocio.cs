@@ -45,6 +45,36 @@ namespace Negocio
                 dato.cerrarConexion();
             }
         }
+        public List<RelacionArticuloInsumo> listarInsumos(Articulo articulo)
+        {
+            List<RelacionArticuloInsumo> listaRelacion = new List<RelacionArticuloInsumo>();
+            try
+            {
+                dato.setearConsulta("select r.IdInsumo idInsumo,i.Descripcion nombre,r.Cantidad cantidad from RelacionArticuloInsumo r,Insumo i where r.IdInsumo=i.Id and r.IdArticulo="+articulo.Id+"");
+                dato.ejecutarLectura();
+
+                while (dato.Lector.Read())
+                {
+                    RelacionArticuloInsumo aux = new RelacionArticuloInsumo();
+
+                    aux.IdInsumo = (int)dato.Lector["idInsumo"];
+                    aux.Insumo = (string)dato.Lector["nombre"];
+                    aux.Cantidad = (int)dato.Lector["cantidad"];
+                    
+                     
+                    listaRelacion.Add(aux);
+                }
+                return listaRelacion;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                dato.cerrarConexion();
+            }
+        }
         public void agregar(RelacionArticuloInsumo nuevo)
         {
             try
