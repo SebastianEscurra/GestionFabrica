@@ -16,7 +16,7 @@ namespace Negocio
 			try
 			{
 				List<RelacionSucursalArticulo> listaRelacion = new List<RelacionSucursalArticulo>();
-				dato.setearConsulta("select r.Id IdRelacion,r.IdSucursal,s.Descripcion nombreSucursal,r.IdArticulo,a.Nombre nombreArticulo,r.Cantidad cantidadArticulo,r.StockCompleto from RelacionSucursalArticulo r,Sucursal s,Articulo a where r.IdSucursal=1 and r.IdArticulo=a.Id and r.IdSucursal=s.Id");
+				dato.setearConsulta("select r.Id IdRelacion,r.IdSucursal,s.Descripcion nombreSucursal,r.IdArticulo,a.Nombre nombreArticulo,r.Cantidad cantidadArticulo from RelacionSucursalArticulo r,Sucursal s,Articulo a where r.IdSucursal=1 and r.IdArticulo=a.Id and r.IdSucursal=s.Id");
 
 				dato.ejecutarLectura();
 
@@ -32,7 +32,6 @@ namespace Negocio
 					aux.Articulo.Id = (int)dato.Lector["IdArticulo"];
 					aux.Articulo.Nombre = (string)dato.Lector["nombreArticulo"];
 					aux.Cantidad = (int)dato.Lector["cantidadArticulo"];
-					aux.StockCompleto = (bool)dato.Lector["StockCompleto"];
 					listaRelacion.Add(aux);
 				}
 
@@ -53,12 +52,11 @@ namespace Negocio
 		{
 			try
 			{
-				dato.setearConsulta("insert into RelacionSucursalArticulo values (@id,@idSucursal,@idArticulo,@cantidad,@stockCompleto)");
+				dato.setearConsulta("insert into RelacionSucursalArticulo values (@id,@idSucursal,@idArticulo,@cantidad)");
 				dato.setearParametro("@id", nuevo.Id);
 				dato.setearParametro("@idSucursal", nuevo.Sucursal.Id);
 				dato.setearParametro("@idArticulo", nuevo.Articulo.Id);
 				dato.setearParametro("@cantidad", nuevo.Cantidad);
-				dato.setearParametro("@stockCompleto", nuevo.StockCompleto);
 
 				dato.ejecutarAccion();
 			}

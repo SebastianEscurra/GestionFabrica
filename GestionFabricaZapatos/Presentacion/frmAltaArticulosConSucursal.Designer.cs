@@ -35,8 +35,8 @@
             this.lblArticulo = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.lblInsumosNecesarios = new System.Windows.Forms.Label();
-            this.dgvInsumosNecesarios = new System.Windows.Forms.DataGridView();
             this.lblSucursal = new System.Windows.Forms.Label();
+            this.dgvInsumosNecesarios = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInsumosNecesarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +47,8 @@
             this.cmbArticulo.Location = new System.Drawing.Point(71, 61);
             this.cmbArticulo.Name = "cmbArticulo";
             this.cmbArticulo.Size = new System.Drawing.Size(121, 21);
-            this.cmbArticulo.TabIndex = 31;
+            this.cmbArticulo.TabIndex = 1;
+            this.cmbArticulo.SelectedIndexChanged += new System.EventHandler(this.cmbArticulo_SelectedIndexChanged);
             // 
             // lblCantidad
             // 
@@ -72,9 +73,10 @@
             this.btnCancelar.Location = new System.Drawing.Point(265, 401);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 23);
-            this.btnCancelar.TabIndex = 29;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // BTnAceptar
             // 
@@ -88,7 +90,7 @@
             this.BTnAceptar.Location = new System.Drawing.Point(153, 401);
             this.BTnAceptar.Name = "BTnAceptar";
             this.BTnAceptar.Size = new System.Drawing.Size(79, 23);
-            this.BTnAceptar.TabIndex = 28;
+            this.BTnAceptar.TabIndex = 3;
             this.BTnAceptar.Text = "Aceptar";
             this.BTnAceptar.UseVisualStyleBackColor = false;
             // 
@@ -108,7 +110,8 @@
             this.txtCantidad.Location = new System.Drawing.Point(71, 103);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(121, 20);
-            this.txtCantidad.TabIndex = 26;
+            this.txtCantidad.TabIndex = 2;
+            this.txtCantidad.TextChanged += new System.EventHandler(this.txtCantidad_TextChanged);
             // 
             // lblInsumosNecesarios
             // 
@@ -121,16 +124,6 @@
             this.lblInsumosNecesarios.TabIndex = 32;
             this.lblInsumosNecesarios.Text = "Insumos necesarios:";
             // 
-            // dgvInsumosNecesarios
-            // 
-            this.dgvInsumosNecesarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInsumosNecesarios.Location = new System.Drawing.Point(12, 172);
-            this.dgvInsumosNecesarios.Name = "dgvInsumosNecesarios";
-            this.dgvInsumosNecesarios.ReadOnly = true;
-            this.dgvInsumosNecesarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInsumosNecesarios.Size = new System.Drawing.Size(332, 207);
-            this.dgvInsumosNecesarios.TabIndex = 33;
-            // 
             // lblSucursal
             // 
             this.lblSucursal.AutoSize = true;
@@ -142,14 +135,22 @@
             this.lblSucursal.TabIndex = 34;
             this.lblSucursal.Text = "Sucursal";
             // 
+            // dgvInsumosNecesarios
+            // 
+            this.dgvInsumosNecesarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInsumosNecesarios.Location = new System.Drawing.Point(12, 167);
+            this.dgvInsumosNecesarios.Name = "dgvInsumosNecesarios";
+            this.dgvInsumosNecesarios.Size = new System.Drawing.Size(332, 228);
+            this.dgvInsumosNecesarios.TabIndex = 0;
+            // 
             // frmAltaArticulosConSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
             this.ClientSize = new System.Drawing.Size(518, 460);
-            this.Controls.Add(this.lblSucursal);
             this.Controls.Add(this.dgvInsumosNecesarios);
+            this.Controls.Add(this.lblSucursal);
             this.Controls.Add(this.lblInsumosNecesarios);
             this.Controls.Add(this.cmbArticulo);
             this.Controls.Add(this.lblCantidad);
@@ -175,7 +176,7 @@
         private System.Windows.Forms.Label lblArticulo;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label lblInsumosNecesarios;
-        private System.Windows.Forms.DataGridView dgvInsumosNecesarios;
         private System.Windows.Forms.Label lblSucursal;
+        private System.Windows.Forms.DataGridView dgvInsumosNecesarios;
     }
 }

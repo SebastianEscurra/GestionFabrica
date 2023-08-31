@@ -12,6 +12,5 @@ namespace Dominio
         public Sucursal Sucursal { get; set; }
         public Articulo Articulo { get; set; }
         public int Cantidad { get; set; }
-        public bool StockCompleto { get; set; }
     }
 }

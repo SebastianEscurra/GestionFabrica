@@ -180,6 +180,7 @@ namespace Presentacion
             }
 
         }
+
         private void btnCalcularPrecios_Click(object sender, EventArgs e)
         {
             List<Insumo> auxInsumos = new List<Insumo>();
@@ -199,6 +200,7 @@ namespace Presentacion
 
             calcularPrecios(auxInsumos);
         }
+
         private void dgvInsumosNecesarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 3)
@@ -236,6 +238,7 @@ namespace Presentacion
             txtPrecioComercial.Text = precioComercial.ToString("00");
             txtPrecioMayorista.Text = precioMayorista.ToString("00");
         }
+
         private void limpiarControles()
         {
             articuloActual = null;
@@ -247,10 +250,6 @@ namespace Presentacion
             txtPrecioMayorista.Text = "";
             txtPrecioComercial.Text = "";
         }
-
-
-
-
 
     }
 }

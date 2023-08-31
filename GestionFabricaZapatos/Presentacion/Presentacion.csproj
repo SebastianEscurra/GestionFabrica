@@ -70,18 +70,6 @@
     <Compile Include="frmAltaSucursal.Designer.cs">
       <DependentUpon>frmAltaSucursal.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmArticulos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmArticulos.Designer.cs">
-      <DependentUpon>FrmArticulos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmCalcularPrecioArticulo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCalcularPrecioArticulo.Designer.cs">
-      <DependentUpon>frmCalcularPrecioArticulo.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmCrud.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,12 +101,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAltaSucursal.resx">
       <DependentUpon>frmAltaSucursal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmArticulos.resx">
-      <DependentUpon>FrmArticulos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCalcularPrecioArticulo.resx">
-      <DependentUpon>frmCalcularPrecioArticulo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCrud.resx">
       <DependentUpon>frmCrud.cs</DependentUpon>

@@ -40,10 +40,20 @@ namespace Helper
             grid.Columns["Id"].Visible = false;
             grid.Columns["Activo"].Visible = false;
         }
-        static public void mostrarGrid(DataGridView grid, List<RelacionSucursalArticulo> listaRelacion)
+        static public void mostrarGrid(DataGridView grid, List<RelacionSucursalArticulo> listaRelacionSucursalarticulo)
         {
-            grid.DataSource = listaRelacion;
+            grid.DataSource = listaRelacionSucursalarticulo;
             grid.Columns["Id"].Visible = false;
+        }
+        static public void mostrarGrid(DataGridView grid, List<RelacionArticuloInsumo> listaRelacionArticuloInsumo)
+        {
+            grid.DataSource = listaRelacionArticuloInsumo;
+            grid.Columns["Id"].Visible = false;
+            grid.Columns["IdArticulo"].Visible = false;
+            grid.Columns["IdInsumo"].Visible = false;
+            grid.Columns["Articulo"].Visible = false;
+
+
         }
     }
     static public class HelpPicture

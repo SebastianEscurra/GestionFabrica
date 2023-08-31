@@ -15,9 +15,13 @@ namespace Presentacion
 {
     public partial class frmAltaSucursal : Form
     {
-        private SucursalNegocio sucursalNegocio = new SucursalNegocio();
-        private Sucursal actual = null;
+        // Atributos
         private int tipoSucursal;
+
+        private Sucursal actual = null;
+        private SucursalNegocio sucursalNegocio = new SucursalNegocio();
+
+        // Constructores
         public frmAltaSucursal(int tipoSucursal)
         {
             InitializeComponent();
@@ -29,6 +33,7 @@ namespace Presentacion
             this.actual = actual;
         }
 
+        // Eventos
         private void frmAltaSucursal_Load(object sender, EventArgs e)
         {
             string imagenFabrica = "C:\\GIPCE-App\\14 boton fabrica.png";

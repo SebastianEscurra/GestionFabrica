@@ -122,7 +122,6 @@
             this.btnVerTodo.Size = new System.Drawing.Size(35, 35);
             this.btnVerTodo.TabIndex = 11;
             this.btnVerTodo.UseVisualStyleBackColor = true;
-            this.btnVerTodo.Click += new System.EventHandler(this.btnVerTodo_Click);
             // 
             // btnModificarFabrica
             // 
