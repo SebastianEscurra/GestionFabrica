@@ -52,8 +52,7 @@ namespace Negocio
 		{
 			try
 			{
-				dato.setearConsulta("insert into RelacionSucursalArticulo values (@id,@idSucursal,@idArticulo,@cantidad)");
-				dato.setearParametro("@id", nuevo.Id);
+				dato.setearConsulta("insert into RelacionSucursalArticulo values (@idSucursal,@idArticulo,@cantidad)");
 				dato.setearParametro("@idSucursal", nuevo.Sucursal.Id);
 				dato.setearParametro("@idArticulo", nuevo.Articulo.Id);
 				dato.setearParametro("@cantidad", nuevo.Cantidad);

@@ -121,6 +121,7 @@ namespace Presentacion
                     
                     foreach (var item in auxListaRelacion) // uno a uno cargamos las relaciones a la DB
                     {
+                        item.IdArticulo = articuloActual.Id;
                         relacionNegocio.agregar(item);
                     }
                     MessageBox.Show("Relacion ArticuloInsumo Agregada");

@@ -23,8 +23,10 @@ namespace Presentacion
         private ArticuloNegocio articuloNegocio= new ArticuloNegocio();
         private RelacionArticuloInsumoNegocio relacionNegocio = new RelacionArticuloInsumoNegocio();
         private InsumoNegocio insumoNegocio = new InsumoNegocio();
+        private RelacionSucursalArticuloNegocio relacionSucursalArtNegocio = new RelacionSucursalArticuloNegocio();
 
         private List<RelacionArticuloInsumo> listaRelacion;
+        private List<Insumo> listaInsumoActual;
 
         // Constructores
 
@@ -32,14 +34,19 @@ namespace Presentacion
         {
             InitializeComponent();
             this.sucursal = sucursal;
+            lblSucursal.Text = sucursal.Descripcion;
+            cmbArticulo.DataSource = articuloNegocio.listar();
+
+            listaInsumoActual = new List<Insumo>();
+            cargarInsumosDeSucursal();
         }
 
         // Eventos
 
         private void frmAltaArticulosConSucursal_Load(object sender, EventArgs e)
         {
-            lblSucursal.Text = sucursal.Descripcion;
-            cmbArticulo.DataSource = articuloNegocio.listar();
+            
+
         }
 
         private void cmbArticulo_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,18 +60,18 @@ namespace Presentacion
 
         private void txtCantidad_TextChanged(object sender, EventArgs e)
         {
-            List<RelacionArticuloInsumo> aux = relacionNegocio.listarInsumos(actual);
+            List<RelacionArticuloInsumo> listaRelacionActual = relacionNegocio.listarInsumos(actual);
             if (txtCantidad.Text != "")
             {
-                foreach (var item in aux)
+                foreach (var relacion in listaRelacionActual)
                 {
-                    item.Cantidad *= int.Parse(txtCantidad.Text);
+                    relacion.Cantidad *= int.Parse(txtCantidad.Text);
                 }
             }
 
-            verificarStockDisponible(aux);
+            verificarStockDisponible(listaRelacionActual);
 
-            HelpGrid.mostrarGrid(dgvInsumosNecesarios, aux);
+            HelpGrid.mostrarGrid(dgvInsumosNecesarios, listaRelacionActual);
 
         }
 
@@ -75,23 +82,66 @@ namespace Presentacion
         
         //Metodos
 
-        private void verificarStockDisponible(List<RelacionArticuloInsumo> aux)
+        private void verificarStockDisponible(List<RelacionArticuloInsumo> listaRelacionActual)
         {
-            foreach (var insumoGeneral in insumoNegocio.listar())
+            foreach (var relacion in listaRelacionActual) 
             {
-                foreach (var relacion in aux)
+                foreach (var insumoActual in listaInsumoActual)
                 {
-                    if (relacion.IdInsumo == insumoGeneral.Id)
+                    if (relacion.IdInsumo == insumoActual.Id)
                     {
-                        if (relacion.Cantidad <= insumoGeneral.Cantidad)
+                        if (relacion.Cantidad <= insumoActual.Cantidad)
+                        {
                             relacion.StocDisponible = true;
+                            relacion.Observaciones = "";
+                        }
                         else
+                        {
                             relacion.StocDisponible = false;
+                            relacion.Observaciones = "El stock disponible no alcanza";
+                        }
+                        break;
                     }
+                    else
+                    {
+                        relacion.StocDisponible = false;
+                        relacion.Observaciones = "Insumo no disponible en esta sucursal";
+                    }
+                 
                 }
+
+
             }// corroboramos si hay stock para fabricar el articulo
 
         }
+        private void cargarInsumosDeSucursal()
+        {
+            foreach (var item in insumoNegocio.listar())
+            {
+                if (item.sucursal.Id == sucursal.Id)
+                {
+                    listaInsumoActual.Add(item);
+                }
+            }
+        }
 
+        private void BTnAceptar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RelacionSucursalArticulo nuevo = new RelacionSucursalArticulo();
+                nuevo.Articulo = (Articulo)cmbArticulo.SelectedItem;
+                nuevo.Cantidad = int.Parse(txtCantidad.Text);
+                nuevo.Sucursal = sucursal;
+                relacionSucursalArtNegocio.agregar(nuevo);
+                MessageBox.Show("Articulo agregado asucursal");
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

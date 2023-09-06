@@ -79,7 +79,7 @@ namespace Negocio
 
             try
             {
-                dato.setearConsulta("insert into Articulo(Nombre,PecioFabricacion,PrecioComercial,PrecioMayorista,IdTipo,Activo) values(@nombre,@cantidad,@precioFabricacion,@precioComercial,@precioMayorista,@IdTipo,@Activo)");
+                dato.setearConsulta("insert into Articulo(Nombre,PecioFabricacion,PrecioComercial,PrecioMayorista,IdTipo,Activo) values(@nombre,@precioFabricacion,@precioComercial,@precioMayorista,@IdTipo,@Activo)");
                 dato.setearParametro("@nombre",nuevo.Nombre);
                 dato.setearParametro("@precioFabricacion", nuevo.PrecioFabricacion);
                 dato.setearParametro("@precioComercial", nuevo.PrecioComercial);
