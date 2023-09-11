@@ -49,9 +49,6 @@ namespace Presentacion
             {
                 mostrarElementosInsumos();
                 cargarComboBox(fabrica);
-                btnAgregarGenerico.Visible = false;
-                btnModificarGenerico.Visible = false;
-                btnEliminarGenerico.Visible = false;
             }
             else
             {
@@ -59,10 +56,6 @@ namespace Presentacion
                 cargarComboBox(tienda);
                 cargarComboBox(fabrica);
                 cargarComboBox(otros);
-                btnAgregarGenerico.Visible = true;
-                btnModificarGenerico.Visible = true;
-                btnEliminarGenerico.Visible = true;
-
             }
         }
 
@@ -98,15 +91,20 @@ namespace Presentacion
 
         private void btnSeleccionarFabrica_Click_1(object sender, EventArgs e)
         {
-            if (tipoPanel!="insumos")
+            if (tipoPanel=="insumos")
+            {
+                tipoPanel = "sucursalInsumos";
+            }
+            else
             {
                 tipoPanel = "sucursalArticulos";
+
             }
             if (fabricaAbierto != null)
                 fabricaAbierto.Close();
             Sucursal SucursalSelec = (Sucursal)cmbSucursalFabrica.SelectedItem;
-            frmCrud frmInsumo= new frmCrud(SucursalSelec, tipoPanel);
-            fabricaAbierto= HelpForm.abrirFormHijo(panelCentral,frmInsumo);
+            frmCrud frmCrud= new frmCrud(SucursalSelec, tipoPanel);
+            fabricaAbierto= HelpForm.abrirFormHijo(panelCentral,frmCrud);
 
         }
 
@@ -194,98 +192,8 @@ namespace Presentacion
             tiendaAbierto = HelpForm.abrirFormHijo(panelCentral, crudOtros);
         }
 
-        // Genericos
 
-        private void btnAgregarGenerico_Click(object sender, EventArgs e)
-        {
-            if (tipoPanel=="insumos")
-            {
-
-            }
-            else
-            {
-                frmAltaArticulo altaArticulo = new frmAltaArticulo();
-                altaArticulo.ShowDialog();
-            }
-        }
-
-        private void btnModificarGenerico_Click(object sender, EventArgs e)
-        {
-            if (tipoPanel == "insumos")
-            {
-                
-            }
-            else
-            {
-                cmbEliminarItem.Visible = false;
-                cmbSeleccionarItem.DataSource = articuloNegocio.listar();
-                cmbSeleccionarItem.Visible = true;
-            }
-        }
-
-        private void cmbSeleccionarItem_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbSeleccionarItem.Visible)
-            {
-                Articulo seleccionado = (Articulo)cmbSeleccionarItem.SelectedItem;
-                frmAltaArticulo altaArticulo = new frmAltaArticulo(seleccionado);
-                altaArticulo.ShowDialog();
-                cmbSeleccionarItem.Visible = false;
-                cmbSeleccionarItem.DataSource = articuloNegocio.listar();
-            }
-        }
-
-        private void btnEliminarGenerico_Click(object sender, EventArgs e)
-        {
-            if (tipoPanel == "insumos")
-            {
-
-            }
-            else
-            {
-                cmbSeleccionarItem.Visible = false;
-                cmbEliminarItem.DataSource = articuloNegocio.listar();
-                cmbEliminarItem.Visible = true;
-            }
-        }
-
-        private void cmbEliminarItem_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbEliminarItem.Visible)
-            {
-                if (tipoPanel == "insumos")
-                {
-                    /*Insumo seleccionado = (Insumo)dgvInventario.CurrentRow.DataBoundItem;
-
-                    DialogResult resultado = MessageBox.Show("¿Desea eliminar el insumo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-
-                    if (resultado == DialogResult.Yes)
-                    {
-                        insumoNegocio.eliminar(seleccionado.Id);
-                        MessageBox.Show("Eliminado Exitosamente");
-                    }
-                    actualizarListaInsumo();
-                    HelpGrid.mostrarGrid(dgvInventario, listaInsumos);*/
-                }
-                else
-                {
-
-                    Articulo seleccionado = (Articulo)cmbEliminarItem.SelectedItem;
-
-                    DialogResult resultado = MessageBox.Show("¿Desea eliminar el Articulo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-
-                    if (resultado == DialogResult.Yes)
-                    {
-                        articuloNegocio.eliminarLogico(seleccionado.Id);
-                        MessageBox.Show("Eliminado Exitosamente");
-                        cmbEliminarItem.Visible = false;
-                        cmbEliminarItem.DataSource = articuloNegocio.listar();
-                    }
-                }
-            }
-        }
-
-        //Gestion de articulos
+        // Gestion de articulos
 
         private void pbxArticulo_MouseEnter(object sender, EventArgs e)
         {
@@ -314,6 +222,30 @@ namespace Presentacion
             HelpPicture.cargarImagen(pbxArticulo, "C:\\GIPCE-App\\Engranaje.png");
         }
 
+        // Gestion de insumos
+        private void pbxInsumo_MouseEnter(object sender, EventArgs e)
+        {
+            HelpPicture.cargarImagen(pbxInsumo, "C:\\GIPCE-App\\Engranaje.png");
+
+        }
+        private void pbxInsumo_MouseDown(object sender, MouseEventArgs e)
+        {
+            HelpPicture.cargarImagen(pbxInsumo, "C:\\GIPCE-App\\engranaje 2.png");
+            tipoPanel = "insumos";
+            if (fabricaAbierto != null) // Si es = null hay un panel abierto, entonces lo cierra evitando que se generen muchas instancias del mismo frm.
+                fabricaAbierto.Close();
+            frmCrud crudArticulos = new frmCrud(tipoPanel);
+            fabricaAbierto = HelpForm.abrirFormHijo(panelCentral, crudArticulos);
+        } //abre panel crud con los insumos sin relacion con sucursal
+        private void pbxInsumo_MouseLeave(object sender, EventArgs e)
+        {
+            HelpPicture.cargarImagen(pbxInsumo, "C:\\GIPCE-App\\12 insumo.png");
+        }
+        private void pbxInsumo_MouseUp(object sender, MouseEventArgs e)
+        {
+            HelpPicture.cargarImagen(pbxInsumo, "C:\\GIPCE-App\\Engranaje.png");
+
+        }
 
         // Metodos
         private void mostrarElementosInsumos()
@@ -357,7 +289,6 @@ namespace Presentacion
                 cmbSucursalOtros.DataSource = listaOtros;
             }
         }
-
 
     }
 }

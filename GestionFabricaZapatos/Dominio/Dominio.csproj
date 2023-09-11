@@ -49,6 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelacionArticuloInsumo.cs" />
     <Compile Include="RelacionSucursalArticulo.cs" />
+    <Compile Include="RelacionSucursal_Insumo.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="Sucursal.cs" />
     <Compile Include="TipoCalzado.cs" />

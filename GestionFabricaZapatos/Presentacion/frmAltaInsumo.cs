@@ -48,16 +48,18 @@ namespace Presentacion
         {
             this.Close();
         }
+
         private void BTnAceptar_Click(object sender, EventArgs e)
         {
             if (actual == null)
                 actual = new Insumo();
 
             
-            actual.Cantidad = int.Parse(txtCantidad.Text);
+            actual.Cantidad = double.Parse(txtCantidad.Text);
             actual.Descripcion = txtDescripcion.Text;
             actual.Precio = decimal.Parse(txtPrecio.Text);
-            actual.sucursal = new Sucursal();
+            actual.PrecioUnidad = decimal.Parse(txtPrecioUnidad.Text);
+            
 
             if (actual.Id>0)
             {
@@ -68,6 +70,22 @@ namespace Presentacion
             {
                 insumoNegocio.agregar(actual);
                 MessageBox.Show("Agregado Exitosamente");
+            }
+        }
+
+        private void txtPrecio_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPrecio.Text != "" && txtCantidad.Text != "")
+            {
+                txtPrecioUnidad.Text = (double.Parse(txtPrecio.Text) / double.Parse(txtCantidad.Text)).ToString(); 
+            }
+        }
+
+        private void txtCantidad_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPrecio.Text != "" && txtCantidad.Text != "")
+            {
+                txtPrecioUnidad.Text = (double.Parse(txtPrecio.Text) / double.Parse(txtCantidad.Text)).ToString();
             }
         }
     }

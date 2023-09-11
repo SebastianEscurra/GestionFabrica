@@ -19,6 +19,7 @@ namespace Presentacion
 
         private Sucursal sucursal;
         private Articulo actual;
+        private RelacionSucursalArticulo relacionActual=null;
 
         private ArticuloNegocio articuloNegocio= new ArticuloNegocio();
         private RelacionArticuloInsumoNegocio relacionNegocio = new RelacionArticuloInsumoNegocio();
@@ -26,7 +27,7 @@ namespace Presentacion
         private RelacionSucursalArticuloNegocio relacionSucursalArtNegocio = new RelacionSucursalArticuloNegocio();
 
         private List<RelacionArticuloInsumo> listaRelacion;
-        private List<Insumo> listaInsumoActual;
+        private List<Insumo> listaInsumo;
 
         // Constructores
 
@@ -37,15 +38,39 @@ namespace Presentacion
             lblSucursal.Text = sucursal.Descripcion;
             cmbArticulo.DataSource = articuloNegocio.listar();
 
-            listaInsumoActual = new List<Insumo>();
-            cargarInsumosDeSucursal();
+            listaInsumo = insumoNegocio.listar(); ;
+            
+        }
+        public frmAltaArticulosConSucursal(Sucursal sucursal,RelacionSucursalArticulo relacionActual)
+        {
+            InitializeComponent();
+            this.sucursal = sucursal;
+            lblSucursal.Text = sucursal.Descripcion;
+            cmbArticulo.DataSource = articuloNegocio.listar();
+            this.relacionActual = relacionActual;
+            listaInsumo = insumoNegocio.listar(); ;
+
         }
 
         // Eventos
 
         private void frmAltaArticulosConSucursal_Load(object sender, EventArgs e)
         {
-            
+            if (relacionActual!=null)
+            {
+                cmbArticulo.ValueMember = "Id";
+                cmbArticulo.DisplayMember=  "Nombre";
+                cmbArticulo.SelectedValue = relacionActual.Articulo.Id;
+               
+                txtCantidad.Text = relacionActual.Cantidad.ToString();
+
+                List<RelacionArticuloInsumo> listaRelacionActual = relacionNegocio.listarInsumos(actual);
+
+                calcularCantidadInsumos(listaRelacionActual);
+                verificarStockDisponible(listaRelacionActual);
+
+                HelpGrid.mostrarGrid(dgvInsumosNecesarios, listaRelacionActual);
+            }
 
         }
 
@@ -61,70 +86,20 @@ namespace Presentacion
         private void txtCantidad_TextChanged(object sender, EventArgs e)
         {
             List<RelacionArticuloInsumo> listaRelacionActual = relacionNegocio.listarInsumos(actual);
-            if (txtCantidad.Text != "")
-            {
-                foreach (var relacion in listaRelacionActual)
-                {
-                    relacion.Cantidad *= int.Parse(txtCantidad.Text);
-                }
-            }
-
+      
+            calcularCantidadInsumos(listaRelacionActual);
             verificarStockDisponible(listaRelacionActual);
 
             HelpGrid.mostrarGrid(dgvInsumosNecesarios, listaRelacionActual);
 
         }
 
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
         
-        //Metodos
-
-        private void verificarStockDisponible(List<RelacionArticuloInsumo> listaRelacionActual)
-        {
-            foreach (var relacion in listaRelacionActual) 
-            {
-                foreach (var insumoActual in listaInsumoActual)
-                {
-                    if (relacion.IdInsumo == insumoActual.Id)
-                    {
-                        if (relacion.Cantidad <= insumoActual.Cantidad)
-                        {
-                            relacion.StocDisponible = true;
-                            relacion.Observaciones = "";
-                        }
-                        else
-                        {
-                            relacion.StocDisponible = false;
-                            relacion.Observaciones = "El stock disponible no alcanza";
-                        }
-                        break;
-                    }
-                    else
-                    {
-                        relacion.StocDisponible = false;
-                        relacion.Observaciones = "Insumo no disponible en esta sucursal";
-                    }
-                 
-                }
-
-
-            }// corroboramos si hay stock para fabricar el articulo
-
-        }
-        private void cargarInsumosDeSucursal()
-        {
-            foreach (var item in insumoNegocio.listar())
-            {
-                if (item.sucursal.Id == sucursal.Id)
-                {
-                    listaInsumoActual.Add(item);
-                }
-            }
-        }
-
         private void BTnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -143,5 +118,47 @@ namespace Presentacion
                 throw ex;
             }
         }
+
+
+        //Metodos
+        private void calcularCantidadInsumos(List<RelacionArticuloInsumo> listaRelacionActual)
+        {
+            
+            if (txtCantidad.Text != "")
+            {
+                foreach (var relacion in listaRelacionActual)
+                {
+                    relacion.Cantidad *= int.Parse(txtCantidad.Text);
+                }
+            }
+        }
+
+        private void verificarStockDisponible(List<RelacionArticuloInsumo> listaRelacionActual)
+        {
+            foreach (var relacion in listaRelacionActual) 
+            {
+                foreach (var insumoActual in listaInsumo)
+                {
+                    if (relacion.IdInsumo == insumoActual.Id)
+                    {
+                        if (relacion.Cantidad <= insumoActual.Cantidad)
+                        {
+                            relacion.StocDisponible = true;
+                            relacion.Observaciones = "";
+                        }
+                        else
+                        {
+                            relacion.StocDisponible = false;
+                            relacion.Observaciones = "El stock disponible no alcanza";
+                        }
+                        break;
+                    }
+                }
+
+
+            }// corroboramos si hay stock para fabricar el articulo
+
+        }
+  
     }
 }

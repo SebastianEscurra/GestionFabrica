@@ -16,7 +16,7 @@ namespace Negocio
 			try
 			{
 				List<RelacionSucursalArticulo> listaRelacion = new List<RelacionSucursalArticulo>();
-				dato.setearConsulta("select r.Id IdRelacion,r.IdSucursal,s.Descripcion nombreSucursal,r.IdArticulo,a.Nombre nombreArticulo,r.Cantidad cantidadArticulo from RelacionSucursalArticulo r,Sucursal s,Articulo a where r.IdSucursal=1 and r.IdArticulo=a.Id and r.IdSucursal=s.Id");
+				dato.setearConsulta("select r.Id IdRelacion,r.IdSucursal,s.Descripcion nombreSucursal,r.IdArticulo,a.Nombre nombreArticulo,r.Cantidad cantidadArticulo from RelacionSucursalArticulo r,Sucursal s,Articulo a where r.IdSucursal="+sucursal.Id+" and r.IdArticulo=a.Id and r.IdSucursal=s.Id ");
 
 				dato.ejecutarLectura();
 

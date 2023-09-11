@@ -139,8 +139,10 @@
             // dgvInsumosNecesarios
             // 
             this.dgvInsumosNecesarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInsumosNecesarios.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvInsumosNecesarios.Location = new System.Drawing.Point(12, 167);
             this.dgvInsumosNecesarios.Name = "dgvInsumosNecesarios";
+            this.dgvInsumosNecesarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInsumosNecesarios.Size = new System.Drawing.Size(429, 228);
             this.dgvInsumosNecesarios.TabIndex = 0;
             // 

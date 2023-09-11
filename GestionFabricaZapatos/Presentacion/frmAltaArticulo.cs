@@ -32,7 +32,6 @@ namespace Presentacion
 
         private List<TipoCalzado> listaTipoCalzado;
         private List<Insumo> listaInsumo;
-        private List<Insumo> listaInsumoAgregados=new List<Insumo>();
 
         // Constructores
         public frmAltaArticulo()
@@ -78,16 +77,7 @@ namespace Presentacion
                 txtPrecioComercial.Text = articuloActual.PrecioComercial.ToString();
                 txtPrecioFabricacion.Text = articuloActual.PrecioFabricacion.ToString();
                 txtPrecioMayorista.Text = articuloActual.Preciomayorista.ToString();
-                foreach (var itemRel in listaRelacionActual)
-                {
-                    foreach (var itemIns in listaInsumo)
-                    {
-                        if (itemIns.Id==itemRel.IdInsumo)
-                        {
-                            listaInsumoAgregados.Add(itemIns);
-                        }
-                    }
-                } // cargamos la lista de insumos agregados
+                
                 
 
                 cmbTipoCalzado.DisplayMember= "Descripcion";
@@ -245,7 +235,6 @@ namespace Presentacion
             articuloActual = null;
             listaRelacionActual = null;
             auxListaRelacion = new List<RelacionArticuloInsumo>();
-            listaInsumoAgregados = new List<Insumo>();
             txtDescripcion.Text = "";
             txtPrecioFabricacion.Text = "";
             txtPrecioMayorista.Text = "";
