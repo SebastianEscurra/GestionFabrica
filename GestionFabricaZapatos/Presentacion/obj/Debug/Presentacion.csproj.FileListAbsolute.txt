@@ -15,7 +15,6 @@ C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabri
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\bin\Debug\Negocio.pdb
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\bin\Debug\Datos.pdb
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.csproj.CopyComplete
-C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.FrmArticulos.resources
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.frmPrincipal.resources
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.frmSucursales.resources
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\bin\Debug\Helper.dll
@@ -25,3 +24,4 @@ C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabri
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.frmAltaSucursal.resources
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.frmAltaArticulo.resources
 C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.frmAltaArticulosConSucursal.resources
+C:\Users\Sebastian\Desktop\Repositorios Programacion\GestionFabrica\GestionFabricaZapatos\Presentacion\obj\Debug\Presentacion.frmAltaInsumosConSucursal.resources

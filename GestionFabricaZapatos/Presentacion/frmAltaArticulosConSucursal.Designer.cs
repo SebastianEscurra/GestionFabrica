@@ -93,6 +93,7 @@
             this.BTnAceptar.TabIndex = 3;
             this.BTnAceptar.Text = "Aceptar";
             this.BTnAceptar.UseVisualStyleBackColor = false;
+            this.BTnAceptar.Click += new System.EventHandler(this.BTnAceptar_Click);
             // 
             // lblArticulo
             // 
@@ -138,9 +139,11 @@
             // dgvInsumosNecesarios
             // 
             this.dgvInsumosNecesarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInsumosNecesarios.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvInsumosNecesarios.Location = new System.Drawing.Point(12, 167);
             this.dgvInsumosNecesarios.Name = "dgvInsumosNecesarios";
-            this.dgvInsumosNecesarios.Size = new System.Drawing.Size(332, 228);
+            this.dgvInsumosNecesarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvInsumosNecesarios.Size = new System.Drawing.Size(429, 228);
             this.dgvInsumosNecesarios.TabIndex = 0;
             // 
             // frmAltaArticulosConSucursal

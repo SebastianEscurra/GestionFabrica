@@ -24,11 +24,13 @@ namespace Presentacion
 
         private List<Insumo> listaInsumos;
         private List<Articulo> listaArticulos;
-        private List<RelacionSucursalArticulo> listaRelacion;
+        private List<RelacionSucursalArticulo> listaRelacionArticulos;
+        private List<RelacionSucursal_Insumo> listaRelacionInsumos;
 
         private InsumoNegocio insumoNegocio=new InsumoNegocio();
         private ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-        private RelacionSucursalArticuloNegocio relacionSucursalNegocio = new RelacionSucursalArticuloNegocio();
+        private RelacionSucursalArticuloNegocio relacionSucArticuloNegocio = new RelacionSucursalArticuloNegocio();
+        private RelacionSucursal_InsumoNegocio relacionSucInsumoNegocio = new RelacionSucursal_InsumoNegocio();
 
 
         // Constructores
@@ -53,6 +55,11 @@ namespace Presentacion
                 actualizarListaInsumo();
                 HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
             }
+            else if (tipoPanel=="sucursalInsumos")
+            {
+                actualizarListaRelacionInsumos();
+                HelpGrid.mostrarGrid(dgvInventario, listaRelacionInsumos);
+            }
             else if(tipoPanel=="articulos")
             {
                 actualizarListaArticulos();
@@ -60,8 +67,8 @@ namespace Presentacion
             }
             else
             {
-                actualizarListaRelacion();
-                HelpGrid.mostrarGrid(dgvInventario, listaRelacion);
+                actualizarListaRelacionArticulos();
+                HelpGrid.mostrarGrid(dgvInventario, listaRelacionArticulos);
             }
 
 
@@ -92,8 +99,16 @@ namespace Presentacion
             {
                 frmAltaArticulosConSucursal altaArticuloSucursal = new frmAltaArticulosConSucursal(sucursal);
                 altaArticuloSucursal.ShowDialog();
-                actualizarListaRelacion();
-                HelpGrid.mostrarGrid(dgvInventario, listaRelacion);
+                actualizarListaRelacionArticulos();
+                HelpGrid.mostrarGrid(dgvInventario, listaRelacionArticulos);
+
+            }
+            else
+            {
+                frmAltaInsumosConSucursal altaInsumoConSucursal = new frmAltaInsumosConSucursal(sucursal);
+                altaInsumoConSucursal.ShowDialog();
+                actualizarListaRelacionInsumos();
+                HelpGrid.mostrarGrid(dgvInventario, listaRelacionInsumos);
 
             }
 
@@ -117,9 +132,22 @@ namespace Presentacion
                 actualizarListaArticulos();
                 HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
             }
+            else if(tipoPanel== "sucursalArticulos")
+            {
+                RelacionSucursalArticulo relacionActual=(RelacionSucursalArticulo) dgvInventario.CurrentRow.DataBoundItem;
+                frmAltaArticulosConSucursal altaArticuloConSucursal = new frmAltaArticulosConSucursal(sucursal,relacionActual);
+                altaArticuloConSucursal.ShowDialog();
+                actualizarListaRelacionArticulos();
+                HelpGrid.mostrarGrid(dgvInventario, listaRelacionArticulos);
+
+            }
             else
             {
-                //configurar 
+                RelacionSucursal_Insumo relacionActual = (RelacionSucursal_Insumo)dgvInventario.CurrentRow.DataBoundItem;
+                frmAltaInsumosConSucursal altaInsumoConSucursal = new frmAltaInsumosConSucursal(relacionActual);
+                altaInsumoConSucursal.ShowDialog();
+                actualizarListaRelacionInsumos();
+                HelpGrid.mostrarGrid(dgvInventario, listaRelacionInsumos);
             }
         }
 
@@ -253,18 +281,19 @@ namespace Presentacion
         //
         private void actualizarListaInsumo()
         {
-            if (sucursal != null)
-                listaInsumos = insumoNegocio.listar(sucursal);
-            else
-                listaInsumos = insumoNegocio.listar();
+            listaInsumos = insumoNegocio.listar();
+        }
+        private void actualizarListaRelacionInsumos()
+        {
+            listaRelacionInsumos = relacionSucInsumoNegocio.listar(sucursal);
         }
         private void actualizarListaArticulos()
         {
             listaArticulos = articuloNegocio.listar();
         }
-        private void actualizarListaRelacion()
+        private void actualizarListaRelacionArticulos()
         {
-            listaRelacion = relacionSucursalNegocio.listar(sucursal);
+            listaRelacionArticulos = relacionSucArticuloNegocio.listar(sucursal);
         }
 
     }

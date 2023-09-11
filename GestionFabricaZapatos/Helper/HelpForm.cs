@@ -31,8 +31,7 @@ namespace Helper
         {
             grid.DataSource = listaInsumos;
             grid.Columns["Id"].Visible = false;
-            grid.Columns["cantidad"].Visible = false;
-
+            grid.Columns["CantidadInsumosParaArmado"].Visible = false;
         }
         static public void mostrarGrid(DataGridView grid,List<Articulo> listaArticulos)
         {
@@ -52,8 +51,12 @@ namespace Helper
             grid.Columns["IdArticulo"].Visible = false;
             grid.Columns["IdInsumo"].Visible = false;
             grid.Columns["Articulo"].Visible = false;
-
-
+        }
+        static public void mostrarGrid(DataGridView grid, List<RelacionSucursal_Insumo> listaRelacionSucursalInsumo)
+        {
+            grid.DataSource = listaRelacionSucursalInsumo;
+            grid.Columns["Id"].Visible = false;
+           
         }
     }
     static public class HelpPicture

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Datos;
-
+using System.Data.Common;
 
 namespace Negocio
 {
@@ -17,7 +17,7 @@ namespace Negocio
             List<Insumo> listaInsumos = new List<Insumo>();
             try
             {
-                dato.setearConsulta("select i.Id identificador,i.Descripcion nombreInsumo,Precio,Cantidad,IdSucursal,s.Descripcion nombreSucursal from Insumo i, Sucursal s where s.Id=i.IdSucursal");
+                dato.setearConsulta("select i.Id identificador,i.Descripcion nombreInsumo,Precio,PrecioUnidad,Cantidad from Insumo i");
                 dato.ejecutarLectura();
 
                 while (dato.Lector.Read())
@@ -28,45 +28,17 @@ namespace Negocio
                     aux.Descripcion = (string)dato.Lector["nombreInsumo"];
                     aux.Precio = (decimal)dato.Lector["Precio"];
                     aux.Precio = decimal.Parse(aux.Precio.ToString("00"));
-                    aux.Cantidad = (int)dato.Lector["Cantidad"];
-                    aux.sucursal = new Sucursal();
-                    aux.sucursal.Id = (int)dato.Lector["IdSucursal"];
-                    aux.sucursal.Descripcion = (string)dato.Lector["nombreSucursal"];
-
-                    listaInsumos.Add(aux);
-                }
-                return listaInsumos;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                dato.cerrarConexion();
-            }
-        }
-        public List<Insumo> listar(Sucursal sucursal)
-        {
-            List<Insumo> listaInsumos = new List<Insumo>();
-            try
-            {
-                dato.setearConsulta("select i.Id identificador,i.Descripcion nombreInsumo,Precio,Cantidad,IdSucursal,s.Descripcion nombreSucursal from Insumo i, Sucursal s where s.Id=i.IdSucursal and i.IdSucursal="+sucursal.Id+"");
-                dato.ejecutarLectura();
-
-                while (dato.Lector.Read())
-                {
-                    Insumo aux = new Insumo();
-
-                    aux.Id = (int)dato.Lector["identificador"];
-                    aux.Descripcion = (string)dato.Lector["nombreInsumo"];
-                    aux.Precio = (decimal)dato.Lector["Precio"];
-                    aux.Precio=decimal.Parse(aux.Precio.ToString("00"));
-                    aux.Cantidad = (int)dato.Lector["Cantidad"];
-                    aux.sucursal = new Sucursal();
-                    aux.sucursal.Id = (int)dato.Lector["IdSucursal"];
-                    aux.sucursal.Descripcion = (string)dato.Lector["nombreSucursal"];
+                    if (!(dato.Lector["PrecioUnidad"] is DBNull))
+                    {
+                        aux.PrecioUnidad = (decimal)dato.Lector["PrecioUnidad"];
+                    }
+                    if (!(dato.Lector["Cantidad"] is DBNull))
+                    {
+                        aux.Cantidad = (double)dato.Lector["Cantidad"];
+                    }
+                    aux.PrecioUnidad = decimal.Parse(aux.PrecioUnidad.ToString("00"));
+                    
+                   
 
                     listaInsumos.Add(aux);
                 }
@@ -86,11 +58,12 @@ namespace Negocio
         {
             try
             {
-                dato.setearConsulta("insert into Insumo values (@descripcion,@precio,@cantidad,@idSucursal)");
+                dato.setearConsulta("insert into Insumo values (@descripcion,@precio,@precioUnidad,@cantidad)");
                 dato.setearParametro("@descripcion", nuevo.Descripcion);
                 dato.setearParametro("@precio", nuevo.Precio);
                 dato.setearParametro("@cantidad", nuevo.Cantidad);
-                dato.setearParametro("@idSucursal", nuevo.sucursal.Id);
+                dato.setearParametro("@precioUnidad", nuevo.PrecioUnidad);
+
 
                 dato.ejecutarAccion();
             }
@@ -108,11 +81,11 @@ namespace Negocio
         {
             try
             {
-                dato.setearConsulta("update Insumo set Descripcion=@descripcion ,Precio= @precio ,Cantidad= @cantidad ,IdSucursal= @idSucursal where id=@id");
+                dato.setearConsulta("update Insumo set Descripcion=@descripcion ,Precio= @precio ,Cantidad= @cantidad,PrecioUnidad=@precioUnidad  where id=@id");
                 dato.setearParametro("@descripcion", modificado.Descripcion);
                 dato.setearParametro("@precio", modificado.Precio);
                 dato.setearParametro("@cantidad", modificado.Cantidad);
-                dato.setearParametro("@idSucursal", modificado.sucursal.Id);
+                dato.setearParametro("@precioUnidad", modificado.PrecioUnidad);
                 dato.setearParametro("@id", modificado.Id);
 
                 dato.ejecutarAccion();
@@ -143,14 +116,6 @@ namespace Negocio
             {
                 dato.cerrarConexion();
             }
-        }
-        public void filtrar(string campo, string criterio, string filtro)
-        {
-
-        }
-        public void ordenar(string campo, string criterio)
-        {
-
         }
     }
 }

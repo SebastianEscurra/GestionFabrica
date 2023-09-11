@@ -64,6 +64,12 @@
     <Compile Include="frmAltaInsumo.Designer.cs">
       <DependentUpon>frmAltaInsumo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAltaInsumosConSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAltaInsumosConSucursal.Designer.cs">
+      <DependentUpon>frmAltaInsumosConSucursal.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAltaSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAltaInsumo.resx">
       <DependentUpon>frmAltaInsumo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAltaInsumosConSucursal.resx">
+      <DependentUpon>frmAltaInsumosConSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAltaSucursal.resx">
       <DependentUpon>frmAltaSucursal.cs</DependentUpon>

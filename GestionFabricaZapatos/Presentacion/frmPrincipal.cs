@@ -50,24 +50,22 @@ namespace Presentacion
         {
             tipoPanel = "insumos";
             if (insumoAbierto != null)
-                HelpForm.abrirFormHijo(panelCentral, insumoAbierto);
-            else
-            {
-                frmSucursales frmSucInsumos = new frmSucursales(panelCentral, tipoPanel);
-                insumoAbierto = HelpForm.abrirFormHijo(panelCentral, frmSucInsumos);
-            }
+                insumoAbierto.Close();
+          
+            frmSucursales frmSucInsumos = new frmSucursales(panelCentral, tipoPanel);
+            insumoAbierto = HelpForm.abrirFormHijo(panelCentral, frmSucInsumos);
+            
         }
 
         private void btnArticulos_Click(object sender, EventArgs e)
         {
             tipoPanel = "sucursalArticulos";
             if (articuloAbierto != null)
-                HelpForm.abrirFormHijo(panelCentral, articuloAbierto);
-            else
-            {
-                frmSucursales frmSucArticulo = new frmSucursales(panelCentral, tipoPanel);
-                articuloAbierto = HelpForm.abrirFormHijo(panelCentral, frmSucArticulo);
-            }
+                articuloAbierto.Close();
+          
+            frmSucursales frmSucArticulo = new frmSucursales(panelCentral, tipoPanel);
+            articuloAbierto = HelpForm.abrirFormHijo(panelCentral, frmSucArticulo);
+            
         }
     }
 }
