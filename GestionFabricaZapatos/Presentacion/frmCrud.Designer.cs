@@ -140,6 +140,7 @@
             // 
             // dgvInventario
             // 
+            this.dgvInventario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInventario.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvInventario.Location = new System.Drawing.Point(12, 165);
@@ -195,6 +196,7 @@
             this.btnDetalles.TabIndex = 22;
             this.btnDetalles.Text = "Ver detalles";
             this.btnDetalles.UseVisualStyleBackColor = false;
+            this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
             // 
             // frmCrud
             // 

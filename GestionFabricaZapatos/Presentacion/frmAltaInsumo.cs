@@ -39,8 +39,9 @@ namespace Presentacion
             {
                 txtCantidad.Text = actual.Cantidad.ToString();
                 txtDescripcion.Text = actual.Descripcion;
-                txtPrecio.Text = actual.Precio.ToString();
-               
+                txtPrecioBruto.Text = actual.PrecioBruto.ToString();
+                txtUrlImagen.Text = actual.UrlImagen;
+                Helper.HelpPicture.cargarImagen(pbxImagenProducto,actual.UrlImagen);
             }
         }
 
@@ -57,8 +58,9 @@ namespace Presentacion
             
             actual.Cantidad = double.Parse(txtCantidad.Text);
             actual.Descripcion = txtDescripcion.Text;
-            actual.Precio = decimal.Parse(txtPrecio.Text);
+            actual.PrecioBruto = decimal.Parse(txtPrecioBruto.Text);
             actual.PrecioUnidad = decimal.Parse(txtPrecioUnidad.Text);
+            actual.UrlImagen = txtUrlImagen.Text;
             
 
             if (actual.Id>0)
@@ -75,18 +77,24 @@ namespace Presentacion
 
         private void txtPrecio_TextChanged(object sender, EventArgs e)
         {
-            if (txtPrecio.Text != "" && txtCantidad.Text != "")
+            if (txtPrecioBruto.Text != "" && txtCantidad.Text != "")
             {
-                txtPrecioUnidad.Text = (double.Parse(txtPrecio.Text) / double.Parse(txtCantidad.Text)).ToString(); 
+                txtPrecioUnidad.Text = (double.Parse(txtPrecioBruto.Text) / double.Parse(txtCantidad.Text)).ToString(); 
             }
         }
 
         private void txtCantidad_TextChanged(object sender, EventArgs e)
         {
-            if (txtPrecio.Text != "" && txtCantidad.Text != "")
+            if (txtPrecioBruto.Text != "" && txtCantidad.Text != "")
             {
-                txtPrecioUnidad.Text = (double.Parse(txtPrecio.Text) / double.Parse(txtCantidad.Text)).ToString();
+                txtPrecioUnidad.Text = (double.Parse(txtPrecioBruto.Text) / double.Parse(txtCantidad.Text)).ToString();
             }
+        }
+
+        private void txtUrlImagen_Leave(object sender, EventArgs e)
+        {
+            string url = txtUrlImagen.Text;
+            Helper.HelpPicture.cargarImagen(pbxImagenProducto, url);
         }
     }
 }

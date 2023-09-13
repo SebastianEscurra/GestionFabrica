@@ -26,12 +26,23 @@ namespace Helper
     }
     static public class HelpGrid
     {
-        
-        static public void mostrarGrid(DataGridView grid,List<Insumo> listaInsumos)
+        static public void mostrarGridInsumos(DataGridView grid, List<Insumo> listaInsumos)
         {
             grid.DataSource = listaInsumos;
             grid.Columns["Id"].Visible = false;
             grid.Columns["CantidadInsumosParaArmado"].Visible = false;
+            grid.Columns["PrecioUnidad"].Visible = false;
+            grid.Columns["UrlImagen"].Visible = false;
+
+        }
+
+        static public void mostrarGrid(DataGridView grid,List<Insumo> listaInsumos)
+        {
+            grid.DataSource = listaInsumos;
+            grid.Columns["Id"].Visible = false;
+            grid.Columns["Cantidad"].Visible = false;
+            grid.Columns["PrecioBruto"].Visible = false;
+
         }
         static public void mostrarGrid(DataGridView grid,List<Articulo> listaArticulos)
         {
@@ -69,7 +80,7 @@ namespace Helper
             }
             catch (Exception)
             {
-                pbx.Load("https://cdn-icons-png.flaticon.com/512/126/126472.png");
+                pbx.Load("https://aeroclub-issoire.fr/wp-content/uploads/2020/05/image-not-found.jpg");
             }
         }
     }

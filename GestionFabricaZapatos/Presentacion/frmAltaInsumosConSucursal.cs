@@ -16,6 +16,7 @@ namespace Presentacion
     {
         private int tipoSucursal = 2;
         private Sucursal sucursalActual;
+        private double cantidad;
 
         private RelacionSucursal_Insumo relacionSucursalActual = null;
 
@@ -92,6 +93,50 @@ namespace Presentacion
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void txtCantidad_Enter(object sender, EventArgs e)
+        {
+            Insumo seleccionado = (Insumo)cmbInsumo.SelectedItem;
+            lblMensajeCantidadDisponible.Text = "Unidades disponibles: " + seleccionado.Cantidad.ToString();
+            lblMensajeCantidadDisponible.Visible = true;
+        }
+
+        private void txtCantidad_Leave(object sender, EventArgs e)
+        {
+            lblMensajeCantidadDisponible.Visible = false;
+        }
+
+        private void txtCantidad_TextChanged(object sender, EventArgs e)
+        {
+            Insumo seleccionado = (Insumo)cmbInsumo.SelectedItem;
+            if (txtCantidad.Text!="")
+            {
+                cantidad = seleccionado.Cantidad - int.Parse(txtCantidad.Text);
+                lblMensajeCantidadDisponible.Text = "Unidades disponibles: " + cantidad;
+            }
+            else
+            {
+                lblMensajeCantidadDisponible.Text = "Unidades disponibles: " + seleccionado.Cantidad.ToString();
+            }
+        }
+
+        private void lblMensajeCantidadDisponible_TextChanged(object sender, EventArgs e)
+        {
+            Insumo seleccionado = (Insumo)cmbInsumo.SelectedItem;
+            if (txtCantidad.Text!="")
+            {
+                cantidad = seleccionado.Cantidad - int.Parse(txtCantidad.Text);
+
+                if (cantidad < 0)
+                {
+                    lblMensajeCantidadDisponible.ForeColor = Color.DarkRed;
+                }
+                else
+                {
+                    lblMensajeCantidadDisponible.ForeColor = Color.DimGray;
+                }
             }
         }
     }

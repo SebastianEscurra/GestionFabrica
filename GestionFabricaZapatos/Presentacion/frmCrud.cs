@@ -53,22 +53,26 @@ namespace Presentacion
             if (tipoPanel == "insumos")
             {
                 actualizarListaInsumo();
-                HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
+                HelpGrid.mostrarGridInsumos(dgvInventario, listaInsumos);
+                
             }
             else if (tipoPanel=="sucursalInsumos")
             {
                 actualizarListaRelacionInsumos();
                 HelpGrid.mostrarGrid(dgvInventario, listaRelacionInsumos);
+
             }
             else if(tipoPanel=="articulos")
             {
                 actualizarListaArticulos();
                 HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
+
             }
             else
             {
                 actualizarListaRelacionArticulos();
                 HelpGrid.mostrarGrid(dgvInventario, listaRelacionArticulos);
+
             }
 
 
@@ -84,7 +88,7 @@ namespace Presentacion
                 frmAltaInsumo altaInsumo = new frmAltaInsumo();
                 altaInsumo.ShowDialog();
                 actualizarListaInsumo();
-                HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
+                HelpGrid.mostrarGridInsumos(dgvInventario, listaInsumos);
                 
             }
             else if (tipoPanel== "articulos")
@@ -122,7 +126,7 @@ namespace Presentacion
                 frmAltaInsumo altaInsumo = new frmAltaInsumo(seleccionado);
                 altaInsumo.ShowDialog();
                 actualizarListaInsumo();
-                HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
+                HelpGrid.mostrarGridInsumos(dgvInventario, listaInsumos);
             }
             else if (tipoPanel=="articulos")
             {
@@ -165,7 +169,7 @@ namespace Presentacion
                     MessageBox.Show("Eliminado Exitosamente");
                 }
                 actualizarListaInsumo();
-                HelpGrid.mostrarGrid(dgvInventario, listaInsumos);
+                HelpGrid.mostrarGridInsumos(dgvInventario, listaInsumos);
             }
             else if(tipoPanel=="articulos")
             {
@@ -183,27 +187,106 @@ namespace Presentacion
                 actualizarListaArticulos();
                 HelpGrid.mostrarGrid(dgvInventario, listaArticulos);
             }
+            else if (tipoPanel == "sucursalArticulos")
+            {
+                RelacionSucursalArticulo seleccionado = (RelacionSucursalArticulo)dgvInventario.CurrentRow.DataBoundItem;
+
+                DialogResult resultado = MessageBox.Show("¿Desea eliminar el Articulo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    relacionSucArticuloNegocio.eliminar(seleccionado.Id);
+                    MessageBox.Show("Eliminado Exitosamente");
+                }
+
+                actualizarListaRelacionArticulos();
+                HelpGrid.mostrarGrid(dgvInventario, listaRelacionArticulos);
+            }
             else
             {
-                //configurar
+                RelacionSucursal_Insumo seleccionado = (RelacionSucursal_Insumo)dgvInventario.CurrentRow.DataBoundItem;
+
+                DialogResult resultado = MessageBox.Show("¿Desea eliminar el Articulo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    relacionSucInsumoNegocio.eliminar(seleccionado.Id);
+                    MessageBox.Show("Eliminado Exitosamente");
+                }
+
+                actualizarListaRelacionInsumos();
+                HelpGrid.mostrarGrid(dgvInventario, listaRelacionInsumos);
             }
         }
 
         private void txtFiltroRapido_TextChanged(object sender, EventArgs e)
         {
-            List<Insumo> listaFiltrada=new List<Insumo>();
-            string filtro = txtFiltroRapido.Text.ToUpper();
-            if (filtro.Length > 1)
+            if (tipoPanel == "insumos")
             {
-                listaFiltrada = listaInsumos.FindAll(x=> x.Cantidad.ToString().ToUpper().Contains(filtro) || x.Descripcion.ToUpper().Contains(filtro) || x.Precio.ToString().ToUpper().Contains(filtro)) ;
+                List<Insumo> listaFiltrada = new List<Insumo>();
+                string filtro = txtFiltroRapido.Text.ToUpper();
+                if (filtro.Length > 1)
+                {
+                    listaFiltrada = listaInsumos.FindAll(x => x.Cantidad.ToString().ToUpper().Contains(filtro) || x.Descripcion.ToUpper().Contains(filtro) || x.PrecioBruto.ToString().ToUpper().Contains(filtro));
+                }
+                else
+                {
+                    listaFiltrada = listaInsumos;
+                }
+
+                dgvInventario.DataSource = null;
+                HelpGrid.mostrarGridInsumos(dgvInventario, listaFiltrada);
+            }
+            else if (tipoPanel == "articulos")
+            {
+                List<Articulo> listaFiltrada = new List<Articulo>();
+                string filtro = txtFiltroRapido.Text.ToUpper();
+                if (filtro.Length > 1)
+                {
+                    listaFiltrada = listaArticulos.FindAll(x => x.Modelo.ToString().ToUpper().Contains(filtro) || x.Nombre.ToUpper().Contains(filtro) || x.PrecioFabricacion.ToString().ToUpper().Contains(filtro));
+                }
+                else
+                {
+                    listaFiltrada = listaArticulos;
+                }
+
+                dgvInventario.DataSource = null;
+                HelpGrid.mostrarGrid(dgvInventario, listaFiltrada);
+
+            }
+            else if (tipoPanel == "sucursalArticulos")
+            {
+                List<RelacionSucursalArticulo> listaFiltrada = new List<RelacionSucursalArticulo>();
+                string filtro = txtFiltroRapido.Text.ToUpper();
+                if (filtro.Length > 1)
+                {
+                    listaFiltrada = listaRelacionArticulos.FindAll(x => x.Cantidad.ToString().ToUpper().Contains(filtro) || x.Articulo.Nombre.ToUpper().Contains(filtro) || x.Articulo.PrecioFabricacion.ToString().ToUpper().Contains(filtro));
+                }
+                else
+                {
+                    listaFiltrada = listaRelacionArticulos;
+                }
+
+                dgvInventario.DataSource = null;
+                HelpGrid.mostrarGrid(dgvInventario, listaFiltrada);
             }
             else
             {
-                listaFiltrada = listaInsumos;
-            }
+                List<RelacionSucursal_Insumo> listaFiltrada = new List<RelacionSucursal_Insumo>();
+                string filtro = txtFiltroRapido.Text.ToUpper();
+                if (filtro.Length > 1)
+                {
+                    listaFiltrada = listaRelacionInsumos.FindAll(x => x.Cantidad.ToString().ToUpper().Contains(filtro) || x.Insumo.Descripcion.ToUpper().Contains(filtro) || x.Insumo.PrecioBruto.ToString().ToUpper().Contains(filtro));
+                }
+                else
+                {
+                    listaFiltrada = listaRelacionInsumos;
+                }
 
-            dgvInventario.DataSource = null;
-            HelpGrid.mostrarGrid(dgvInventario, listaFiltrada);
+                dgvInventario.DataSource = null;
+                HelpGrid.mostrarGrid(dgvInventario, listaFiltrada);
+            }
+            
         }
 
         private void btnOrdenar_Click(object sender, EventArgs e)
@@ -249,17 +332,17 @@ namespace Presentacion
                 else if (cmbCampo.SelectedIndex == 0)
                     insumosOrdenados = listaInsumos.OrderByDescending(x => x.Descripcion).ToList();
                 else if(cmbCampo.SelectedIndex==1 && cmbCriterio.SelectedIndex==0)
-                    insumosOrdenados = listaInsumos.OrderBy(x => x.Precio).ToList();
+                    insumosOrdenados = listaInsumos.OrderBy(x => x.PrecioBruto).ToList();
                 else if(cmbCampo.SelectedIndex==1)
-                    insumosOrdenados = listaInsumos.OrderByDescending(x => x.Precio).ToList();
+                    insumosOrdenados = listaInsumos.OrderByDescending(x => x.PrecioBruto).ToList();
                 else if(cmbCriterio.SelectedIndex==0)
                     insumosOrdenados = listaInsumos.OrderBy(x => x.Cantidad).ToList();
                 else
                     insumosOrdenados = listaInsumos.OrderByDescending(x => x.Cantidad).ToList();
 
-                HelpGrid.mostrarGrid(dgvInventario, insumosOrdenados);
+                HelpGrid.mostrarGridInsumos(dgvInventario, insumosOrdenados);
             }
-            else
+            else if (tipoPanel == "articulos")
             {
                 List<Articulo> aticulosOrdenados;
 
@@ -275,7 +358,65 @@ namespace Presentacion
 
                 HelpGrid.mostrarGrid(dgvInventario, aticulosOrdenados);
             }
+            else if (tipoPanel == "sucursalArticulos")
+            {
+                List<RelacionSucursalArticulo> aticulosOrdenados;
+
+                if (cmbCampo.SelectedIndex == 0 && cmbCriterio.SelectedIndex == 0)
+                    aticulosOrdenados = listaRelacionArticulos.OrderBy(x => x.Articulo.Nombre).ToList();
+                else if (cmbCampo.SelectedIndex == 0)
+                    aticulosOrdenados = listaRelacionArticulos.OrderByDescending(x => x.Articulo.Nombre).ToList();
+                else if (cmbCampo.SelectedIndex == 1 && cmbCriterio.SelectedIndex == 0)
+                    aticulosOrdenados = listaRelacionArticulos.OrderBy(x => x.Articulo.PrecioFabricacion).ToList();
+                else
+                    aticulosOrdenados = listaRelacionArticulos.OrderByDescending(x => x.Articulo.PrecioFabricacion).ToList();
+
+
+                HelpGrid.mostrarGrid(dgvInventario, aticulosOrdenados);
+            }
+            else
+            {
+                List<RelacionSucursal_Insumo> insumosOrdenados;
+
+                if (cmbCampo.SelectedIndex == 0 && cmbCriterio.SelectedIndex == 0)
+                    insumosOrdenados = listaRelacionInsumos.OrderBy(x => x.Insumo.Descripcion).ToList();
+                else if (cmbCampo.SelectedIndex == 0)
+                    insumosOrdenados = listaRelacionInsumos.OrderByDescending(x => x.Insumo.Descripcion).ToList();
+                else if (cmbCampo.SelectedIndex == 1 && cmbCriterio.SelectedIndex == 0)
+                    insumosOrdenados = listaRelacionInsumos.OrderBy(x => x.Insumo.PrecioBruto).ToList();
+                else if (cmbCampo.SelectedIndex == 1)
+                    insumosOrdenados = listaRelacionInsumos.OrderByDescending(x => x.Insumo.PrecioBruto).ToList();
+                else if (cmbCriterio.SelectedIndex == 0)
+                    insumosOrdenados = listaRelacionInsumos.OrderBy(x => x.Cantidad).ToList();
+                else
+                    insumosOrdenados = listaRelacionInsumos.OrderByDescending(x => x.Cantidad).ToList();
+
+                HelpGrid.mostrarGrid(dgvInventario, insumosOrdenados);
+            }
         }
+        private void btnDetalles_Click(object sender, EventArgs e)
+        {
+            if (tipoPanel=="insumos")
+            {
+                Insumo seleccionado = (Insumo)dgvInventario.CurrentRow.DataBoundItem;
+                frmVerDetalles frmVerDetalles = new frmVerDetalles(seleccionado,tipoPanel);
+                frmVerDetalles.Show();
+
+            }
+            else if (tipoPanel == "articulos")
+            {
+
+            }
+            else if (tipoPanel == "sucursalArticulos")
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+
         //
         //metodos
         //

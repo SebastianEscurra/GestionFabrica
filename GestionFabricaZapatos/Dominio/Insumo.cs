@@ -14,15 +14,20 @@ namespace Dominio
         public int Id { get; set; }
         [DisplayName("Insumo")]
         public string Descripcion { get; set; }
-        public decimal Precio { get; set; }
-        public double Cantidad { get; set; }
 
         [DisplayName("Precio unitario")]
         public decimal PrecioUnidad { get; set; }
-
+       
         [DisplayName ("Cantidad necesaria")]
         public int CantidadInsumosParaArmado { get { return cantidadInsumosParaArmado; } set { cantidadInsumosParaArmado = value; } }
         
+        [DisplayName("Cantidad total")]
+        public double Cantidad { get; set; }
+
+        public decimal PrecioBruto { get; set; }
+        public string UrlImagen { get; set; }
+
+
 
         public override string ToString()
         {
