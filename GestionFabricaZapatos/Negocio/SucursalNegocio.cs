@@ -92,7 +92,7 @@ namespace Negocio
         {
             try
             {
-                dato.setearConsulta("delete Sucursal where id=@id\r\ndelete Insumo where IdSucursal=@id");
+                dato.setearConsulta("delete Sucursal where id=@id");
                 dato.setearParametro("@id", id);
                 dato.ejecutarAccion();
             }

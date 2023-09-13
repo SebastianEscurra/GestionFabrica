@@ -219,7 +219,7 @@ namespace Presentacion
 
             foreach (var item in listaInsumo)
             {
-                precioFabricacion += item.Precio * item.CantidadInsumosParaArmado;
+                precioFabricacion += item.PrecioUnidad * item.CantidadInsumosParaArmado;
             }
 
             decimal precioMayorista = ((precioFabricacion / 100) * porcentajeMayorista) + precioFabricacion;

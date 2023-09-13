@@ -83,7 +83,7 @@ namespace Negocio
                 dato.setearParametro("@nombre",nuevo.Nombre);
                 dato.setearParametro("@precioFabricacion", nuevo.PrecioFabricacion);
                 dato.setearParametro("@precioComercial", nuevo.PrecioComercial);
-                dato.setearParametro("@precioMayorista", nuevo.PrecioComercial);
+                dato.setearParametro("@precioMayorista", nuevo.Preciomayorista);
                 dato.setearParametro("@IdTipo",nuevo.Modelo.Id);
                 dato.setearParametro("@Activo", 1);
 

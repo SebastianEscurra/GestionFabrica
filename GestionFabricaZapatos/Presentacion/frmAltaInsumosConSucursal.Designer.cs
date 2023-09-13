@@ -36,15 +36,16 @@
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.cmbSucursal = new System.Windows.Forms.ComboBox();
             this.lblSucursal = new System.Windows.Forms.Label();
+            this.lblMensajeCantidadDisponible = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmbInsumo
             // 
             this.cmbInsumo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInsumo.FormattingEnabled = true;
-            this.cmbInsumo.Location = new System.Drawing.Point(170, 84);
+            this.cmbInsumo.Location = new System.Drawing.Point(125, 132);
             this.cmbInsumo.Name = "cmbInsumo";
-            this.cmbInsumo.Size = new System.Drawing.Size(121, 21);
+            this.cmbInsumo.Size = new System.Drawing.Size(163, 21);
             this.cmbInsumo.TabIndex = 9;
             // 
             // btnCancelar
@@ -56,7 +57,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
-            this.btnCancelar.Location = new System.Drawing.Point(237, 257);
+            this.btnCancelar.Location = new System.Drawing.Point(215, 269);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 23);
             this.btnCancelar.TabIndex = 11;
@@ -73,7 +74,7 @@
             this.BTnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTnAceptar.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
-            this.BTnAceptar.Location = new System.Drawing.Point(125, 257);
+            this.BTnAceptar.Location = new System.Drawing.Point(103, 269);
             this.BTnAceptar.Name = "BTnAceptar";
             this.BTnAceptar.Size = new System.Drawing.Size(79, 23);
             this.BTnAceptar.TabIndex = 10;
@@ -86,7 +87,7 @@
             this.lblInsumo.AutoSize = true;
             this.lblInsumo.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold);
             this.lblInsumo.ForeColor = System.Drawing.Color.White;
-            this.lblInsumo.Location = new System.Drawing.Point(114, 88);
+            this.lblInsumo.Location = new System.Drawing.Point(69, 136);
             this.lblInsumo.Name = "lblInsumo";
             this.lblInsumo.Size = new System.Drawing.Size(49, 14);
             this.lblInsumo.TabIndex = 6;
@@ -97,7 +98,7 @@
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold);
             this.lblCantidad.ForeColor = System.Drawing.Color.White;
-            this.lblCantidad.Location = new System.Drawing.Point(110, 129);
+            this.lblCantidad.Location = new System.Drawing.Point(65, 177);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(57, 14);
             this.lblCantidad.TabIndex = 7;
@@ -105,18 +106,21 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(170, 126);
+            this.txtCantidad.Location = new System.Drawing.Point(125, 174);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(121, 20);
+            this.txtCantidad.Size = new System.Drawing.Size(163, 20);
             this.txtCantidad.TabIndex = 8;
+            this.txtCantidad.TextChanged += new System.EventHandler(this.txtCantidad_TextChanged);
+            this.txtCantidad.Enter += new System.EventHandler(this.txtCantidad_Enter);
+            this.txtCantidad.Leave += new System.EventHandler(this.txtCantidad_Leave);
             // 
             // cmbSucursal
             // 
             this.cmbSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSucursal.FormattingEnabled = true;
-            this.cmbSucursal.Location = new System.Drawing.Point(170, 165);
+            this.cmbSucursal.Location = new System.Drawing.Point(125, 213);
             this.cmbSucursal.Name = "cmbSucursal";
-            this.cmbSucursal.Size = new System.Drawing.Size(121, 21);
+            this.cmbSucursal.Size = new System.Drawing.Size(163, 21);
             this.cmbSucursal.TabIndex = 13;
             this.cmbSucursal.Visible = false;
             // 
@@ -125,12 +129,25 @@
             this.lblSucursal.AutoSize = true;
             this.lblSucursal.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold);
             this.lblSucursal.ForeColor = System.Drawing.Color.White;
-            this.lblSucursal.Location = new System.Drawing.Point(114, 169);
+            this.lblSucursal.Location = new System.Drawing.Point(69, 217);
             this.lblSucursal.Name = "lblSucursal";
             this.lblSucursal.Size = new System.Drawing.Size(53, 14);
             this.lblSucursal.TabIndex = 12;
             this.lblSucursal.Text = "Sucursal:";
             this.lblSucursal.Visible = false;
+            // 
+            // lblMensajeCantidadDisponible
+            // 
+            this.lblMensajeCantidadDisponible.AutoSize = true;
+            this.lblMensajeCantidadDisponible.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblMensajeCantidadDisponible.ForeColor = System.Drawing.Color.DimGray;
+            this.lblMensajeCantidadDisponible.Location = new System.Drawing.Point(122, 157);
+            this.lblMensajeCantidadDisponible.Name = "lblMensajeCantidadDisponible";
+            this.lblMensajeCantidadDisponible.Size = new System.Drawing.Size(125, 14);
+            this.lblMensajeCantidadDisponible.TabIndex = 14;
+            this.lblMensajeCantidadDisponible.Text = "Unidades disponibles: ";
+            this.lblMensajeCantidadDisponible.Visible = false;
+            this.lblMensajeCantidadDisponible.TextChanged += new System.EventHandler(this.lblMensajeCantidadDisponible_TextChanged);
             // 
             // frmAltaInsumosConSucursal
             // 
@@ -138,6 +155,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
             this.ClientSize = new System.Drawing.Size(393, 450);
+            this.Controls.Add(this.lblMensajeCantidadDisponible);
             this.Controls.Add(this.cmbSucursal);
             this.Controls.Add(this.lblSucursal);
             this.Controls.Add(this.cmbInsumo);
@@ -164,5 +182,6 @@
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.ComboBox cmbSucursal;
         private System.Windows.Forms.Label lblSucursal;
+        private System.Windows.Forms.Label lblMensajeCantidadDisponible;
     }
 }
