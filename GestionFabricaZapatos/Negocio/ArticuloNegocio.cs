@@ -18,7 +18,7 @@ namespace Negocio
             try
             {
                 List<Articulo> ListaArticulos = new List<Articulo>();
-                dato.setearConsulta("select a.Id IdArticulo,Nombre,PecioFabricacion,PrecioComercial,PrecioMayorista,IdTipo,Activo,Descripcion from articulo a,TipoCalzado where a.IdTipo=TipoCalzado.Id");
+                dato.setearConsulta("select a.Id IdArticulo,Nombre,PecioFabricacion,PrecioComercial,PrecioMayorista,IdTipo,Activo,Descripcion from articulo a,TipoCalzado where a.IdTipo=TipoCalzado.Id and a.Activo=1");
                 dato.ejecutarLectura();
 
                 while (dato.Lector.Read())

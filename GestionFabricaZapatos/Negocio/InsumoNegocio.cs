@@ -17,7 +17,7 @@ namespace Negocio
             List<Insumo> listaInsumos = new List<Insumo>();
             try
             {
-                dato.setearConsulta("select i.Id identificador,i.Descripcion nombreInsumo,UrlImagen,Precio,PrecioUnidad,Cantidad from Insumo i");
+                dato.setearConsulta("select i.Id identificador,i.Descripcion nombreInsumo,UrlImagen,Precio,PrecioUnidad,Cantidad,Stock from Insumo i");
                 dato.ejecutarLectura();
 
                 while (dato.Lector.Read())
@@ -28,13 +28,14 @@ namespace Negocio
                     aux.Descripcion = (string)dato.Lector["nombreInsumo"];
                     aux.PrecioBruto = (decimal)dato.Lector["Precio"];
                     aux.PrecioBruto = decimal.Parse(aux.PrecioBruto.ToString("00"));
+                    aux.Stock = (int)dato.Lector["Stock"];
                     if (!(dato.Lector["PrecioUnidad"] is DBNull))
                     {
                         aux.PrecioUnidad = (decimal)dato.Lector["PrecioUnidad"];
                     }
                     if (!(dato.Lector["Cantidad"] is DBNull))
                     {
-                        aux.Cantidad = (double)dato.Lector["Cantidad"];
+                        aux.Cantidad = (int)dato.Lector["Cantidad"];
                     }
                     if (!(dato.Lector["UrlImagen"] is DBNull))
                     {
@@ -62,12 +63,14 @@ namespace Negocio
         {
             try
             {
-                dato.setearConsulta("insert into Insumo values (@descripcion,@precio,@precioUnidad,@cantidad,@url)");
+                dato.setearConsulta("insert into Insumo values (@descripcion,@precio,@precioUnidad,@url,@cantidad,@stock)");
                 dato.setearParametro("@descripcion", nuevo.Descripcion);
                 dato.setearParametro("@precio", nuevo.PrecioBruto);
                 dato.setearParametro("@cantidad", nuevo.Cantidad);
                 dato.setearParametro("@precioUnidad", nuevo.PrecioUnidad);
                 dato.setearParametro("@url", nuevo.UrlImagen);
+                dato.setearParametro("@stock", nuevo.Stock);
+
 
                 dato.ejecutarAccion();
             }
@@ -85,13 +88,35 @@ namespace Negocio
         {
             try
             {
-                dato.setearConsulta("update Insumo set Descripcion=@descripcion ,Precio= @precio ,Cantidad= @cantidad,PrecioUnidad=@precioUnidad,UrlImagen=@url  where id=@id");
+                dato.setearConsulta("update Insumo set Descripcion=@descripcion ,Precio= @precio ,Cantidad= @cantidad,PrecioUnidad=@precioUnidad,UrlImagen=@url, Stock=@stock  where id=@id");
                 dato.setearParametro("@descripcion", modificado.Descripcion);
                 dato.setearParametro("@precio", modificado.PrecioBruto);
                 dato.setearParametro("@cantidad", modificado.Cantidad);
                 dato.setearParametro("@precioUnidad", modificado.PrecioUnidad);
                 dato.setearParametro("@id", modificado.Id);
                 dato.setearParametro("@url", modificado.UrlImagen);
+                dato.setearParametro("@stock", modificado.Stock);
+
+
+                dato.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                dato.cerrarConexion();
+            }
+        }
+        public void modificarStock(Insumo modificado)
+        {
+            try
+            {
+                dato.setearConsulta("update Insumo set Stock= @stock  where id=@id");
+                dato.setearParametro("@id", modificado.Id); 
+                dato.setearParametro("@stock", modificado.Stock);
 
                 dato.ejecutarAccion();
             }

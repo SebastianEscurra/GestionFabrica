@@ -71,12 +71,12 @@ namespace Negocio
 
         }
 
-		public void eliminar(int idArticulo)
+		public void eliminar(int id)
 		{
 
 			try
 			{
-				dato.setearConsulta("delete RelacionSucursalArticulo where IdArticulo="+idArticulo+" ");
+				dato.setearConsulta("delete RelacionSucursalArticulo where Id="+id+" ");
 				dato.ejecutarAccion();
 			}
 			catch (Exception ex)
