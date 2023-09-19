@@ -34,17 +34,16 @@
             this.lblPrecioBruto = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.lblCantidad = new System.Windows.Forms.Label();
-            this.lblSucursalTitulo = new System.Windows.Forms.Label();
             this.BTnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.lblSucursal = new System.Windows.Forms.Label();
-            this.cmbSucursal = new System.Windows.Forms.ComboBox();
             this.txtPrecioUnidad = new System.Windows.Forms.TextBox();
             this.lblPrecioUnidad = new System.Windows.Forms.Label();
             this.txtUrlImagen = new System.Windows.Forms.TextBox();
             this.lblUrlImagen = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbxImagenProducto = new System.Windows.Forms.PictureBox();
+            this.lblStock = new System.Windows.Forms.Label();
+            this.txtStock = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenProducto)).BeginInit();
             this.SuspendLayout();
@@ -90,7 +89,7 @@
             // 
             this.txtCantidad.Location = new System.Drawing.Point(148, 123);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(121, 20);
+            this.txtCantidad.Size = new System.Drawing.Size(73, 20);
             this.txtCantidad.TabIndex = 2;
             this.txtCantidad.TextChanged += new System.EventHandler(this.txtCantidad_TextChanged);
             // 
@@ -105,18 +104,6 @@
             this.lblCantidad.TabIndex = 1;
             this.lblCantidad.Text = "Cantidad:";
             // 
-            // lblSucursalTitulo
-            // 
-            this.lblSucursalTitulo.AutoSize = true;
-            this.lblSucursalTitulo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblSucursalTitulo.Font = new System.Drawing.Font("Gadugi", 15F, System.Drawing.FontStyle.Bold);
-            this.lblSucursalTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblSucursalTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblSucursalTitulo.Name = "lblSucursalTitulo";
-            this.lblSucursalTitulo.Size = new System.Drawing.Size(89, 24);
-            this.lblSucursalTitulo.TabIndex = 1;
-            this.lblSucursalTitulo.Text = "Sucursal";
-            // 
             // BTnAceptar
             // 
             this.BTnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(52)))), ((int)(((byte)(78)))));
@@ -129,7 +116,7 @@
             this.BTnAceptar.Location = new System.Drawing.Point(101, 401);
             this.BTnAceptar.Name = "BTnAceptar";
             this.BTnAceptar.Size = new System.Drawing.Size(79, 23);
-            this.BTnAceptar.TabIndex = 4;
+            this.BTnAceptar.TabIndex = 5;
             this.BTnAceptar.Text = "Aceptar";
             this.BTnAceptar.UseVisualStyleBackColor = false;
             this.BTnAceptar.Click += new System.EventHandler(this.BTnAceptar_Click);
@@ -146,39 +133,17 @@
             this.btnCancelar.Location = new System.Drawing.Point(213, 401);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 23);
-            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // lblSucursal
-            // 
-            this.lblSucursal.AutoSize = true;
-            this.lblSucursal.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblSucursal.ForeColor = System.Drawing.Color.White;
-            this.lblSucursal.Location = new System.Drawing.Point(92, 363);
-            this.lblSucursal.Name = "lblSucursal";
-            this.lblSucursal.Size = new System.Drawing.Size(53, 14);
-            this.lblSucursal.TabIndex = 1;
-            this.lblSucursal.Text = "Sucursal:";
-            this.lblSucursal.Visible = false;
-            // 
-            // cmbSucursal
-            // 
-            this.cmbSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSucursal.FormattingEnabled = true;
-            this.cmbSucursal.Location = new System.Drawing.Point(148, 359);
-            this.cmbSucursal.Name = "cmbSucursal";
-            this.cmbSucursal.Size = new System.Drawing.Size(121, 21);
-            this.cmbSucursal.TabIndex = 3;
-            this.cmbSucursal.Visible = false;
             // 
             // txtPrecioUnidad
             // 
             this.txtPrecioUnidad.Location = new System.Drawing.Point(148, 159);
             this.txtPrecioUnidad.Name = "txtPrecioUnidad";
             this.txtPrecioUnidad.Size = new System.Drawing.Size(121, 20);
-            this.txtPrecioUnidad.TabIndex = 2;
+            this.txtPrecioUnidad.TabIndex = 3;
             // 
             // lblPrecioUnidad
             // 
@@ -196,7 +161,7 @@
             this.txtUrlImagen.Location = new System.Drawing.Point(148, 198);
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(121, 20);
-            this.txtUrlImagen.TabIndex = 2;
+            this.txtUrlImagen.TabIndex = 4;
             this.txtUrlImagen.Leave += new System.EventHandler(this.txtUrlImagen_Leave);
             // 
             // lblUrlImagen
@@ -220,12 +185,32 @@
             // 
             // pbxImagenProducto
             // 
-            this.pbxImagenProducto.Location = new System.Drawing.Point(141, 223);
+            this.pbxImagenProducto.Location = new System.Drawing.Point(119, 224);
             this.pbxImagenProducto.Name = "pbxImagenProducto";
-            this.pbxImagenProducto.Size = new System.Drawing.Size(130, 130);
+            this.pbxImagenProducto.Size = new System.Drawing.Size(150, 150);
             this.pbxImagenProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxImagenProducto.TabIndex = 7;
             this.pbxImagenProducto.TabStop = false;
+            // 
+            // lblStock
+            // 
+            this.lblStock.AutoSize = true;
+            this.lblStock.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblStock.ForeColor = System.Drawing.Color.White;
+            this.lblStock.Location = new System.Drawing.Point(224, 126);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(38, 14);
+            this.lblStock.TabIndex = 8;
+            this.lblStock.Text = "Stock:";
+            this.lblStock.Visible = false;
+            // 
+            // txtStock
+            // 
+            this.txtStock.Location = new System.Drawing.Point(265, 123);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(94, 20);
+            this.txtStock.TabIndex = 9;
+            this.txtStock.Visible = false;
             // 
             // frmAltaInsumo
             // 
@@ -233,17 +218,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(179)))), ((int)(((byte)(193)))));
             this.ClientSize = new System.Drawing.Size(393, 450);
+            this.Controls.Add(this.lblStock);
+            this.Controls.Add(this.txtStock);
             this.Controls.Add(this.pbxImagenProducto);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.cmbSucursal);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.BTnAceptar);
-            this.Controls.Add(this.lblSucursal);
             this.Controls.Add(this.lblUrlImagen);
             this.Controls.Add(this.lblPrecioUnidad);
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.lblPrecioBruto);
-            this.Controls.Add(this.lblSucursalTitulo);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtUrlImagen);
             this.Controls.Add(this.txtPrecioUnidad);
@@ -269,16 +253,15 @@
         private System.Windows.Forms.Label lblPrecioBruto;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label lblCantidad;
-        private System.Windows.Forms.Label lblSucursalTitulo;
         private System.Windows.Forms.Button BTnAceptar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Label lblSucursal;
-        private System.Windows.Forms.ComboBox cmbSucursal;
         private System.Windows.Forms.TextBox txtPrecioUnidad;
         private System.Windows.Forms.Label lblPrecioUnidad;
         private System.Windows.Forms.TextBox txtUrlImagen;
         private System.Windows.Forms.Label lblUrlImagen;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pbxImagenProducto;
+        private System.Windows.Forms.Label lblStock;
+        private System.Windows.Forms.TextBox txtStock;
     }
 }

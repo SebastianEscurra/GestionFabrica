@@ -15,7 +15,7 @@ namespace Presentacion
     public partial class frmAltaInsumo : Form
     {
         //Atributos
-        private Insumo actual = null;
+        private Insumo insumoActual = null;
         private InsumoNegocio insumoNegocio = new InsumoNegocio();
         
 
@@ -27,7 +27,7 @@ namespace Presentacion
         public frmAltaInsumo(Insumo seleccionado)
         {
             InitializeComponent();
-            actual = seleccionado;
+            insumoActual = seleccionado;
         }
 
 
@@ -35,13 +35,16 @@ namespace Presentacion
         private void frmAltaInsumo_Load(object sender, EventArgs e)
         {
             
-            if (actual != null)
+            if (insumoActual != null)
             {
-                txtCantidad.Text = actual.Cantidad.ToString();
-                txtDescripcion.Text = actual.Descripcion;
-                txtPrecioBruto.Text = actual.PrecioBruto.ToString();
-                txtUrlImagen.Text = actual.UrlImagen;
-                Helper.HelpPicture.cargarImagen(pbxImagenProducto,actual.UrlImagen);
+                lblStock.Visible = true;
+                txtStock.Visible = true;
+                txtStock.Text = insumoActual.Stock.ToString();
+                txtCantidad.Text = insumoActual.Cantidad.ToString();
+                txtDescripcion.Text = insumoActual.Descripcion;
+                txtPrecioBruto.Text = insumoActual.PrecioBruto.ToString();
+                txtUrlImagen.Text = insumoActual.UrlImagen;
+                Helper.HelpPicture.cargarImagen(pbxImagenProducto,insumoActual.UrlImagen);
             }
         }
 
@@ -52,25 +55,26 @@ namespace Presentacion
 
         private void BTnAceptar_Click(object sender, EventArgs e)
         {
-            if (actual == null)
-                actual = new Insumo();
+            if (insumoActual == null)
+                insumoActual = new Insumo();
 
             
-            actual.Cantidad = double.Parse(txtCantidad.Text);
-            actual.Descripcion = txtDescripcion.Text;
-            actual.PrecioBruto = decimal.Parse(txtPrecioBruto.Text);
-            actual.PrecioUnidad = decimal.Parse(txtPrecioUnidad.Text);
-            actual.UrlImagen = txtUrlImagen.Text;
+            insumoActual.Cantidad = int.Parse(txtCantidad.Text);
+            insumoActual.Descripcion = txtDescripcion.Text;
+            insumoActual.PrecioBruto = decimal.Parse(txtPrecioBruto.Text);
+            insumoActual.PrecioUnidad = decimal.Parse(txtPrecioUnidad.Text);
+            insumoActual.UrlImagen = txtUrlImagen.Text;
+            insumoActual.Stock = int.Parse(txtStock.Text);
             
 
-            if (actual.Id>0)
+            if (insumoActual.Id>0)
             {
-                insumoNegocio.modificar(actual);
+                insumoNegocio.modificar(insumoActual);
                 MessageBox.Show("Modificado Exitosamente");
             }
             else
             {
-                insumoNegocio.agregar(actual);
+                insumoNegocio.agregar(insumoActual);
                 MessageBox.Show("Agregado Exitosamente");
             }
         }
@@ -88,6 +92,10 @@ namespace Presentacion
             if (txtPrecioBruto.Text != "" && txtCantidad.Text != "")
             {
                 txtPrecioUnidad.Text = (double.Parse(txtPrecioBruto.Text) / double.Parse(txtCantidad.Text)).ToString();
+            }
+            if (txtCantidad.Text != "" && insumoActual==null)
+            {
+                txtStock.Text= txtCantidad.Text;
             }
         }
 

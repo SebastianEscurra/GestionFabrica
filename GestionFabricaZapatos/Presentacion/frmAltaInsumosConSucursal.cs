@@ -18,7 +18,7 @@ namespace Presentacion
         private Sucursal sucursalActual;
         private double cantidad;
 
-        private RelacionSucursal_Insumo relacionSucursalActual = null;
+        private RelacionSucursal_Insumo relacionSucInsumoActual = null;
 
         private InsumoNegocio insumoNegocio=new InsumoNegocio();
         private SucursalNegocio sucursalNegocio = new SucursalNegocio();
@@ -32,7 +32,8 @@ namespace Presentacion
         public frmAltaInsumosConSucursal(RelacionSucursal_Insumo relacionSucursalActual)
         {
             InitializeComponent();
-            this.relacionSucursalActual = relacionSucursalActual;
+            this.relacionSucInsumoActual = relacionSucursalActual;
+            sucursalActual = relacionSucursalActual.Sucursal;
         }
 
         private void frmAltaInsumosConSucursal_Load(object sender, EventArgs e)
@@ -40,20 +41,20 @@ namespace Presentacion
             cmbInsumo.DataSource = insumoNegocio.listar();
             cmbSucursal.DataSource = sucursalNegocio.listar(tipoSucursal);
 
-            if (relacionSucursalActual!=null)
+            if (relacionSucInsumoActual!=null)
             {
                 cmbSucursal.Visible = true;
                 lblSucursal.Visible = true;
 
                 cmbInsumo.ValueMember = "Id";
                 cmbInsumo.DisplayMember = "Descripcion";
-                cmbInsumo.SelectedValue = relacionSucursalActual.Insumo.Id;
+                cmbInsumo.SelectedValue = relacionSucInsumoActual.Insumo.Id;
 
                 cmbSucursal.ValueMember = "Id";
                 cmbSucursal.DisplayMember = "Descripcion";
-                cmbSucursal.SelectedValue = relacionSucursalActual.Sucursal.Id;
+                cmbSucursal.SelectedValue = relacionSucInsumoActual.Sucursal.Id;
 
-                txtCantidad.Text = relacionSucursalActual.Cantidad.ToString();
+                txtCantidad.Text = relacionSucInsumoActual.Cantidad.ToString();
             }
         }
 
@@ -64,30 +65,98 @@ namespace Presentacion
 
         private void BTnAceptar_Click(object sender, EventArgs e)
         {
-            if (relacionSucursalActual == null)
+            if (relacionSucInsumoActual == null)
             {
-                relacionSucursalActual = new RelacionSucursal_Insumo();
-                relacionSucursalActual.Sucursal = sucursalActual;
+                relacionSucInsumoActual = new RelacionSucursal_Insumo();
+                relacionSucInsumoActual.Sucursal = sucursalActual;
             }
             else
             {
-                relacionSucursalActual.Sucursal = (Sucursal)cmbSucursal.SelectedItem;
+                relacionSucInsumoActual.Sucursal = (Sucursal)cmbSucursal.SelectedItem;
             }
 
-            relacionSucursalActual.Insumo = (Insumo)cmbInsumo.SelectedItem;
-            relacionSucursalActual.Cantidad = int.Parse(txtCantidad.Text); 
+            relacionSucInsumoActual.Insumo = (Insumo)cmbInsumo.SelectedItem;
+
+            Insumo auxModificarStock= new Insumo();// obtenemos la cantidad a modificar del insumo principal
+            auxModificarStock.Id = relacionSucInsumoActual.Insumo.Id;
+
+            int cantidadActual = relacionSucInsumoActual.Cantidad - int.Parse(txtCantidad.Text);
 
             try
             {
-                if (relacionSucursalActual.Id==0)
+                if (relacionSucInsumoActual.Id==0)
                 {
-                    relacionSucInsumoNegocio.agregar(relacionSucursalActual);
-                    MessageBox.Show("Insumo Agregado a sucursal");
-                }
+                    auxModificarStock.Stock = relacionSucInsumoActual.Insumo.Stock - int.Parse(txtCantidad.Text);
+                    if (verificarInsumoRepetido(relacionSucInsumoActual.Insumo))
+                    {
+                        relacionSucInsumoNegocio.actualizarRepetido(relacionSucInsumoActual); // busca por insumo y sucursal
+                        insumoNegocio.modificarStock(auxModificarStock);
+                        MessageBox.Show("Insumo Agregado a sucursal " + sucursalActual.Descripcion);
+                    }
+                    else
+                    {
+                        relacionSucInsumoActual.Cantidad = int.Parse(txtCantidad.Text);
+                        relacionSucInsumoNegocio.agregar(relacionSucInsumoActual);
+                        insumoNegocio.modificarStock(auxModificarStock);
+                        MessageBox.Show("Insumo Agregado a sucursal " + sucursalActual.Descripcion);
+                    }
+
+                    }
                 else
                 {
-                    relacionSucInsumoNegocio.modificar(relacionSucursalActual);
-                    MessageBox.Show("Insumo Modificado");
+                    if (verificarSucursal())// verdadero si estoy en la misma sucursal
+                    {
+                        calcularStockModificado(auxModificarStock);
+                        relacionSucInsumoActual.Cantidad = int.Parse(txtCantidad.Text);
+                        relacionSucInsumoNegocio.modificar(relacionSucInsumoActual);
+                        insumoNegocio.modificarStock(auxModificarStock);
+                        MessageBox.Show("Insumo Modificado");
+                    }
+                    else
+                    {
+                        if (verificarInsumoRepetido(relacionSucInsumoActual.Insumo, false))
+                        {
+                            if (cantidadActual == 0)
+                            {
+                                relacionSucInsumoNegocio.actualizarRepetidoModificandoSucursal(relacionSucInsumoActual); // cambia sucursal y cantidad
+                                MessageBox.Show("Insumo cambiado a sucursal a sucursal " + relacionSucInsumoActual.Sucursal.Descripcion);
+                            }
+                            else
+                            {
+                                relacionSucInsumoNegocio.actualizarRepetido(relacionSucInsumoActual); // cambia sucursal y cantidad
+                                MessageBox.Show(txtCantidad.Text + " " + relacionSucInsumoActual.Insumo.Descripcion + " cambiadx a sucursal " + relacionSucInsumoActual.Sucursal.Descripcion + " repetido");
+                            }
+                        }
+                        else
+                        {
+                            
+                            if (cantidadActual==0)
+                            {
+                                relacionSucInsumoActual.Cantidad = int.Parse(txtCantidad.Text);
+                                relacionSucInsumoNegocio.actualizarRepetidoModificandoSucursal(relacionSucInsumoActual);
+                                MessageBox.Show("Insumo cambiado a sucursal a sucursal " + relacionSucInsumoActual.Sucursal.Descripcion);
+                            }
+                            else
+                            {
+                                RelacionSucursal_Insumo aux = new RelacionSucursal_Insumo();
+                                aux.Insumo = relacionSucInsumoActual.Insumo;
+                                aux.Sucursal = relacionSucInsumoActual.Sucursal;
+                                aux.Cantidad = int.Parse(txtCantidad.Text);
+                                relacionSucInsumoNegocio.agregar(aux);
+
+                                relacionSucInsumoActual.Sucursal = sucursalActual;
+                                relacionSucInsumoActual.Cantidad = cantidadActual;
+
+                                relacionSucInsumoNegocio.actualizarRepetido(relacionSucInsumoActual); // cambia suc y cantidad
+                                MessageBox.Show(aux.Cantidad + " " + relacionSucInsumoActual.Insumo.Descripcion + " cambiadx a sucursal " + relacionSucInsumoActual.Sucursal.Descripcion);
+
+
+
+                            }
+                        }
+                        
+                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -96,10 +165,80 @@ namespace Presentacion
             }
         }
 
+        private bool verificarSucursal()
+        {
+            if (sucursalActual.Id==relacionSucInsumoActual.Sucursal.Id)
+                return true;
+            else
+                return false;
+        }
+
+        private void calcularStockModificado(Insumo auxModificarCantidad)
+        {
+            int cantidadNueva = int.Parse(txtCantidad.Text);
+
+            if ((relacionSucInsumoActual.Cantidad - cantidadNueva) < 0)
+            {
+                cantidadNueva = relacionSucInsumoActual.Cantidad - cantidadNueva;
+                auxModificarCantidad.Stock = relacionSucInsumoActual.Insumo.Stock - (-(cantidadNueva));
+            }
+            else if ((relacionSucInsumoActual.Cantidad - cantidadNueva) > 0)
+            {
+                cantidadNueva = relacionSucInsumoActual.Cantidad - cantidadNueva;
+                auxModificarCantidad.Stock = relacionSucInsumoActual.Insumo.Stock + cantidadNueva;
+            }
+            else
+            {
+                auxModificarCantidad.Stock = relacionSucInsumoActual.Insumo.Stock;
+            }
+        }
+        
+
+        private bool verificarInsumoRepetido(Insumo insumoActual,bool agregando=true)
+        {
+            if (agregando)
+            {
+                foreach (var relacionInsumo in relacionSucInsumoNegocio.listar(sucursalActual))
+                {
+                    if (relacionInsumo.Insumo.Id==insumoActual.Id)
+                    {
+                        relacionSucInsumoActual.Cantidad = int.Parse(txtCantidad.Text) + relacionInsumo.Cantidad;
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                int cantidadActual = relacionSucInsumoActual.Cantidad - int.Parse(txtCantidad.Text);
+
+                foreach (var relacionInsumo in relacionSucInsumoNegocio.listar(relacionSucInsumoActual.Sucursal))
+                {
+                    if (relacionInsumo.Insumo.Id == insumoActual.Id && cantidadActual==0) //esta el mismo insumo y ademas se envio el total del este
+                    {
+                        relacionSucInsumoActual.Cantidad = int.Parse(txtCantidad.Text) + relacionInsumo.Cantidad;
+                        relacionSucInsumoNegocio.eliminar(relacionInsumo.Id);
+                        return true;
+                    }
+                    else if (relacionInsumo.Insumo.Id == insumoActual.Id && cantidadActual != 0) //  no se envio el total del este
+                    {
+                        relacionSucInsumoActual.Cantidad = cantidadActual;
+                        relacionSucInsumoActual.Sucursal = sucursalActual;
+
+                        relacionInsumo.Cantidad += int.Parse(txtCantidad.Text);
+                        relacionSucInsumoNegocio.modificar(relacionInsumo);
+                        return true;
+                    }
+                }
+            }
+            
+
+            return false;
+        }
+
         private void txtCantidad_Enter(object sender, EventArgs e)
         {
             Insumo seleccionado = (Insumo)cmbInsumo.SelectedItem;
-            lblMensajeCantidadDisponible.Text = "Unidades disponibles: " + seleccionado.Cantidad.ToString();
+            lblMensajeCantidadDisponible.Text = "Unidades disponibles: " + seleccionado.Stock.ToString();
             lblMensajeCantidadDisponible.Visible = true;
         }
 
@@ -111,23 +250,53 @@ namespace Presentacion
         private void txtCantidad_TextChanged(object sender, EventArgs e)
         {
             Insumo seleccionado = (Insumo)cmbInsumo.SelectedItem;
-            if (txtCantidad.Text!="")
+
+            if (relacionSucInsumoActual != null)
             {
-                cantidad = seleccionado.Cantidad - int.Parse(txtCantidad.Text);
-                lblMensajeCantidadDisponible.Text = "Unidades disponibles: " + cantidad;
+                if (txtCantidad.Text != "")
+                {
+                    cantidad = (seleccionado.Stock + relacionSucInsumoActual.Cantidad) - int.Parse(txtCantidad.Text);
+                    lblMensajeCantidadDisponible.Text = "Unidades disponibles: " + cantidad;
+                }
+                else
+                {
+                    lblMensajeCantidadDisponible.Text = "Unidades disponibles: " + (seleccionado.Stock + relacionSucInsumoActual.Cantidad).ToString();
+                }
             }
             else
             {
-                lblMensajeCantidadDisponible.Text = "Unidades disponibles: " + seleccionado.Cantidad.ToString();
+                if (txtCantidad.Text != "")
+                {
+                    cantidad = seleccionado.Stock  - int.Parse(txtCantidad.Text);
+                    lblMensajeCantidadDisponible.Text = "Unidades disponibles: " + cantidad;
+                }
+                else
+                {
+                    lblMensajeCantidadDisponible.Text = "Unidades disponibles: " + seleccionado.Stock.ToString();
+                }
             }
         }
 
         private void lblMensajeCantidadDisponible_TextChanged(object sender, EventArgs e)
         {
             Insumo seleccionado = (Insumo)cmbInsumo.SelectedItem;
-            if (txtCantidad.Text!="")
+
+            if (txtCantidad.Text!="" && relacionSucInsumoActual != null) //modificando
             {
-                cantidad = seleccionado.Cantidad - int.Parse(txtCantidad.Text);
+                cantidad = (seleccionado.Stock + relacionSucInsumoActual.Cantidad) - int.Parse(txtCantidad.Text);
+
+                if (cantidad < 0)
+                {
+                    lblMensajeCantidadDisponible.ForeColor = Color.DarkRed;
+                }
+                else
+                {
+                    lblMensajeCantidadDisponible.ForeColor = Color.DimGray;
+                }
+            }
+            else if (txtCantidad.Text != "") // agregando nuevo
+            {
+                cantidad = seleccionado.Stock - int.Parse(txtCantidad.Text);
 
                 if (cantidad < 0)
                 {

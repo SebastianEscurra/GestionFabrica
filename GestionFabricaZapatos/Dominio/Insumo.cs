@@ -22,7 +22,8 @@ namespace Dominio
         public int CantidadInsumosParaArmado { get { return cantidadInsumosParaArmado; } set { cantidadInsumosParaArmado = value; } }
         
         [DisplayName("Cantidad total")]
-        public double Cantidad { get; set; }
+        public int Cantidad { get; set; }
+        public int Stock { get; set; }
 
         public decimal PrecioBruto { get; set; }
         public string UrlImagen { get; set; }
