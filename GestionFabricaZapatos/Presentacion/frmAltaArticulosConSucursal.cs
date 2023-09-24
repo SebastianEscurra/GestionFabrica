@@ -17,7 +17,7 @@ namespace Presentacion
     {
         // Atributos 
 
-        private Sucursal sucursal;
+        private Sucursal sucursalActual;
         private Articulo actual;
         private RelacionSucursalArticulo relacionActual=null;
 
@@ -25,6 +25,8 @@ namespace Presentacion
         private RelacionArticuloInsumoNegocio relacionNegocio = new RelacionArticuloInsumoNegocio();
         private InsumoNegocio insumoNegocio = new InsumoNegocio();
         private RelacionSucursalArticuloNegocio relacionSucursalArtNegocio = new RelacionSucursalArticuloNegocio();
+        private RelacionSucursal_InsumoNegocio relacionSucInsumoNegocio = new RelacionSucursal_InsumoNegocio();
+        
 
         private List<RelacionArticuloInsumo> listaRelacion;
         private List<Insumo> listaInsumo;
@@ -34,7 +36,7 @@ namespace Presentacion
         public frmAltaArticulosConSucursal(Sucursal sucursal)
         {
             InitializeComponent();
-            this.sucursal = sucursal;
+            this.sucursalActual = sucursal;
             lblSucursal.Text = sucursal.Descripcion;
             cmbArticulo.DataSource = articuloNegocio.listar();
 
@@ -44,7 +46,7 @@ namespace Presentacion
         public frmAltaArticulosConSucursal(Sucursal sucursal,RelacionSucursalArticulo relacionActual)
         {
             InitializeComponent();
-            this.sucursal = sucursal;
+            this.sucursalActual = sucursal;
             lblSucursal.Text = sucursal.Descripcion;
             cmbArticulo.DataSource = articuloNegocio.listar();
             this.relacionActual = relacionActual;
@@ -67,7 +69,7 @@ namespace Presentacion
                 List<RelacionArticuloInsumo> listaRelacionActual = relacionNegocio.listarInsumos(actual);
 
                 calcularCantidadInsumos(listaRelacionActual);
-                verificarStockDisponible(listaRelacionActual);
+                verificarStockDisponibleGeneral(listaRelacionActual);
 
                 HelpGrid.mostrarGrid(dgvInsumosNecesarios, listaRelacionActual);
             }
@@ -88,7 +90,7 @@ namespace Presentacion
             List<RelacionArticuloInsumo> listaRelacionActual = relacionNegocio.listarInsumos(actual);
       
             calcularCantidadInsumos(listaRelacionActual);
-            verificarStockDisponible(listaRelacionActual);
+            verificarStockDisponibleSucursal(listaRelacionActual);
 
             HelpGrid.mostrarGrid(dgvInsumosNecesarios, listaRelacionActual);
 
@@ -107,7 +109,7 @@ namespace Presentacion
                 RelacionSucursalArticulo nuevo = new RelacionSucursalArticulo();
                 nuevo.Articulo = (Articulo)cmbArticulo.SelectedItem;
                 nuevo.Cantidad = int.Parse(txtCantidad.Text);
-                nuevo.Sucursal = sucursal;
+                nuevo.Sucursal = sucursalActual;
                 relacionSucursalArtNegocio.agregar(nuevo);
                 MessageBox.Show("Articulo agregado asucursal");
 
@@ -133,22 +135,22 @@ namespace Presentacion
             }
         }
 
-        private void verificarStockDisponible(List<RelacionArticuloInsumo> listaRelacionActual)
+        private void verificarStockDisponibleGeneral(List<RelacionArticuloInsumo> listaRelacionActual)
         {
-            foreach (var relacion in listaRelacionActual) 
+            foreach (var relacion in listaRelacionActual) // cantidad necesaria de cada insumo
             {
-                foreach (var insumoActual in listaInsumo)
+                foreach (var insumo in listaInsumo)
                 {
-                    if (relacion.IdInsumo == insumoActual.Id)
+                    if (relacion.Insumo == insumo.Descripcion)
                     {
-                        if (relacion.Cantidad <= insumoActual.Cantidad)
+                        if (relacion.Cantidad <= insumo.Cantidad)
                         {
-                            relacion.StocDisponible = true;
+                            relacion.StockDisponible = true;
                             relacion.Observaciones = "";
                         }
                         else
                         {
-                            relacion.StocDisponible = false;
+                            relacion.StockDisponible = false;
                             relacion.Observaciones = "El stock disponible no alcanza";
                         }
                         break;
@@ -159,6 +161,55 @@ namespace Presentacion
             }// corroboramos si hay stock para fabricar el articulo
 
         }
-  
+        private void verificarStockDisponibleSucursal(List<RelacionArticuloInsumo> listaRelacionActual)
+        {
+            foreach (var relacion in listaRelacionActual) // cantidad necesaria de cada insumo
+            {
+                foreach (var insumo in relacionSucInsumoNegocio.listar(sucursalActual))
+                {
+                    if (relacion.Insumo == insumo.Insumo.Descripcion)
+                    {
+                        if (relacion.Cantidad <= insumo.Cantidad)
+                        {
+                            relacion.StockDisponible = true;
+                            relacion.Observaciones = "";
+                        }
+                        else
+                        {
+                            relacion.StockDisponible = false;
+                            relacion.Observaciones = "El stock disponible no alcanza";
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        relacion.StockDisponible = false;
+                        relacion.Observaciones = "Insumo no disponible en Sucursal";
+                    }
+                }
+
+
+            }// corroboramos si hay stock para fabricar el articulo
+
+        }
+
+        private void dgvInsumosNecesarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            RelacionArticuloInsumo seleccionado=(RelacionArticuloInsumo)dgvInsumosNecesarios.CurrentRow.DataBoundItem;
+            string casoSucursal = "Insumo no disponible en Sucursal";
+            string casoStock = "El stock disponible no alcanza";
+            
+
+            if (e.ColumnIndex==6 && seleccionado.StockDisponible ==false && seleccionado.Observaciones==casoStock) //si se toca la columna stock y si esta en false y si falta stock
+            {
+                MessageBox.Show("stock");
+
+            }
+            else if (e.ColumnIndex == 6 && seleccionado.StockDisponible == false && seleccionado.Observaciones == casoSucursal) // si es caso sucursal
+            {
+                frmOpcionesSinStockSucursal frmOpcionesStockSucursal = new frmOpcionesSinStockSucursal(seleccionado,seleccionado.Cantidad,sucursalActual);
+                frmOpcionesStockSucursal.ShowDialog();
+            }
+        }
     }
 }

@@ -138,13 +138,15 @@
             // 
             // dgvInsumosNecesarios
             // 
+            this.dgvInsumosNecesarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInsumosNecesarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInsumosNecesarios.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvInsumosNecesarios.Location = new System.Drawing.Point(12, 167);
             this.dgvInsumosNecesarios.Name = "dgvInsumosNecesarios";
             this.dgvInsumosNecesarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInsumosNecesarios.Size = new System.Drawing.Size(429, 228);
+            this.dgvInsumosNecesarios.Size = new System.Drawing.Size(440, 228);
             this.dgvInsumosNecesarios.TabIndex = 0;
+            this.dgvInsumosNecesarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInsumosNecesarios_CellContentClick);
             // 
             // frmAltaArticulosConSucursal
             // 

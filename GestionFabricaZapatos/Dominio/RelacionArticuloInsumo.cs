@@ -14,7 +14,7 @@ namespace Dominio
         public int IdInsumo { get; set; }
         public string Insumo { get; set; }
         public int Cantidad { get; set; }
-        public bool StocDisponible { get; set; }
+        public bool StockDisponible { get; set; }
         public string Observaciones { get; set; }
     }
 }
