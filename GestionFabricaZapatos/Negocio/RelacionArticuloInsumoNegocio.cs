@@ -97,12 +97,30 @@ namespace Negocio
                 dato.cerrarConexion();
             }
         }
-        public void eliminar(int id)
+        public void eliminar(int id) // por id relacion
         {
             try
             {
                 dato.setearConsulta("delete RelacionArticuloInsumo where Id=@id");
                 dato.setearParametro("@id", id);
+                dato.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                dato.cerrarConexion();
+            }
+        }
+        public void eliminarPorArticulo(int idArticulo) // por id relacion
+        {
+            try
+            {
+                dato.setearConsulta("delete RelacionArticuloInsumo where IdArticulo=@id");
+                dato.setearParametro("@id", idArticulo);
                 dato.ejecutarAccion();
             }
             catch (Exception ex)

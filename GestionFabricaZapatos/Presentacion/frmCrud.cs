@@ -31,6 +31,7 @@ namespace Presentacion
         private ArticuloNegocio articuloNegocio = new ArticuloNegocio();
         private RelacionSucursalArticuloNegocio relacionSucArticuloNegocio = new RelacionSucursalArticuloNegocio();
         private RelacionSucursal_InsumoNegocio relacionSucInsumoNegocio = new RelacionSucursal_InsumoNegocio();
+        private RelacionArticuloInsumoNegocio relacionArtInsumoNegocio = new RelacionArticuloInsumoNegocio();
 
 
         // Constructores
@@ -196,6 +197,7 @@ namespace Presentacion
                 if (resultado == DialogResult.Yes)
                 {
                     relacionSucArticuloNegocio.eliminar(seleccionado.Id);
+                    relacionArtInsumoNegocio.eliminarPorArticulo(seleccionado.Articulo.Id);
                     MessageBox.Show("Eliminado Exitosamente");
                 }
 
